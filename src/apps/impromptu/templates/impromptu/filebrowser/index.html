@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+   "http://www.w3.org/TR/html4/loose.dtd">
+
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>Impromptu vis</title>
+	<meta name="generator" content="TextMate http://macromates.com/">
+	<meta name="author" content="mac">
+
+	<style type="text/css" media="screen">
+		.header a {color: darkgrey;}
+		.header a:hover {color: orange; background:darkgrey;}
+		.rows a {color: blue;}
+		.rows a:hover {color: yellow; background:black;}
+	</style>
+
+</head>
+<body>
+
+
+<table border="1" cellspacing="1" cellpadding="1">
+	<tr class="header">
+		<th style="width=40%; font-size: 20px;">Folder
+			<small><a href="?ordering=folder">reorder</a></small>
+		</th>
+		<th style="width=40%; font-size: 20px;">File
+			<small><a href="?ordering=filename">reorder</a></small>
+		</th>
+		<th style="width=20%; font-size: 20px;">Time
+			<small><a href="?ordering=date">reorder</a></small>
+		</th>
+	</tr>
+	
+	
+	{% for each in items  %}
+	
+	
+	<tr class="rows">
+		<td style="width=40%; {% ifchanged each.0 %}background:darkred; color:white;{% else %}color: grey;{% endifchanged %}">{{each.0}}</td>
+		<td style="width=40%; background:lavender; color:black"><a href="?file={{each.0}}/{{each.1}}">{{each.1}}</a></td>
+		<td style="width=40%; background:darkgreen; color:white;">{{each.2}}</td>
+	</tr>
+		
+	{% endfor %}
+</table>
+
+
+
+</body>
+</html>

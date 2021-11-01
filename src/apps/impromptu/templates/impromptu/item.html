@@ -1,0 +1,98 @@
+{% extends "impromptu/base.html" %}
+
+{# {% load ontotags %} #}
+
+
+{% block navbar %}
+<nav class="navbar navbar-default navbar-fixed-top " role="navigation">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="{% url impromptu_home %}">Impromptu Functions</a>
+	  
+      <a class="navbar-brand">&gt;&nbsp;&nbsp;{{item.name}}</a>
+	  
+	  
+      <div class="pull-right">
+       <form class="navbar-form" role="search" method="get" id="search_form" action="{% url impromptu_home %}">
+       <div class="input-group">
+           <input type="text" class="form-control" placeholder="Search" name="q" id="srch-term" value="{{q}}">
+           <div class="input-group-btn">
+               <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+           </div>
+       </div>
+       </form>
+       </div>
+	  
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+	  
+	  
+{% endblock navbar %}
+
+
+
+
+
+{% block bodycontent %}
+
+	
+	<h1>{{item.name}}</h1>
+	<hr>
+	<div class="lead">{{item.desc}}</div>
+	
+	<br />
+	<h5>Usage</h5>
+	<hr>
+	<div class="-lead">
+		<code>{{item.signature}}</code>
+		==>
+		{{item.returns}}
+	</div>
+	
+	<p class="lead">{{item.args|safe|linebreaks}}</p>
+	
+	
+	{% if item.examples %}
+	<br />
+	<h5>Examples</h5>
+	<hr>
+	<div class="well"><code>{{item.examples|linebreaks}}</code></div>
+	{% endif %}
+	
+	
+	
+	{% if item.related %}
+	
+	<br />
+	<h5>Related</h5>
+	<hr>
+	<div class="lead">
+		{% for x in item.get_split_related %}
+			<a href="{% url impromptu_home %}?q={{x}}">{{x}}</a>
+		{% endfor %}
+	</div>
+	
+	
+	{% endif %}
+	
+	
+	<br /><br />
+	<a class="btn btn-default btn-xs" href="{% url impromptu_home %}">Back to Index
+		</a>
+		
+	<br /><br />
+
+{% endblock bodycontent %}
