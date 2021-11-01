@@ -45,7 +45,6 @@ rm -rf $DIR_BUILD/*
 echo -e "\nWGET SITE INTO TEMP BUILD DIRECTORY.." 
 echo "+++++++++++++++++"
 wget  -P $DIR_BUILD -mkEpnp -nH http://127.0.0.1:8000/ --wait=0.1 
-# wget  -P $DIR_BUILD -mkEpnp -nH http://127.0.0.1:8000/ --wait=0.1 --exclude-domains www.michelepasin.org
 
 # add a log file
 cd $DIR_BUILD

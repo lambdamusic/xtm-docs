@@ -107,3 +107,6 @@ ENV/
 local_settings.py
 README_PRIVATE.md
 db-bootstrap
+
+# the DB
+db.sqlite3
