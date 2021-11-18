@@ -1,0 +1,388 @@
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link rel="shortcut icon" href="media/static/favicon.ico" />
+    
+	
+	<title>cerberus_fx : Extempore Docs</title>
+
+	
+
+    <!-- Bootstrap ## original specs-->
+    
+	
+	<!-- Bootswatch https://bootswatch.com/ -->
+	 <link href="media/static/libs/bootswatch3.2/cosmo/bootstrap.min.css" rel="stylesheet">
+	 
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+		
+		
+	<style type="text/css" media="screen">
+
+
+		/* Sticky footer styles 
+		-------------------------------------------------- */
+		html {
+		  position: relative;
+		  min-height: 100%;
+		}
+		body {
+		  /* Margin bottom by footer height */
+		  margin-bottom: 300px;
+		  padding-top: 70px;
+		}
+		.footer {
+		  position: absolute;
+		  bottom: 0;
+		  width: 100%;
+		  /* Set the fixed height of the footer here */
+		  height: 200px;
+		  background-color: #f5f5f5;
+		}
+		
+
+		.navbar-subtitle.navbar-brand {
+			color: #ffffff;
+			font-style: normal;
+		}
+
+		.navbar-subtitle.navbar-brand.navbar-function {
+			color: #4eef4c;
+			font-style: normal;
+		}
+
+		
+		.navbar-subtitle.navbar-brand a {
+			color: #ffffff;
+			background: crimson;
+			font-style: normal;
+			text-decoration: underline;
+		}
+
+		.navbar-subtitle.navbar-brand:hover {
+			color: #ffffff;
+			font-style: normal;
+		}
+		
+	</style>	
+		
+		
+	
+	
+	
+	<style type="text/css" media="screen">
+
+	  .highlight .hll { background-color: #ffffcc }
+	.highlight  { background: #f8f8f8; }
+	.highlight .c { color: #408080; font-style: italic } /* Comment */
+	.highlight .err { border: 1px solid #FF0000 } /* Error */
+	.highlight .k { color: #008000; font-weight: bold } /* Keyword */
+	.highlight .o { color: #666666 } /* Operator */
+	.highlight .cm { color: #408080; font-style: italic } /* Comment.Multiline */
+	.highlight .cp { color: #BC7A00 } /* Comment.Preproc */
+	.highlight .c1 { color: #408080; font-style: italic } /* Comment.Single */
+	.highlight .cs { color: #408080; font-style: italic } /* Comment.Special */
+	.highlight .gd { color: #A00000 } /* Generic.Deleted */
+	.highlight .ge { font-style: italic } /* Generic.Emph */
+	.highlight .gr { color: #FF0000 } /* Generic.Error */
+	.highlight .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+	.highlight .gi { color: #00A000 } /* Generic.Inserted */
+	.highlight .go { color: #888888 } /* Generic.Output */
+	.highlight .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+	.highlight .gs { font-weight: bold } /* Generic.Strong */
+	.highlight .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+	.highlight .gt { color: #0044DD } /* Generic.Traceback */
+	.highlight .kc { color: #008000; font-weight: bold } /* Keyword.Constant */
+	.highlight .kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
+	.highlight .kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
+	.highlight .kp { color: #008000 } /* Keyword.Pseudo */
+	.highlight .kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
+	.highlight .kt { color: #B00040 } /* Keyword.Type */
+	.highlight .m { color: #666666 } /* Literal.Number */
+	.highlight .s { color: #BA2121 } /* Literal.String */
+	.highlight .na { color: #7D9029 } /* Name.Attribute */
+	.highlight .nb { color: #008000 } /* Name.Builtin */
+	.highlight .nc { color: #0000FF; font-weight: bold } /* Name.Class */
+	.highlight .no { color: #880000 } /* Name.Constant */
+	.highlight .nd { color: #AA22FF } /* Name.Decorator */
+	.highlight .ni { color: #999999; font-weight: bold } /* Name.Entity */
+	.highlight .ne { color: #D2413A; font-weight: bold } /* Name.Exception */
+	.highlight .nf { color: #0000FF } /* Name.Function */
+	.highlight .nl { color: #A0A000 } /* Name.Label */
+	.highlight .nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+	.highlight .nt { color: #008000; font-weight: bold } /* Name.Tag */
+	.highlight .nv { color: #19177C } /* Name.Variable */
+	.highlight .ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
+	.highlight .w { color: #bbbbbb } /* Text.Whitespace */
+	.highlight .mb { color: #666666 } /* Literal.Number.Bin */
+	.highlight .mf { color: #666666 } /* Literal.Number.Float */
+	.highlight .mh { color: #666666 } /* Literal.Number.Hex */
+	.highlight .mi { color: #666666 } /* Literal.Number.Integer */
+	.highlight .mo { color: #666666 } /* Literal.Number.Oct */
+	.highlight .sb { color: #BA2121 } /* Literal.String.Backtick */
+	.highlight .sc { color: #BA2121 } /* Literal.String.Char */
+	.highlight .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
+	.highlight .s2 { color: #BA2121 } /* Literal.String.Double */
+	.highlight .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
+	.highlight .sh { color: #BA2121 } /* Literal.String.Heredoc */
+	.highlight .si { color: #BB6688; font-weight: bold } /* Literal.String.Interpol */
+	.highlight .sx { color: #008000 } /* Literal.String.Other */
+	.highlight .sr { color: #BB6688 } /* Literal.String.Regex */
+	.highlight .s1 { color: #BA2121 } /* Literal.String.Single */
+	.highlight .ss { color: #19177C } /* Literal.String.Symbol */
+	.highlight .bp { color: #008000 } /* Name.Builtin.Pseudo */
+	.highlight .vc { color: #19177C } /* Name.Variable.Class */
+	.highlight .vg { color: #19177C } /* Name.Variable.Global */
+	.highlight .vi { color: #19177C } /* Name.Variable.Instance */
+	.highlight .il { color: #666666 } /* Literal.Number.Integer.Long */
+	
+	</style>
+	
+	
+		
+		
+  </head>
+  <body>
+	  
+	
+	
+	
+<nav class="navbar navbar-default navbar-fixed-top " role="navigation">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+	  <a class="navbar-brand" href="index.html">Extempore Functions Index (v0.8.9)</a>
+	  
+      <a class="navbar-brand navbar-subtitle navbar-function">&gt;&nbsp;&nbsp;cerberus_fx</a>
+	  
+	  
+	  
+	  
+	  
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+	  
+	  
+  
+
+	  
+	  <div class="container">
+	  	
+
+	
+	<h1>cerberus_fx
+		&nbsp;&nbsp;<small style="font-size: 30%;" class="
+			
+			
+			label label-warning
+			">xtlang</small>
+	
+	</h1>
+	<hr>
+	<div class="lead">
+		Defined in:&nbsp;
+		<a href="https://github.com/digego/extempore/tree/v0.8.9/libs/core/instruments/cerberus.xtm" target="_blank">
+			
+			https://github.com/digego/extempore/tree/v0.8.9/libs/core/instruments/cerberus.xtm		
+		</a>
+		
+	</div>
+	
+	<br />
+	<h5>Implementation</h5>
+	<hr>
+	<div class="">
+		<div class="highlight"><pre><span></span><span class="p">(</span><span class="nf">bind-func</span> <span class="nv">cerberus_fx</span>
+  <span class="p">(</span><span class="k">let </span><span class="p">((</span><span class="nf">MILLISEC</span> <span class="p">(</span><span class="nb">* </span><span class="o">.</span><span class="mi">001</span> <span class="nv">SRf</span><span class="p">))</span>
+        <span class="p">(</span><span class="nf">CHANSF</span> <span class="p">(</span><span class="nf">i32tof</span> <span class="nv">CHANNELS</span><span class="p">)))</span>
+    <span class="p">(</span><span class="k">lambda </span><span class="p">()</span>
+      <span class="p">(</span><span class="k">let </span><span class="p">((</span><span class="nf">notekernel:NOTE_KERNEL</span> <span class="nv">null</span><span class="p">)</span>
+            <span class="p">(</span><span class="nf">name</span> <span class="ss">&#39;Cerberus</span><span class="o">&#39;</span><span class="p">)</span>
+            <span class="p">(</span><span class="nf">mod_amp:|4,SAMPLE|*</span> <span class="p">(</span><span class="nf">array_ref</span> <span class="mf">1.0</span> <span class="mf">1.0</span> <span class="mf">1.0</span> <span class="mf">1.0</span><span class="p">))</span>
+            <span class="p">(</span><span class="nf">mod_frq:|4,SAMPLE|*</span> <span class="p">(</span><span class="nf">array_ref</span> <span class="mf">1.0</span> <span class="mf">1.0</span> <span class="mf">1.0</span> <span class="mf">1.0</span><span class="p">))</span>
+            <span class="p">(</span><span class="nf">mod_phase:|4,SAMPLE|*</span> <span class="p">(</span><span class="nf">array_ref</span> <span class="mf">0.0</span> <span class="mf">0.0</span> <span class="mf">0.0</span> <span class="mf">0.0</span><span class="p">))</span>
+            <span class="p">(</span><span class="nf">mod_options:|4,i32|*</span> <span class="p">(</span><span class="nf">array_ref</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span><span class="p">))</span>
+            <span class="p">(</span><span class="nf">mod_attack:|4,SAMPLE|*</span> <span class="p">(</span><span class="nf">array_ref</span> <span class="mf">10.0</span> <span class="mf">10.0</span> <span class="mf">10.0</span> <span class="mf">10.0</span><span class="p">))</span> <span class="c1">;; in millis</span>
+            <span class="p">(</span><span class="nf">mod_decay:|4,SAMPLE|*</span> <span class="p">(</span><span class="nf">array_ref</span> <span class="mf">10.0</span> <span class="mf">10.0</span> <span class="mf">10.0</span> <span class="mf">10.0</span><span class="p">))</span>
+            <span class="p">(</span><span class="nf">mod_attack_slope:|4,SAMPLE|*</span> <span class="p">(</span><span class="nf">array_ref</span> <span class="mf">0.0</span> <span class="mf">0.0</span> <span class="mf">0.0</span> <span class="mf">0.0</span><span class="p">))</span> <span class="c1">;; between -1.0 log and 1.0 exp  (0.0 is linear)</span>
+            <span class="p">(</span><span class="nf">mod_decay_slope:|4,SAMPLE|*</span> <span class="p">(</span><span class="nf">array_ref</span> <span class="mf">0.0</span> <span class="mf">0.0</span> <span class="mf">0.0</span> <span class="mf">0.0</span><span class="p">))</span>
+            <span class="p">(</span><span class="nf">mods:|32,SAMPLE|*</span> <span class="nv">null</span><span class="p">)</span> <span class="c1">;(alloc))</span>
+            <span class="p">(</span><span class="nf">mod_matrix:|8,|32,SAMPLE||*</span> <span class="nv">null</span><span class="p">)</span><span class="c1">; (alloc))</span>
+            <span class="p">(</span><span class="nf">tmpmod:|32,SAMPLE|*</span> <span class="nv">null</span><span class="p">)</span>
+            <span class="p">(</span><span class="nf">tmpval:SAMPLE</span> <span class="mf">0.0</span><span class="p">)</span>
+            <span class="p">(</span><span class="nf">lfos:|4,|8,</span><span class="p">[</span><span class="nv">SAMPLE,i64,i64</span><span class="p">]</span><span class="nv">*||*</span> <span class="p">(</span><span class="nf">alloc</span><span class="p">))</span>
+            <span class="p">(</span><span class="nf">lfo_types:|4,i32|*</span> <span class="p">(</span><span class="nf">alloc</span><span class="p">))</span>
+            <span class="p">(</span><span class="nf">hpf</span> <span class="p">(</span><span class="nf">hpf_c</span><span class="p">))</span>
+            <span class="p">(</span><span class="nf">hpfR</span> <span class="p">(</span><span class="nf">hpf_c</span><span class="p">))</span>
+            <span class="p">(</span><span class="nf">hpf_frq</span> <span class="mf">20001.0</span><span class="p">)</span>
+            <span class="p">(</span><span class="nf">dly</span> <span class="p">(</span><span class="nf">comb_mc_c</span> <span class="p">(</span><span class="nf">i32toi64</span> <span class="nv">CHANNELS</span><span class="p">)</span> <span class="p">(</span><span class="nb">* </span><span class="nv">SR</span> <span class="mi">120</span><span class="p">)))</span> <span class="c1">;; max 120 sec delay</span>
+            <span class="p">(</span><span class="nf">delay_time_left</span> <span class="mf">50.0</span><span class="p">)</span> <span class="c1">;; in ms</span>
+            <span class="p">(</span><span class="nf">delay_time_right</span> <span class="mf">50.0</span><span class="p">)</span> <span class="c1">;; in ms</span>
+            <span class="p">(</span><span class="nf">delay_in</span> <span class="mf">1.0</span><span class="p">)</span>
+            <span class="p">(</span><span class="nf">delay_mix</span> <span class="mf">0.0</span><span class="p">)</span>
+            <span class="p">(</span><span class="nf">delay_fb</span> <span class="mf">0.5</span><span class="p">)</span>
+            <span class="p">(</span><span class="nf">delay_frq:SAMPLE</span> <span class="mf">12000.0</span><span class="p">)</span>
+            <span class="p">(</span><span class="nf">delay_res:SAMPLE</span> <span class="mf">0.0</span><span class="p">)</span>
+            <span class="p">(</span><span class="nf">rev</span> <span class="p">(</span><span class="nf">reverb_st_c</span><span class="p">))</span>
+            <span class="p">(</span><span class="nf">reverb_mix</span> <span class="mf">0.0</span><span class="p">)</span>
+            <span class="p">(</span><span class="nf">reverb_predelay</span> <span class="mf">40.0</span><span class="p">)</span> <span class="c1">;; in ms</span>
+            <span class="p">(</span><span class="nf">reverb_size</span> <span class="mf">0.3</span><span class="p">)</span>
+            <span class="p">(</span><span class="nf">reverb_absorb</span> <span class="mf">0.45</span><span class="p">)</span>
+            <span class="p">(</span><span class="nf">pan</span> <span class="p">(</span><span class="nf">pan_c</span> <span class="p">(</span><span class="nf">i32toi64</span> <span class="nv">CHANNELS</span><span class="p">)))</span>
+            <span class="p">(</span><span class="nf">pan_pos</span> <span class="mf">0.5</span><span class="p">)</span>
+            <span class="p">(</span><span class="nf">pan_width</span> <span class="mf">1.0</span><span class="p">)</span>
+            <span class="p">(</span><span class="nf">flanger</span> <span class="p">(</span><span class="nf">flanger_st_c</span><span class="p">))</span>
+            <span class="p">(</span><span class="nf">flanger_low</span> <span class="mf">0.1</span><span class="p">)</span> <span class="c1">;; in ms</span>
+            <span class="p">(</span><span class="nf">flanger_high</span> <span class="mf">4.0</span><span class="p">)</span> <span class="c1">;; in ms</span>
+            <span class="p">(</span><span class="nf">flanger_rate</span> <span class="mf">0.127287</span><span class="p">)</span>
+            <span class="p">(</span><span class="nf">flanger_fb</span> <span class="mf">0.25</span><span class="p">)</span>
+            <span class="p">(</span><span class="nf">flanger_mix</span> <span class="mf">0.0</span><span class="p">)</span>
+            <span class="p">(</span><span class="nf">overdrive</span> <span class="p">(</span><span class="nf">overdrive_c</span><span class="p">))</span>
+            <span class="p">(</span><span class="nf">overdrive_amt</span> <span class="mf">0.5</span><span class="p">)</span> <span class="c1">;; always use some overdrive</span>
+            <span class="p">(</span><span class="nf">out:SAMPLE</span> <span class="mf">0.0</span><span class="p">)</span>
+            <span class="p">(</span><span class="nf">i:i64</span> <span class="mi">0</span><span class="p">)</span> <span class="p">(</span><span class="nf">j:i64</span> <span class="mi">0</span><span class="p">)</span>
+            <span class="p">(</span><span class="nf">tmp</span> <span class="mf">0.0</span><span class="p">)</span>
+            <span class="p">(</span><span class="nf">fxout</span> <span class="mf">0.0</span><span class="p">)</span>
+            <span class="p">(</span><span class="nf">gain</span> <span class="mf">2.0</span><span class="p">))</span>
+        <span class="p">(</span><span class="nf">dotimes</span> <span class="p">(</span><span class="nf">i</span> <span class="mi">4</span><span class="p">)</span>
+          <span class="p">(</span><span class="nf">aset!</span> <span class="nv">lfo_types</span> <span class="nv">i</span> <span class="nv">PARAM_SINE</span><span class="p">)</span>
+          <span class="p">(</span><span class="nf">cerberus_create_lfos</span> <span class="nv">lfos</span> <span class="nv">i</span> <span class="mf">0.0</span> <span class="mf">0.0</span> <span class="nv">mod_amp</span> <span class="nv">mod_frq</span> <span class="nv">mod_phase</span> <span class="nv">mod_options</span> <span class="nv">mod_attack</span> <span class="nv">mod_decay</span> <span class="nv">mod_attack_slope</span> <span class="nv">mod_decay_slope</span><span class="p">))</span>
+        <span class="p">(</span><span class="k">lambda </span><span class="p">(</span><span class="nf">in:SAMPLE</span> <span class="nv">time:i64</span> <span class="nv">chan:i64</span> <span class="nv">dat:SAMPLE*</span><span class="p">)</span>
+          <span class="c1">;; calc mod matrix changes</span>
+          <span class="p">(</span><span class="nf">begin</span>
+            <span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nb">= </span><span class="nv">mods</span> <span class="nv">null</span><span class="p">)</span> <span class="p">(</span><span class="k">set! </span><span class="nv">mods</span> <span class="p">(</span><span class="nf">notekernel</span><span class="o">.</span><span class="nv">mods:|32,SAMPLE|*</span><span class="p">)))</span>
+            <span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nb">= </span><span class="nv">mod_matrix</span> <span class="nv">null</span><span class="p">)</span> <span class="p">(</span><span class="k">set! </span><span class="nv">mod_matrix</span> <span class="p">(</span><span class="nf">notekernel</span><span class="o">.</span><span class="nv">mod_matrix:|8,|32,SAMPLE||*</span><span class="p">)))</span>
+            <span class="p">(</span><span class="nf">memset</span> <span class="p">(</span><span class="nf">cast</span> <span class="nv">mods</span> <span class="nv">i8*</span><span class="p">)</span> <span class="mi">0</span> <span class="mi">128</span><span class="p">)</span> <span class="c1">;(size_of mods))</span>
+            <span class="p">(</span><span class="nf">dotimes</span> <span class="p">(</span><span class="nf">i</span> <span class="mi">3</span><span class="p">)</span>
+              <span class="p">(</span><span class="k">set! </span><span class="nv">tmp</span> <span class="p">((</span><span class="nf">aref</span> <span class="p">(</span><span class="nf">aref-ptr</span> <span class="nv">lfos</span> <span class="nv">i</span><span class="p">)</span> <span class="p">(</span><span class="nf">aref</span> <span class="nv">lfo_types</span> <span class="nv">i</span><span class="p">))</span> <span class="nv">chan</span> <span class="nv">i</span><span class="p">))</span>
+              <span class="p">(</span><span class="k">set! </span><span class="nv">tmpmod</span> <span class="p">(</span><span class="nf">aref-ptr</span> <span class="nv">mod_matrix</span> <span class="nv">i</span><span class="p">))</span>
+              <span class="p">(</span><span class="nf">dotimes</span> <span class="p">(</span><span class="nf">j</span> <span class="mi">32</span><span class="p">)</span> <span class="p">(</span><span class="nf">aset!</span> <span class="nv">mods</span> <span class="nv">j</span> <span class="p">(</span><span class="nb">+ </span><span class="p">(</span><span class="nf">aref</span> <span class="nv">mods</span> <span class="nv">j</span><span class="p">)</span> <span class="p">(</span><span class="nb">* </span><span class="nv">tmp</span> <span class="p">(</span><span class="nf">aref</span> <span class="nv">tmpmod</span> <span class="nv">j</span><span class="p">)))))</span>
+              <span class="nv">void</span><span class="p">)</span>
+            <span class="c1">;; the 4th lfo is a modulator!</span>
+            <span class="p">(</span><span class="k">set! </span><span class="nv">tmp</span> <span class="p">((</span><span class="nf">aref</span> <span class="p">(</span><span class="nf">aref-ptr</span> <span class="nv">lfos</span> <span class="mi">3</span><span class="p">)</span> <span class="p">(</span><span class="nf">aref</span> <span class="nv">lfo_types</span> <span class="mi">3</span><span class="p">))</span> <span class="nv">chan</span> <span class="mi">3</span><span class="p">))</span>
+            <span class="p">(</span><span class="k">set! </span><span class="nv">tmpmod</span> <span class="p">(</span><span class="nf">aref-ptr</span> <span class="nv">mod_matrix</span> <span class="mi">3</span><span class="p">))</span>
+            <span class="p">(</span><span class="nf">dotimes</span> <span class="p">(</span><span class="nf">j</span> <span class="mi">32</span><span class="p">)</span> 
+              <span class="p">(</span><span class="k">set! </span><span class="nv">tmpval</span> <span class="p">(</span><span class="nf">aref</span> <span class="nv">tmpmod</span> <span class="nv">j</span><span class="p">))</span>
+              <span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nb">&gt; </span><span class="nv">tmpval</span> <span class="mf">0.0</span><span class="p">)</span>
+                  <span class="p">(</span><span class="nf">aset!</span> <span class="nv">mods</span> <span class="nv">j</span> <span class="p">(</span><span class="nb">* </span><span class="p">(</span><span class="nf">aref</span> <span class="nv">mods</span> <span class="nv">j</span><span class="p">)</span> <span class="p">(</span><span class="nb">* </span><span class="nv">tmp</span> <span class="p">(</span><span class="nf">aref</span> <span class="nv">tmpmod</span> <span class="nv">j</span><span class="p">))))))</span>
+          <span class="p">)</span>
+          <span class="p">(</span><span class="k">set! </span><span class="nv">out</span> <span class="nv">in</span><span class="p">)</span>
+          <span class="p">(</span><span class="k">set! </span><span class="nv">out</span> <span class="p">(</span><span class="nf">overdrive</span> <span class="nv">out</span> <span class="nv">overdrive_amt</span><span class="p">))</span>
+          <span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nb">&lt; </span><span class="nv">hpf_frq</span> <span class="mf">20000.0</span><span class="p">)</span>
+              <span class="p">(</span><span class="k">set! </span><span class="nv">out</span> <span class="p">(</span><span class="nf">hpf</span> <span class="nv">out</span> <span class="nv">hpf_frq</span> <span class="mf">0.0</span><span class="p">)))</span>
+          <span class="c1">;; apply FX to both channels 1 and 2</span>
+          <span class="p">(</span><span class="k">set! </span><span class="nv">tmp</span> <span class="p">(</span><span class="nb">+ </span><span class="nv">pan_pos</span> <span class="p">(</span><span class="nf">aref</span> <span class="nv">mods</span> <span class="nv">PARAM_PAN_POS</span><span class="p">)))</span>
+          <span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nb">&gt; </span><span class="nv">tmp</span> <span class="nv">CHANSF</span><span class="p">)</span> <span class="p">(</span><span class="k">set! </span><span class="nv">tmp</span> <span class="p">(</span><span class="nb">- </span><span class="nv">tmp</span> <span class="nv">CHANSF</span><span class="p">)))</span>
+          <span class="c1">;; always with the panning!</span>
+          <span class="p">(</span><span class="k">set! </span><span class="nv">fxout</span> <span class="p">(</span><span class="nf">pan</span> <span class="nv">chan</span> <span class="nv">out</span>
+                           <span class="p">(</span><span class="nb">+ </span><span class="nv">pan_width</span> <span class="p">(</span><span class="nf">aref</span> <span class="nv">mods</span> <span class="nv">PARAM_PAN_WIDTH</span><span class="p">))</span>
+                           <span class="nv">tmp</span><span class="p">))</span>
+          <span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nb">&gt; </span><span class="nv">flanger_mix</span> <span class="mf">0.001</span><span class="p">)</span>
+              <span class="p">(</span><span class="k">set! </span><span class="nv">fxout</span> <span class="p">(</span><span class="nf">flanger</span> <span class="nv">chan</span> <span class="nv">fxout</span>
+                                   <span class="mf">1.0</span> <span class="nv">flanger_mix</span>
+                                   <span class="p">(</span><span class="nb">+ </span><span class="nv">flanger_low</span> <span class="mf">0.0</span><span class="p">)</span> <span class="c1">;(aref mods PARAM_FLANGER_LOW)))</span>
+                                   <span class="p">(</span><span class="nb">+ </span><span class="nv">flanger_high</span> <span class="mf">0.0</span><span class="p">)</span> <span class="c1">;(aref mods PARAM_FLANGER_HIGH)))</span>
+                                   <span class="p">(</span><span class="nb">+ </span><span class="nv">flanger_rate</span> <span class="mf">0.0</span><span class="p">)</span> <span class="c1">;(aref mods PARAM_FLANGER_RATE))</span>
+                                   <span class="p">(</span><span class="nb">+ </span><span class="nv">flanger_fb</span> <span class="mf">0.0</span><span class="p">))))</span> <span class="c1">;;(aref mods PARAM_FLANGER_FB)))))</span>
+          <span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nb">&gt; </span><span class="nv">delay_mix</span> <span class="mf">0.001</span><span class="p">)</span>
+              <span class="p">(</span><span class="k">set! </span><span class="nv">fxout</span> <span class="p">(</span><span class="nf">dly</span> <span class="nv">chan</span> <span class="nv">fxout</span>
+                               <span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nb">= </span><span class="nv">chan</span> <span class="mi">0</span><span class="p">)</span>
+                                   <span class="p">(</span><span class="nb">* </span><span class="nv">MILLISEC</span> <span class="p">(</span><span class="nb">+ </span><span class="nv">delay_time_left</span> <span class="p">(</span><span class="nf">aref</span> <span class="nv">mods</span> <span class="nv">PARAM_DELAY_TIME_LEFT</span><span class="p">)))</span>
+                                   <span class="p">(</span><span class="nb">* </span><span class="nv">MILLISEC</span> <span class="p">(</span><span class="nb">+ </span><span class="nv">delay_time_right</span> <span class="p">(</span><span class="nf">aref</span> <span class="nv">mods</span> <span class="nv">PARAM_DELAY_TIME_RIGHT</span><span class="p">))))</span>
+                               <span class="nv">delay_in</span>
+                               <span class="nv">delay_mix</span>
+                               <span class="p">(</span><span class="nb">+ </span><span class="nv">delay_fb</span> <span class="p">(</span><span class="nf">aref</span> <span class="nv">mods</span> <span class="nv">PARAM_DELAY_FB</span><span class="p">)))))</span>
+          <span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nb">&gt; </span><span class="nv">reverb_mix</span> <span class="mf">0.001</span><span class="p">)</span>
+              <span class="p">(</span><span class="k">set! </span><span class="nv">fxout</span> <span class="p">(</span><span class="nf">rev</span> <span class="nv">chan</span> <span class="nv">fxout</span>
+                               <span class="p">(</span><span class="nb">+ </span><span class="nv">reverb_size</span> <span class="p">(</span><span class="nf">aref</span> <span class="nv">mods</span> <span class="nv">PARAM_REVERB_SIZE</span><span class="p">))</span>
+                               <span class="p">(</span><span class="nb">+ </span><span class="nv">reverb_predelay</span> <span class="p">(</span><span class="nf">aref</span> <span class="nv">mods</span> <span class="nv">PARAM_REVERB_PREDELAY</span><span class="p">))</span>
+                               <span class="p">(</span><span class="nb">+ </span><span class="nv">reverb_absorb</span> <span class="p">(</span><span class="nf">aref</span> <span class="nv">mods</span> <span class="nv">PARAM_REVERB_ABSORB</span><span class="p">))</span>
+                               <span class="p">(</span><span class="nb">+ </span><span class="nv">reverb_mix</span> <span class="p">(</span><span class="nf">aref</span> <span class="nv">mods</span> <span class="nv">PARAM_REVERB_MIX</span><span class="p">)))))</span>
+          <span class="p">(</span><span class="nb">* </span><span class="nv">gain</span> <span class="nv">fxout</span><span class="p">))))))</span>
+</pre></div>
+
+	</div>
+	
+
+	
+	
+	
+	
+		
+	
+	<br /><br />
+	<a class="btn btn-default btn-xs" href="index.html">Back to Index
+		</a>
+	
+	
+	
+	
+		
+	<div class="row">
+		<br /><br />
+	</div>	
+	
+
+
+
+	  </div>
+	  
+	  
+  	<div class="footer">
+  		
+		
+  	  <div class="container">
+		<a name="aboutsite"></a>
+		<h3>About this site</h3>
+		<p>This site was made to facilitate learning Extempore code and theory.<br />
+		It's auto generated from the Extempore code base and it is not officially part of the language documentation.</p>
+
+  	    <p class="text-muted -text-center">More info about: <a href="https://extemporelang.github.io/">The Extempore language</a> | <a href="https://github.com/lambdamusic/xtm-docs">This website code</a> | <a href="http://www.michelepasin.org/projects/impromptudocs/">Who made this project</a> </p>
+  	  </div>
+	  
+  	  
+  	</div>
+
+	  
+	  
+	  
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="media/static/libs/bootstrap-3.2.0-dist/js/bootstrap.min.js"></script>
+	
+	
+
+	
+	
+	
+	
+  </body>
+</html>
