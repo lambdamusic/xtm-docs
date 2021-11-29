@@ -19,7 +19,7 @@ $ pip install -r requirements.txt
 
 Then adjust your local settings in `src/local_settings_example.py`
 
-```
+```bash
 $ cp src/local_settings_example.py src/src/local_settings.py
 $ open src/local_settings.py
 ```
@@ -34,17 +34,22 @@ XTM_LOCAL_FILES = ['/Applications/path/to/extempore']
 # =====================
 ```
 
+## Building the Extempore functions index
+
+First of all, set the path to your local extempore source repo in `local_settings.py`, using the `XTM_LOCAL_FILES` variable.
+
+Then
+
+```bash
+python manage.py xtm_load
+```
+
+
 ## Running the Django app
 
-```
+```bash
 ./tools/run-dev-local-db
 ```
-
-## Refreshing the Extempore functions docs
-
-1. Set the path to your local extempore source repo in `local_settings.py`, using the  `XTM_LOCAL_FILES` variable.
-
-2. Run `python manage.py xtm_load`
 
 
 ## Project status
