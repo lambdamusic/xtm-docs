@@ -1,0 +1,997 @@
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-2000254-3"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-2000254-3');
+</script>
+
+
+
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link rel="shortcut icon" href="media/static/favicon.ico" />
+    
+	
+	<title>make_instrument : Extempore Docs</title>
+
+	
+
+    <!-- Bootstrap ## original specs-->
+    
+	
+	<!-- Bootswatch https://bootswatch.com/ -->
+	 <link href="media/static/libs/bootswatch3.2/cosmo/bootstrap.min.css" rel="stylesheet">
+	 
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+		
+		
+	<style type="text/css" media="screen">
+
+
+		/* Sticky footer styles 
+		-------------------------------------------------- */
+		html {
+		  position: relative;
+		  min-height: 100%;
+		}
+		body {
+		  /* Margin bottom by footer height */
+		  margin-bottom: 200px;
+		  padding-top: 70px;
+		}
+		.footer {
+		  position: absolute;
+		  padding-top: 10px;
+		  bottom: 0;
+		  width: 100%;
+		  /* Set the fixed height of the footer here */
+		  height: 150px;
+		  background-color: #f5f5f5;
+		}
+		
+
+		.navbar-subtitle.navbar-brand {
+			color: #ffffff;
+			font-style: normal;
+		}
+
+		.navbar-function {
+			color: lightgreen;
+			font-style: normal;
+			font-family: monospace;
+		}
+		.navbar-function:hover {
+			color: lightgreen;
+			font-style: normal;
+			font-family: monospace;
+			text-decoration: none;
+		}
+		
+		.navbar-subtitle.navbar-brand a {
+			color: #ffffff;
+			font-style: normal;
+			text-decoration: underline;
+		}
+
+		.navbar-subtitle.navbar-brand a.active {
+			background: green;
+			font-style: normal;
+			text-decoration: underline;
+		}
+
+		.navbar-subtitle.navbar-brand:hover {
+			color: #ffffff;
+			font-style: normal;
+		}
+		
+	</style>	
+		
+		
+	
+	
+	
+	<style type="text/css" media="screen">
+
+	  .highlight .hll { background-color: #ffffcc }
+	.highlight  { background: #f8f8f8; }
+	.highlight .c { color: #408080; font-style: italic } /* Comment */
+	.highlight .err { border: 1px solid #FF0000 } /* Error */
+	.highlight .k { color: #008000; font-weight: bold } /* Keyword */
+	.highlight .o { color: #666666 } /* Operator */
+	.highlight .cm { color: #408080; font-style: italic } /* Comment.Multiline */
+	.highlight .cp { color: #BC7A00 } /* Comment.Preproc */
+	.highlight .c1 { color: #408080; font-style: italic } /* Comment.Single */
+	.highlight .cs { color: #408080; font-style: italic } /* Comment.Special */
+	.highlight .gd { color: #A00000 } /* Generic.Deleted */
+	.highlight .ge { font-style: italic } /* Generic.Emph */
+	.highlight .gr { color: #FF0000 } /* Generic.Error */
+	.highlight .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+	.highlight .gi { color: #00A000 } /* Generic.Inserted */
+	.highlight .go { color: #888888 } /* Generic.Output */
+	.highlight .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+	.highlight .gs { font-weight: bold } /* Generic.Strong */
+	.highlight .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+	.highlight .gt { color: #0044DD } /* Generic.Traceback */
+	.highlight .kc { color: #008000; font-weight: bold } /* Keyword.Constant */
+	.highlight .kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
+	.highlight .kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
+	.highlight .kp { color: #008000 } /* Keyword.Pseudo */
+	.highlight .kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
+	.highlight .kt { color: #B00040 } /* Keyword.Type */
+	.highlight .m { color: #666666 } /* Literal.Number */
+	.highlight .s { color: #BA2121 } /* Literal.String */
+	.highlight .na { color: #7D9029 } /* Name.Attribute */
+	.highlight .nb { color: #008000 } /* Name.Builtin */
+	.highlight .nc { color: #0000FF; font-weight: bold } /* Name.Class */
+	.highlight .no { color: #880000 } /* Name.Constant */
+	.highlight .nd { color: #AA22FF } /* Name.Decorator */
+	.highlight .ni { color: #999999; font-weight: bold } /* Name.Entity */
+	.highlight .ne { color: #D2413A; font-weight: bold } /* Name.Exception */
+	.highlight .nf { color: #0000FF } /* Name.Function */
+	.highlight .nl { color: #A0A000 } /* Name.Label */
+	.highlight .nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+	.highlight .nt { color: #008000; font-weight: bold } /* Name.Tag */
+	.highlight .nv { color: #19177C } /* Name.Variable */
+	.highlight .ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
+	.highlight .w { color: #bbbbbb } /* Text.Whitespace */
+	.highlight .mb { color: #666666 } /* Literal.Number.Bin */
+	.highlight .mf { color: #666666 } /* Literal.Number.Float */
+	.highlight .mh { color: #666666 } /* Literal.Number.Hex */
+	.highlight .mi { color: #666666 } /* Literal.Number.Integer */
+	.highlight .mo { color: #666666 } /* Literal.Number.Oct */
+	.highlight .sb { color: #BA2121 } /* Literal.String.Backtick */
+	.highlight .sc { color: #BA2121 } /* Literal.String.Char */
+	.highlight .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
+	.highlight .s2 { color: #BA2121 } /* Literal.String.Double */
+	.highlight .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
+	.highlight .sh { color: #BA2121 } /* Literal.String.Heredoc */
+	.highlight .si { color: #BB6688; font-weight: bold } /* Literal.String.Interpol */
+	.highlight .sx { color: #008000 } /* Literal.String.Other */
+	.highlight .sr { color: #BB6688 } /* Literal.String.Regex */
+	.highlight .s1 { color: #BA2121 } /* Literal.String.Single */
+	.highlight .ss { color: #19177C } /* Literal.String.Symbol */
+	.highlight .bp { color: #008000 } /* Name.Builtin.Pseudo */
+	.highlight .vc { color: #19177C } /* Name.Variable.Class */
+	.highlight .vg { color: #19177C } /* Name.Variable.Global */
+	.highlight .vi { color: #19177C } /* Name.Variable.Instance */
+	.highlight .il { color: #666666 } /* Literal.Number.Integer.Long */
+	
+	</style>
+	
+	
+		
+		
+  </head>
+  <body>
+	  
+	
+	
+	
+
+	
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand">Extempore Functions Index &nbsp;&nbsp;&nbsp;&nbsp;|</a>
+
+
+	  <div class="navbar-brand navbar-subtitle"><a class="active" href="index.html">Core release (v0.8.9)</a>&nbsp;&nbsp;&nbsp;&nbsp;|</div>
+
+	  <div class="navbar-brand navbar-subtitle "><a  href="extras.html">Extra functions</a></div>
+
+	  <!-- <div class="navbar-brand navbar-subtitle"><a href="#aboutsite">About</a></div> -->
+
+	  
+	  
+	  <div class="navbar-brand navbar-function">|&nbsp;<a class="navbar-function">make_instrument</a>
+		</div>
+	  
+		  
+	  
+
+	
+	
+
+
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+
+
+  
+
+	  
+	  <div class="container">
+	  	
+
+	
+	<h1>make_instrument
+		&nbsp;&nbsp;<small style="font-size: 30%;" class="
+			
+			
+			label label-warning
+			">xtlang</small>
+	
+	</h1>
+	<hr>
+	<div class="lead">
+		Defined in:&nbsp;
+		<a href="https://github.com/digego/extempore/tree/v0.8.9/libs/external/instruments_ext.xtm" target="_blank">
+			
+			https://github.com/digego/extempore/tree/v0.8.9/libs/external/instruments_ext.xtm		
+		</a>
+		
+	</div>
+	
+	<br />
+	<h5>Implementation</h5>
+	<hr>
+	<div class="">
+		<div class="highlight"><pre><span></span><span class="p">(</span><span class="nf">bind-func</span> <span class="nv">make_instrument</span>
+  <span class="p">(</span><span class="k">lambda </span><span class="p">(</span><span class="nf">note_kernel:NOTE_KERNEL_SAMPLER</span> <span class="nv">effect_kernel:FX_KERNEL</span><span class="p">)</span>
+    <span class="p">(</span><span class="nf">effect_kernel</span><span class="o">.</span><span class="nv">notekernel:NOTE_KERNEL_SAMPLER</span> <span class="nv">note_kernel</span><span class="p">)</span>
+    <span class="p">(</span><span class="k">let </span><span class="p">((</span><span class="nf">poly:i64</span> <span class="mi">36</span><span class="p">)</span>
+          <span class="p">(</span><span class="nf">samples:|20,|128,SAMPLE*||*</span> <span class="p">(</span><span class="nf">zalloc</span><span class="p">))</span> <span class="c1">;; 128 samples * 20 &#39;banks&#39;</span>
+          <span class="p">(</span><span class="nf">samples_length:|20,|128,i64||*</span> <span class="p">(</span><span class="nf">zalloc</span><span class="p">))</span> <span class="c1">;; 128 samples * 20</span>
+          <span class="p">(</span><span class="nf">samples_channels:|20,|128,i64||*</span> <span class="p">(</span><span class="nf">zalloc</span><span class="p">))</span> <span class="c1">;; 128 samples * 20</span>
+          <span class="p">(</span><span class="nf">samples_offsets:|20,|128,i64||*</span> <span class="p">(</span><span class="nf">zalloc</span><span class="p">))</span> <span class="c1">;; 128 samples * 20</span>
+          <span class="p">(</span><span class="nf">notes:NoteData**</span> <span class="p">(</span><span class="nf">zalloc</span> <span class="nv">poly</span><span class="p">))</span>
+          <span class="p">(</span><span class="nf">note:NoteData*</span> <span class="nv">null</span><span class="p">)</span>
+          <span class="p">(</span><span class="nf">kernels:</span><span class="p">[</span><span class="nv">SAMPLE,i64,i64</span><span class="p">]</span><span class="nv">**</span> <span class="p">(</span><span class="nf">zalloc</span> <span class="nv">poly</span><span class="p">))</span>
+          <span class="p">(</span><span class="nf">kernel:</span><span class="p">[</span><span class="nv">SAMPLE,i64,i64</span><span class="p">]</span><span class="nv">*</span> <span class="nv">null</span><span class="p">)</span>
+          <span class="p">(</span><span class="nf">starttime:i64</span> <span class="mi">0</span><span class="p">)</span>
+          <span class="p">(</span><span class="nf">out:SAMPLE</span> <span class="mf">0.0</span><span class="p">)</span>
+          <span class="p">(</span><span class="nf">k:i64</span> <span class="mi">0</span><span class="p">)</span> <span class="p">(</span><span class="nf">i:i64</span> <span class="mi">0</span><span class="p">)</span>
+          <span class="p">(</span><span class="nf">new_note</span> <span class="p">(</span><span class="k">lambda </span><span class="p">(</span><span class="nf">start:i64</span> <span class="nv">freq:SAMPLE</span> <span class="nv">dur:i64</span> <span class="nv">amp:SAMPLE</span> <span class="nv">nargs:i64</span> <span class="nv">dargs:SAMPLE*</span><span class="p">)</span>
+                      <span class="p">(</span><span class="k">let </span><span class="p">((</span><span class="nf">free_note</span> <span class="p">(</span><span class="nf">instrument_find_note</span> <span class="nv">notes</span> <span class="nv">poly</span><span class="p">))</span>
+                            <span class="p">(</span><span class="nf">idx</span> <span class="p">(</span><span class="nf">note_idx</span> <span class="nv">free_note</span><span class="p">))</span>
+                            <span class="p">(</span><span class="nf">zone</span> <span class="p">(</span><span class="nf">note_zone</span> <span class="p">(</span><span class="nf">free_note</span><span class="p">)))</span>
+                            <span class="p">(</span><span class="nf">bank:i32</span> <span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nb">&lt; </span><span class="nv">nargs</span> <span class="mi">1</span><span class="p">)</span> <span class="p">(</span><span class="nf">i64toi32</span> <span class="mi">0</span><span class="p">)</span> <span class="p">(</span><span class="nf">convert</span> <span class="p">(</span><span class="nf">pref</span> <span class="nv">dargs</span> <span class="mi">0</span><span class="p">))))</span>
+                            <span class="p">(</span><span class="nf">midiidx:i64</span> <span class="p">(</span><span class="nf">convert</span> <span class="p">(</span><span class="nb">floor </span><span class="p">(</span><span class="nf">frq2midi</span> <span class="nv">freq</span><span class="p">))))</span>
+                            <span class="p">(</span><span class="nf">closest</span> <span class="mi">1000000</span><span class="p">)</span>
+                            <span class="p">(</span><span class="nf">i:i64</span> <span class="mi">0</span><span class="p">)</span> <span class="p">(</span><span class="nf">iii:i64</span> <span class="mi">0</span><span class="p">)</span> <span class="p">(</span><span class="nf">idxi:i64</span> <span class="mi">0</span><span class="p">)</span>
+                            <span class="p">(</span><span class="nf">new_idx</span> <span class="nv">idx</span><span class="p">))</span>
+                        <span class="p">(</span><span class="nf">dotimes</span> <span class="p">(</span><span class="nf">idxi</span> <span class="mi">128</span><span class="p">)</span>
+                          <span class="p">(</span><span class="k">let </span><span class="p">((</span><span class="nf">v</span> <span class="p">(</span><span class="nf">llabs</span> <span class="p">(</span><span class="nb">- </span><span class="nv">midiidx</span> <span class="nv">idxi</span><span class="p">))))</span>
+                            <span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="k">and </span><span class="p">(</span><span class="nf">&lt;&gt;</span> <span class="p">(</span><span class="nf">aref</span> <span class="p">(</span><span class="nf">aref-ptr</span> <span class="nv">samples_length</span> <span class="nv">bank</span><span class="p">)</span> <span class="nv">idxi</span><span class="p">)</span> <span class="mi">0</span><span class="p">)</span>
+                                     <span class="p">(</span><span class="nb">&lt; </span><span class="nv">v</span> <span class="nv">closest</span><span class="p">))</span>
+                                <span class="p">(</span><span class="k">begin </span><span class="p">(</span><span class="k">set! </span><span class="nv">new_idx</span> <span class="nv">idxi</span><span class="p">)</span>
+                                       <span class="p">(</span><span class="k">set! </span><span class="nv">closest</span> <span class="nv">v</span><span class="p">)</span> <span class="mi">0</span><span class="p">))))</span>
+                        <span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="k">or </span><span class="p">(</span><span class="nb">&lt; </span><span class="p">(</span><span class="nb">- </span><span class="p">(</span><span class="nf">aref</span> <span class="p">(</span><span class="nf">aref-ptr</span> <span class="nv">samples_length</span> <span class="nv">bank</span><span class="p">)</span> <span class="nv">new_idx</span><span class="p">)</span> <span class="mi">10</span><span class="p">)</span> <span class="mi">1</span><span class="p">)</span>
+                                <span class="p">(</span><span class="nb">null? </span><span class="p">(</span><span class="nf">aref</span> <span class="p">(</span><span class="nf">aref-ptr</span> <span class="nv">samples</span> <span class="nv">bank</span><span class="p">)</span> <span class="nv">new_idx</span><span class="p">)))</span>
+                            <span class="p">(</span><span class="k">begin </span>
+                              <span class="p">(</span><span class="nf">println</span> <span class="ss">&#39;No</span> <span class="ss">&#39;samples</span> <span class="ss">&#39;loaded</span> <span class="ss">&#39;in</span> <span class="ss">&#39;bank</span> <span class="nv">bank</span><span class="p">)</span> 
+                              <span class="nv">null</span><span class="p">)</span>
+                            <span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nb">null? </span><span class="nv">free_note</span><span class="p">)</span>
+                                <span class="nv">null</span>
+                                <span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nf">note_active</span> <span class="nv">free_note</span><span class="p">)</span>
+                                    <span class="p">(</span><span class="nf">begin</span>
+                                      <span class="c1">;; existing kernel is still in use!</span>
+                                      <span class="c1">;; simply update note details (i.e. data) and keep on truckin!</span>
+                                      <span class="p">(</span><span class="nf">tfill!</span> <span class="nv">free_note</span> <span class="nv">idx</span> <span class="nv">start</span> <span class="nv">freq</span> <span class="nv">amp</span> <span class="nv">dur</span> <span class="mf">1.0</span> <span class="no">#t</span> <span class="mi">0</span> <span class="p">(</span><span class="nf">cast</span> <span class="nv">zone</span><span class="p">))</span>
+                                      <span class="nv">free_note</span><span class="p">)</span>
+                                    <span class="p">(</span><span class="k">begin </span><span class="c1">;; new kernel required!</span>
+                                      <span class="p">(</span><span class="nf">reset_zone</span> <span class="nv">zone</span><span class="p">)</span>
+                                      <span class="p">(</span><span class="nf">push_zone</span> <span class="nv">zone</span><span class="p">)</span>
+                                      <span class="p">(</span><span class="nf">tfill!</span> <span class="nv">free_note</span> <span class="nv">idx</span> <span class="nv">start</span> <span class="nv">freq</span> <span class="nv">amp</span> <span class="nv">dur</span> <span class="mf">1.0</span> <span class="no">#t</span> <span class="mi">0</span> <span class="p">(</span><span class="nf">cast</span> <span class="nv">zone</span><span class="p">))</span>
+                                      <span class="p">(</span><span class="nf">pset!</span> <span class="nv">kernels</span> <span class="nv">idx</span> <span class="p">(</span><span class="nf">note_kernel</span> <span class="nv">free_note</span>
+                                                                      <span class="p">(</span><span class="nf">aref-ptr</span> <span class="nv">samples</span> <span class="nv">bank</span><span class="p">)</span>
+                                                                      <span class="p">(</span><span class="nf">aref-ptr</span> <span class="nv">samples_length</span> <span class="nv">bank</span><span class="p">)</span>
+                                                                      <span class="p">(</span><span class="nf">aref-ptr</span> <span class="nv">samples_offsets</span> <span class="nv">bank</span><span class="p">)</span>
+                                                                      <span class="p">(</span><span class="nf">aref-ptr</span> <span class="nv">samples_channels</span> <span class="nv">bank</span><span class="p">)</span>
+                                                                      <span class="nv">new_idx</span>
+                                                                      <span class="nv">nargs</span>
+                                                                      <span class="nv">dargs</span><span class="p">))</span>
+                                      <span class="p">(</span><span class="nf">pop_zone</span><span class="p">)</span>
+                                      <span class="nv">free_note</span><span class="p">))))))))</span>
+      <span class="p">(</span><span class="nf">dotimes</span> <span class="p">(</span><span class="nf">k</span> <span class="mi">128</span><span class="p">)</span>
+        <span class="p">(</span><span class="nf">dotimes</span> <span class="p">(</span><span class="nf">i</span> <span class="mi">20</span><span class="p">)</span> <span class="c1">;20 banks</span>
+          <span class="p">(</span><span class="nf">aset!</span> <span class="p">(</span><span class="nf">aref-ptr</span> <span class="nv">samples_offsets</span> <span class="nv">i</span><span class="p">)</span> <span class="nv">k</span> <span class="mi">0</span><span class="p">)</span>
+          <span class="p">(</span><span class="nf">aset!</span> <span class="p">(</span><span class="nf">aref-ptr</span> <span class="nv">samples_length</span> <span class="nv">i</span><span class="p">)</span> <span class="nv">k</span> <span class="mi">0</span><span class="p">)))</span>
+      <span class="c1">;; init notes</span>
+      <span class="p">(</span><span class="nf">dotimes</span> <span class="p">(</span><span class="nf">i</span> <span class="nv">poly</span><span class="p">)</span>
+        <span class="p">(</span><span class="nf">pset!</span> <span class="nv">kernels</span> <span class="nv">i</span> <span class="p">(</span><span class="nf">cast</span> <span class="nv">null</span><span class="p">))</span>
+        <span class="p">(</span><span class="nf">pset!</span> <span class="nv">notes</span> <span class="nv">i</span> <span class="p">(</span><span class="nf">NoteData</span> <span class="nv">i</span> <span class="mi">0</span> <span class="mf">0.0</span> <span class="mf">0.0</span> <span class="mi">0</span> <span class="mf">1.0</span> <span class="no">#f</span> <span class="mi">0</span> <span class="p">(</span><span class="nf">cast</span> <span class="p">(</span><span class="nf">create_zone</span> <span class="p">(</span><span class="nb">* </span><span class="mi">10</span> <span class="mi">1024</span><span class="p">))))))</span>
+      <span class="p">(</span><span class="k">lambda </span><span class="p">(</span><span class="nf">in:SAMPLE</span> <span class="nv">time:i64</span> <span class="nv">chan:i64</span> <span class="nv">dat:SAMPLE*</span><span class="p">)</span>
+        <span class="p">(</span><span class="k">set! </span><span class="nv">out</span> <span class="mf">0.0</span><span class="p">)</span>
+        <span class="p">(</span><span class="nf">dotimes</span> <span class="p">(</span><span class="nf">k</span> <span class="nv">poly</span><span class="p">)</span> <span class="c1">;; sum all active notes</span>
+          <span class="p">(</span><span class="k">set! </span><span class="nv">note</span> <span class="p">(</span><span class="nf">pref</span> <span class="nv">notes</span> <span class="nv">k</span><span class="p">))</span>
+          <span class="p">(</span><span class="k">set! </span><span class="nv">starttime</span> <span class="p">(</span><span class="nf">note_starttime</span> <span class="nv">note</span><span class="p">))</span>
+          <span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nb">not </span><span class="p">(</span><span class="nf">note_active</span> <span class="nv">note</span><span class="p">))</span> <span class="p">(</span><span class="nf">pset!</span> <span class="nv">kernels</span> <span class="nv">k</span> <span class="p">(</span><span class="nf">cast</span> <span class="nv">null</span><span class="p">)))</span>
+          <span class="p">(</span><span class="k">set! </span><span class="nv">kernel</span> <span class="p">(</span><span class="nf">pref</span> <span class="nv">kernels</span> <span class="nv">k</span><span class="p">))</span>
+          <span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="k">and </span><span class="p">(</span><span class="nb">&gt; </span><span class="nv">time</span> <span class="nv">starttime</span><span class="p">)</span> <span class="p">(</span><span class="nb">not </span><span class="p">(</span><span class="nb">null? </span><span class="nv">kernel</span><span class="p">)))</span>
+              <span class="p">(</span><span class="k">set! </span><span class="nv">out</span> <span class="p">(</span><span class="nb">+ </span><span class="nv">out</span> <span class="p">(</span><span class="nb">* </span><span class="mf">0.3</span> <span class="p">(</span><span class="nf">kernel</span> <span class="nv">time</span> <span class="nv">chan</span><span class="p">))))))</span>
+        <span class="p">(</span><span class="nb">* </span><span class="mf">2.0</span> <span class="p">(</span><span class="nf">effect_kernel</span> <span class="nv">out</span> <span class="nv">time</span> <span class="nv">chan</span> <span class="nv">dat</span><span class="p">))))))</span>
+</pre></div>
+
+	</div>
+	
+
+	
+	
+	
+	
+		
+	
+	<br /><br />
+		  
+	<a class="btn btn-default btn-xs" href="index.html">Back to Index
+	</a>
+	
+	
+	
+	<div style="margin-top: 50px;">
+		<br />
+		<h5>Similar Entries</h5>
+		<hr>
+		<div class="-lead">
+			
+				<li>
+					<a class="lead" href="CV_MAKE_TYPE.html">CV_MAKE_TYPE</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="aiProcess_MakeLeftHanded.html">aiProcess_MakeLeftHanded</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="cl-make-list.html">cl:make-list</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="cvMakeColour.html">cvMakeColour</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="glfw_make_context_current.html">glfw_make_context_current</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="impc-ir-compile-make-closure.html">impc:ir:compile:make-closure</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="impc-ir-compile-make-closureenv.html">impc:ir:compile:make-closureenv</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="impc-ir-compile-make-env.html">impc:ir:compile:make-env</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="impc-ir-compile-make-static.html">impc:ir:compile:make-static</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="impc-ir-compiler-make-array.html">impc:ir:compiler:make-array</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="impc-ir-compiler-make-tuple.html">impc:ir:compiler:make-tuple</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="impc-ir-compiler-make-vector.html">impc:ir:compiler:make-vector</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="impc-ir-make-arglist-str.html">impc:ir:make-arglist-str</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="impc-ir-make-const-string.html">impc:ir:make-const-string</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="impc-ir-make-function-str.html">impc:ir:make-function-str</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="impc-ir-make-string.html">impc:ir:make-string</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="impc-ir-make-struct-str.html">impc:ir:make-struct-str</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="impc-ir-make-struct-str-env.html">impc:ir:make-struct-str-env</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="impc-ti-make-array-check.html">impc:ti:make-array-check</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="impc-ti-make-tuple-check.html">impc:ti:make-tuple-check</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="impc-ti-make-vector-check.html">impc:ti:make-vector-check</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="impc-ti-nativef-generics-make-gtypes-unique.html">impc:ti:nativef-generics-make-gtypes-unique</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="instrument_find_note.html">instrument_find_note</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="make-bezier.html">make-bezier</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="make-envelope.html">make-envelope</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="make-environment.html">make-environment</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						text-info
+						
+						">
+						macro</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="make-instrument.html">make-instrument</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						text-info
+						
+						">
+						macro</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="make-list.html">make-list</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="make-list-with-proc.html">make-list-with-proc</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="make-metre.html">make-metre</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="make-metro.html">make-metro</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="make-rhythm.html">make-rhythm</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="make-timeline.html">make-timeline</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="make-vector-with-proc.html">make-vector-with-proc</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="make_bodies.html">make_bodies</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="make_instrument.html">make_instrument</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="make_mono.html">make_mono</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="make_static_scheme_wrapper_ir.html">make_static_scheme_wrapper_ir</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="make_window_transparent.html">make_window_transparent</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="match-result-make.html">match-result:make</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="matcher-make.html">matcher:make</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="my-inc-maker.html">my-inc-maker</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="my-inc-maker-wrapper.html">my-inc-maker-wrapper</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="pc-make-chord.html">pc:make-chord</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="pc-make-chord-fixed.html">pc:make-chord-fixed</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="plet-make-bindings.html">plet-make-bindings</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="sys_dir_make.html">sys_dir_make</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="sys_dir_make_recursive.html">sys_dir_make_recursive</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="xtm_make_model.html">xtm_make_model</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+		</div>
+	</div>	
+	
+	
+	
+	
+		
+	<div class="row">
+		<br /><br />
+	</div>	
+	
+
+
+
+	  </div>
+	  
+	  
+  	<div class="footer">
+  		
+		
+  	  <div class="container">
+		<a name="aboutsite"></a>
+		<h3>About</h3>
+		<p>This site was auto generated from the Extempore code base and is not officially part of the language documentation.</p>
+
+  	    <p class="text-muted -text-center">See also: <a href="https://extemporelang.github.io/">The Extempore language</a> | <a href="https://github.com/lambdamusic/xtm-docs">Website source</a> | <a href="http://www.michelepasin.org/projects/impromptudocs/">Who did this</a> </p>
+  	  </div>
+	  
+  	  
+  	</div>
+
+	  
+	  
+	  
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="media/static/libs/bootstrap-3.2.0-dist/js/bootstrap.min.js"></script>
+	
+	
+
+	
+	
+	
+	
+  </body>
+</html>

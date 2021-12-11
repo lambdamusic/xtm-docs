@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+cd src
+# python manage.py parse_xtm --customlib --reset  
+python manage.py parse_xtm --corelib --customlib --reset  
+# python manage.py parse_xtm --corelib --reset  
+
+echo "===="
+echo "Done."
+echo "For more details, use ``python manage.py parse_xtm --help``"

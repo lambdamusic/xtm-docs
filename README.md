@@ -41,7 +41,7 @@ First of all, set the path to your local extempore source repo in `local_setting
 Then
 
 ```bash
-python manage.py xtm_load
+python manage.py parse_xtm
 ```
 
 
