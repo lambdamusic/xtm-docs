@@ -266,15 +266,16 @@
    <span class="o">`</span><span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nb">= </span><span class="p">(</span><span class="nb">modulo </span><span class="nv">LC</span> <span class="o">,</span><span class="p">(</span><span class="nb">car </span><span class="nv">args</span><span class="p">))</span> <span class="mi">0</span><span class="p">)</span>
         <span class="o">,</span><span class="p">(</span><span class="nb">cadr </span><span class="nv">args</span><span class="p">)</span>
         <span class="o">,</span><span class="p">(</span><span class="nb">caddr </span><span class="nv">args</span><span class="p">)))</span>
-<span class="c1">;+</span>
+<span class="c1">;</span>
 <span class="c1">;</span>
 <span class="c1">;; EVERY N loops, do X, ELSE Y</span>
-<span class="c1">;;;;;;;;;;;;;;;;;;;;;;;;;;;</span>
+<span class="c1">;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;</span>
 <span class="c1">; Requires `LC` symbol to be in scope and incremented at each iteration</span>
 <span class="c1">;</span>
 <span class="c1">; (let ((LC 4))</span>
 <span class="c1">;   (every 2 (list 4 5) &#39;no)</span>
 <span class="c1">;   )</span>
+<span class="c1">;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;</span>
 </pre></div>
 
 	</div>

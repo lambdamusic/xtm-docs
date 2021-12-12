@@ -241,10 +241,10 @@
 	
 	<h1>:mkchordrandom
 		&nbsp;&nbsp;<small style="font-size: 30%;" class="
-			label label-success
 			
+			label label-info
 			
-			">scheme</small>
+			">macro</small>
 	
 	</h1>
 	<hr>
@@ -261,7 +261,32 @@
 	<h5>Implementation</h5>
 	<hr>
 	<div class="">
-		<div class="highlight"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="nv">:mkchordrandom</span> <span class="nv">mkchordrandom</span><span class="p">)</span>
+		<div class="highlight"><pre><span></span><span class="p">(</span><span class="nf">define-macro</span> <span class="p">(</span><span class="nf">:mkchordrandom</span> <span class="o">.</span> <span class="nv">args</span><span class="p">)</span>
+  <span class="c1">;;(println args)</span>
+   <span class="p">(</span><span class="k">cond </span><span class="p">((</span><span class="nf">length-equal?</span> <span class="nv">args</span> <span class="mi">1</span><span class="p">)</span> <span class="c1">;; just root </span>
+         <span class="o">`</span><span class="p">(</span><span class="nf">pc:make-chord</span> <span class="o">,</span><span class="p">(</span><span class="nb">car </span><span class="nv">args</span><span class="p">)</span> <span class="mi">120</span> <span class="mi">3</span> <span class="p">(</span><span class="nf">pc:chord</span> <span class="o">,</span><span class="p">(</span><span class="nb">car </span><span class="nv">args</span><span class="p">)</span> <span class="ss">&#39;^</span><span class="p">)))</span>
+         <span class="p">((</span><span class="nf">length-equal?</span> <span class="nv">args</span> <span class="mi">2</span><span class="p">)</span> <span class="c1">; root and chord-sym</span>
+         <span class="o">`</span><span class="p">(</span><span class="nf">pc:make-chord</span> <span class="o">,</span><span class="p">(</span><span class="nb">car </span><span class="nv">args</span><span class="p">)</span> <span class="mi">120</span> <span class="mi">3</span> <span class="p">(</span><span class="nf">pc:chord</span> <span class="o">,</span><span class="p">(</span><span class="nb">car </span><span class="nv">args</span><span class="p">)</span> <span class="o">,</span><span class="p">(</span><span class="nb">cadr </span><span class="nv">args</span><span class="p">))))</span>
+         <span class="p">((</span><span class="nf">length-equal?</span> <span class="nv">args</span> <span class="mi">3</span><span class="p">)</span> <span class="c1">;; also notes_number</span>
+         <span class="o">`</span><span class="p">(</span><span class="nf">pc:make-chord</span> <span class="o">,</span><span class="p">(</span><span class="nb">car </span><span class="nv">args</span><span class="p">)</span> <span class="mi">120</span> <span class="o">,</span><span class="p">(</span><span class="nb">caddr </span><span class="nv">args</span><span class="p">)</span> <span class="p">(</span><span class="nf">pc:chord</span> <span class="o">,</span><span class="p">(</span><span class="nb">car </span><span class="nv">args</span><span class="p">)</span> <span class="o">,</span><span class="p">(</span><span class="nb">cadr </span><span class="nv">args</span><span class="p">))))</span>  
+         <span class="p">((</span><span class="nf">length-equal?</span> <span class="nv">args</span> <span class="mi">4</span><span class="p">)</span> <span class="c1">;; also upper-limit</span>
+         <span class="o">`</span><span class="p">(</span><span class="nf">pc:make-chord</span> <span class="o">,</span><span class="p">(</span><span class="nb">car </span><span class="nv">args</span><span class="p">)</span> <span class="o">,</span><span class="p">(</span><span class="nb">cadddr </span><span class="nv">args</span><span class="p">)</span> <span class="o">,</span><span class="p">(</span><span class="nb">caddr </span><span class="nv">args</span><span class="p">)</span> <span class="p">(</span><span class="nf">pc:chord</span> <span class="o">,</span><span class="p">(</span><span class="nb">car </span><span class="nv">args</span><span class="p">)</span> <span class="o">,</span><span class="p">(</span><span class="nb">cadr </span><span class="nv">args</span><span class="p">))))</span>         
+         <span class="p">(</span><span class="k">else </span><span class="p">(</span><span class="nf">print</span> <span class="ss">&#39;Error:</span> <span class="ss">&#39;arguments</span> <span class="ss">&#39;could</span> <span class="ss">&#39;not</span> <span class="ss">&#39;be</span> <span class="ss">&#39;resolved</span><span class="o">.</span><span class="p">))))</span>
+<span class="c1">;</span>
+<span class="c1">;</span>
+<span class="c1">; :mkchordrandom</span>
+<span class="c1">;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;</span>
+<span class="c1">; wrapper around non-deterministic pc:make-chord (updated on 2020-10-04)</span>
+<span class="c1">;</span>
+<span class="c1">; Args:</span>
+<span class="c1">; root </span>
+<span class="c1">; chord-sym [default: &#39;^]</span>
+<span class="c1">; notes_number [default: 3]</span>
+<span class="c1">; upper_limit [default: 120]</span>
+<span class="c1">;</span>
+<span class="c1">; Example:</span>
+<span class="c1">; (println (mkchordrandom 60 &#39;- 3 120))</span>
+<span class="c1">;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;</span>
 </pre></div>
 
 	</div>
@@ -277,29 +302,6 @@
 		  
 	<a class="btn btn-default btn-xs" href="../extras.html">Back to Index
 	</a>
-	
-	
-	
-	<div style="margin-top: 50px;">
-		<br />
-		<h5>Similar Entries</h5>
-		<hr>
-		<div class="-lead">
-			
-				<li>
-					<a class="lead" href="mkchordrandom.html">mkchordrandom</a>
-					&nbsp;&nbsp;
-				
-					<small class="
-						
-						text-info
-						
-						">
-						macro</small>
-				</li>
-			
-		</div>
-	</div>	
 	
 	
 	

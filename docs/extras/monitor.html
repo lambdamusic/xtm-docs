@@ -266,6 +266,19 @@
         <span class="o">`</span><span class="p">(</span><span class="nf">onbeat</span> <span class="o">,</span><span class="p">(</span><span class="nb">car </span><span class="nv">args</span><span class="p">)</span> <span class="mi">0</span> <span class="p">(</span><span class="nf">println</span> <span class="o">,@</span><span class="p">(</span><span class="nb">cdr </span><span class="nv">args</span><span class="p">)))</span>
         <span class="o">`</span><span class="p">(</span><span class="nf">onbeat</span> <span class="mi">1</span><span class="nv">/4</span> <span class="mi">0</span> <span class="p">(</span><span class="nf">println</span> <span class="o">,@</span><span class="nv">args</span><span class="p">))</span>
     <span class="p">))</span>
+<span class="c1">;</span>
+<span class="c1">;</span>
+<span class="c1">;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;</span>
+<span class="c1">;; MONITOR values </span>
+<span class="c1">;; shortcut for printing out variables while in loops , using beat // default on 1/4</span>
+<span class="c1">;;</span>
+<span class="c1">;; Example</span>
+<span class="c1">;</span>
+<span class="c1">; (let ((beat (*metro* &#39;get-beat))</span>
+<span class="c1">;         (v1 2) (v2 4)) </span>
+<span class="c1">;     (monitor v1 v2))</span>
+<span class="c1">;;</span>
+<span class="c1">;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;</span>
 </pre></div>
 
 	</div>

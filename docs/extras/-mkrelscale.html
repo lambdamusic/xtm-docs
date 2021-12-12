@@ -27,7 +27,7 @@
 	<link rel="shortcut icon" href="../media/static/favicon.ico" />
     
 	
-	<title>chance : Extempore Docs</title>
+	<title>:mkrelscale : Extempore Docs</title>
 
 	
 
@@ -211,7 +211,7 @@
 
 	  
 	  
-	  <div class="navbar-brand navbar-function">|&nbsp;<a class="navbar-function">chance</a>
+	  <div class="navbar-brand navbar-function">|&nbsp;<a class="navbar-function">:mkrelscale</a>
 		</div>
 	  
 		  
@@ -239,7 +239,7 @@
 	  	
 
 	
-	<h1>chance
+	<h1>:mkrelscale
 		&nbsp;&nbsp;<small style="font-size: 30%;" class="
 			label label-success
 			
@@ -250,9 +250,9 @@
 	<hr>
 	<div class="lead">
 		Defined in:&nbsp;
-		<a href="https://github.com/lambdamusic/xtm-hacking/blob/master/init-extempore/init_aliases.xtm" target="_blank">
+		<a href="https://github.com/lambdamusic/xtm-hacking/blob/master/init-extempore/init_music.xtm" target="_blank">
 			
-			https://github.com/lambdamusic/xtm-hacking/blob/master/init-extempore/init_aliases.xtm		
+			https://github.com/lambdamusic/xtm-hacking/blob/master/init-extempore/init_music.xtm		
 		</a>
 		
 	</div>
@@ -261,7 +261,28 @@
 	<h5>Implementation</h5>
 	<hr>
 	<div class="">
-		<div class="highlight"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="nv">chance</span> <span class="nv">if-random</span><span class="p">)</span> <span class="c1">; 2021-03-07</span>
+		<div class="highlight"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="nv">:mkrelscale</span>
+  <span class="p">(</span><span class="k">lambda </span><span class="p">(</span><span class="nf">root</span> <span class="nv">reldegree</span> <span class="nv">mode</span> <span class="nv">num-notes</span><span class="p">)</span>
+    <span class="p">(</span><span class="nf">:mkscale</span> <span class="p">(</span><span class="nf">pc:relative</span> <span class="nv">root</span> <span class="nv">reldegree</span> <span class="p">(</span><span class="nf">pc:scale</span> <span class="mi">0</span> <span class="nv">mode</span><span class="p">))</span> <span class="nv">mode</span> <span class="nv">num-notes</span><span class="p">)))</span>
+<span class="c1">;</span>
+<span class="c1">;</span>
+<span class="c1">; mkrelscale</span>
+<span class="c1">;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;</span>
+<span class="c1">;</span>
+<span class="c1">; Combines mkscale and pc:relative</span>
+<span class="c1">;</span>
+<span class="c1">; Args:</span>
+<span class="c1">; root    [eg: 60]</span>
+<span class="c1">; reldegree    [eg: int, positive or negative]</span>
+<span class="c1">; mode    [eg: &#39;ionian]</span>
+<span class="c1">; num-notes [eg: 1]</span>
+<span class="c1">;</span>
+<span class="c1">;</span>
+<span class="c1">; Example:</span>
+<span class="c1">; (mkrelscale 60 -2 &#39;pentatonic 3) ;; &#39;(55 57 59)</span>
+<span class="c1">; (mkrelscale 60 0 &#39;pentatonic 3) ;; &#39;(60 62 64)</span>
+<span class="c1">; (mkscale 60 &#39;pentatonic 3)     ;; &#39;(60 62 64)</span>
+<span class="c1">;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;</span>
 </pre></div>
 
 	</div>
@@ -277,53 +298,6 @@
 		  
 	<a class="btn btn-default btn-xs" href="../extras.html">Back to Index
 	</a>
-	
-	
-	
-	<div style="margin-top: 50px;">
-		<br />
-		<h5>Similar Entries</h5>
-		<hr>
-		<div class="-lead">
-			
-				<li>
-					<a class="lead" href="-chance.html">:chance</a>
-					&nbsp;&nbsp;
-				
-					<small class="
-						text-success
-						
-						
-						">
-						scheme</small>
-				</li>
-			
-				<li>
-					<a class="lead" href="-ifchance.html">:ifchance</a>
-					&nbsp;&nbsp;
-				
-					<small class="
-						text-success
-						
-						
-						">
-						scheme</small>
-				</li>
-			
-				<li>
-					<a class="lead" href="ifchance.html">ifchance</a>
-					&nbsp;&nbsp;
-				
-					<small class="
-						text-success
-						
-						
-						">
-						scheme</small>
-				</li>
-			
-		</div>
-	</div>	
 	
 	
 	

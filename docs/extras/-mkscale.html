@@ -261,7 +261,47 @@
 	<h5>Implementation</h5>
 	<hr>
 	<div class="">
-		<div class="highlight"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="nv">:mkscale</span> <span class="nv">mkscale</span><span class="p">)</span>
+		<div class="highlight"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="nv">:mkscale</span>
+  <span class="p">(</span><span class="k">lambda </span><span class="p">(</span><span class="nf">root</span> <span class="o">.</span> <span class="nv">args</span><span class="p">)</span>
+  <span class="c1">; (println args)</span>
+   <span class="p">(</span><span class="k">cond </span><span class="p">((</span><span class="nb">null? </span><span class="nv">args</span><span class="p">)</span> <span class="c1">;; default</span>
+          <span class="p">(</span><span class="nf">add</span> <span class="nv">root</span> <span class="p">(</span><span class="nf">pc:scale</span> <span class="mi">0</span> <span class="ss">&#39;ionian</span><span class="p">)))</span>   
+          <span class="c1">;</span>
+          <span class="p">((</span><span class="nf">length-equal?</span> <span class="nv">args</span> <span class="mi">1</span><span class="p">)</span> 
+           <span class="c1">;; 1 arg = scale symbol only  </span>
+           <span class="p">(</span><span class="nf">add</span> <span class="nv">root</span> <span class="p">(</span><span class="nf">pc:scale</span> <span class="mi">0</span> <span class="p">(</span><span class="nb">car </span><span class="nv">args</span><span class="p">))))</span>
+          <span class="p">((</span><span class="nf">length-equal?</span> <span class="nv">args</span> <span class="mi">2</span><span class="p">)</span> 
+            <span class="c1">;; 2 args: scale, num-notes </span>
+            <span class="c1">;; factor: calc how big the scale before slicing. 5 is the min lenght of a scale. We double that based on on the num-notes parameter</span>
+            <span class="p">(</span><span class="k">let* </span><span class="p">((</span><span class="nf">factor</span> <span class="p">(</span><span class="nb">+ </span><span class="p">(</span><span class="nf">real-&gt;integer</span> <span class="p">(</span><span class="nb">/ </span><span class="p">(</span><span class="nb">cadr </span><span class="nv">args</span><span class="p">)</span> <span class="mi">5</span><span class="p">))</span> <span class="mi">1</span><span class="p">))</span> 
+                   <span class="p">(</span><span class="nf">s1</span> <span class="p">(</span><span class="nf">helper:multiply_octaves</span> <span class="p">(</span><span class="nf">pc:scale</span> <span class="mi">0</span> <span class="p">(</span><span class="nb">car </span><span class="nv">args</span><span class="p">))</span> <span class="nv">factor</span><span class="p">)))</span>
+              <span class="p">(</span><span class="nf">slice</span> <span class="p">(</span><span class="nb">cadr </span><span class="nv">args</span><span class="p">)</span> <span class="p">(</span><span class="nf">add</span> <span class="nv">root</span> <span class="nv">s1</span><span class="p">))))</span>
+          <span class="c1">;</span>
+          <span class="p">((</span><span class="nf">length-equal?</span> <span class="nv">args</span> <span class="mi">3</span><span class="p">)</span> 
+            <span class="c1">;; 3 args: scale, num-notes (ignored), octaves </span>
+            <span class="c1">;; added for backward compatibility</span>
+            <span class="p">(</span><span class="nf">add</span> <span class="nv">root</span> <span class="p">(</span><span class="nf">helper:multiply_octaves</span> <span class="p">(</span><span class="nf">pc:scale</span> <span class="mi">0</span> <span class="p">(</span><span class="nb">car </span><span class="nv">args</span><span class="p">))</span> <span class="p">(</span><span class="nb">caddr </span><span class="nv">args</span><span class="p">))))</span>
+          <span class="c1">;</span>
+          <span class="p">(</span><span class="k">else </span><span class="p">(</span><span class="nf">print</span> <span class="ss">&#39;Error:</span> <span class="ss">&#39;arguments</span> <span class="ss">&#39;could</span> <span class="ss">&#39;not</span> <span class="ss">&#39;be</span> <span class="ss">&#39;resolved</span><span class="o">.</span><span class="p">))</span>              
+      <span class="p">)</span>
+    <span class="p">)</span>          
+<span class="p">)</span>            
+<span class="c1">;</span>
+<span class="c1">;</span>
+<span class="c1">; mkscale</span>
+<span class="c1">;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;</span>
+<span class="c1">;</span>
+<span class="c1">; Args:</span>
+<span class="c1">; root    [default: 60]</span>
+<span class="c1">; mode    [default: &#39;ionian]</span>
+<span class="c1">; num-notes [default: 1 octave]</span>
+<span class="c1">; octaves [default: 1]</span>
+<span class="c1">;</span>
+<span class="c1">;</span>
+<span class="c1">; Example:</span>
+<span class="c1">; (mkscale 60 &#39;aeolian 5) =&gt; 5 notes</span>
+<span class="c1">; (mkscale 60 &#39;aeolian 0 3) =&gt; 3 octaves (num notes is ignored)</span>
+<span class="c1">;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;</span>
 </pre></div>
 
 	</div>
@@ -277,41 +317,6 @@
 		  
 	<a class="btn btn-default btn-xs" href="../extras.html">Back to Index
 	</a>
-	
-	
-	
-	<div style="margin-top: 50px;">
-		<br />
-		<h5>Similar Entries</h5>
-		<hr>
-		<div class="-lead">
-			
-				<li>
-					<a class="lead" href="-mkscalerel.html">:mkscalerel</a>
-					&nbsp;&nbsp;
-				
-					<small class="
-						text-success
-						
-						
-						">
-						scheme</small>
-				</li>
-			
-				<li>
-					<a class="lead" href="mkscale.html">mkscale</a>
-					&nbsp;&nbsp;
-				
-					<small class="
-						text-success
-						
-						
-						">
-						scheme</small>
-				</li>
-			
-		</div>
-	</div>	
 	
 	
 	

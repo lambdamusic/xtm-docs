@@ -268,6 +268,56 @@
         <span class="c1">;; 4 args: ch // plist // tlist // vols</span>
         <span class="c1">;; ==&gt; memo: helper:arpeggio takes: beat offset notes durations volumes ch</span>
           <span class="o">`</span><span class="p">(</span><span class="k">begin </span><span class="p">(</span><span class="nf">println</span> <span class="o">,@</span><span class="nv">args</span><span class="p">)</span> <span class="p">(</span><span class="nf">helper:arpeggio</span> <span class="nv">beat</span> <span class="mi">0</span> <span class="o">,</span><span class="p">(</span><span class="nb">cadr </span><span class="nv">args</span><span class="p">)</span> <span class="o">,</span><span class="p">(</span><span class="nb">caddr </span><span class="nv">args</span><span class="p">)</span> <span class="o">,</span><span class="p">(</span><span class="nb">cadddr </span><span class="nv">args</span><span class="p">)</span> <span class="o">,</span><span class="p">(</span><span class="nb">car </span><span class="nv">args</span><span class="p">)</span> <span class="p">)))</span>
+           <span class="p">((</span><span class="nf">length-equal?</span> <span class="nv">args</span> <span class="mi">5</span><span class="p">)</span>
+        <span class="c1">;; 5 args: offset // ch // plist // tlist // vols</span>
+          <span class="o">`</span><span class="p">(</span><span class="nf">helper:arpeggio</span> <span class="nv">beat</span> <span class="o">,</span><span class="p">(</span><span class="nb">car </span><span class="nv">args</span><span class="p">)</span> <span class="o">,</span><span class="p">(</span><span class="nb">caddr </span><span class="nv">args</span><span class="p">)</span> <span class="o">,</span><span class="p">(</span><span class="nb">cadddr </span><span class="nv">args</span><span class="p">)</span> <span class="o">,</span><span class="p">(</span><span class="nf">caddddr</span> <span class="nv">args</span><span class="p">)</span> <span class="o">,</span><span class="p">(</span><span class="nb">cadr </span><span class="nv">args</span><span class="p">)</span> <span class="p">))</span> 
+          <span class="p">(</span><span class="k">else </span><span class="p">(</span><span class="nf">log-error</span> <span class="ss">&#39;arp:</span> <span class="ss">&#39;arguments</span> <span class="ss">&#39;could</span> <span class="ss">&#39;not</span> <span class="ss">&#39;be</span> <span class="ss">&#39;resolved</span><span class="o">.</span><span class="p">)))))</span> 
+<span class="c1">;</span>
+<span class="c1">;</span>
+<span class="c1">; :ARP</span>
+<span class="c1">;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;</span>
+<span class="c1">; Play notes in sequence by adding them on top of each other, like an arpeggio.</span>
+<span class="c1">; The total time is given by the sum of all durations.</span>
+<span class="c1">; Notes keep playing over each other till the last note completes its duration.</span>
+<span class="c1">;</span>
+<span class="c1">;</span>
+<span class="c1">; Args:</span>
+<span class="c1">; ----</span>
+<span class="c1">; offset (opt)</span>
+<span class="c1">; channel </span>
+<span class="c1">; notes</span>
+<span class="c1">; durs </span>
+<span class="c1">; vols </span>
+<span class="c1">; </span>
+<span class="c1">; durst &amp; vols: if an atom is passed, it&#39;s &#39;expanded&#39; into a list (= same for all notes)</span>
+<span class="c1">; (durs =&gt; the dur of each note, before the following one kicks in)</span>
+<span class="c1">; </span>
+<span class="c1">; </span>
+<span class="c1">; Requires:</span>
+<span class="c1">; --------</span>
+<span class="c1">; beat </span>
+<span class="c1">; *mididevice*</span>
+<span class="c1">;</span>
+<span class="c1">; </span>
+<span class="c1">; Example:</span>
+<span class="c1">; --------</span>
+<span class="c1">; (define piano 1) ;; midi ch</span>
+<span class="c1">; (let ((beat (*metro* &#39;get-beat)))</span>
+<span class="c1">;   (arp piano &#39;(60 67) 4 90) </span>
+<span class="c1">;   (arp 2 piano &#39;(60 67) 4 90)  ;; 2 = offset</span>
+<span class="c1">;   (arp piano (:mkchord c4 &#39;^ 4) (:mklist 4 (oneof 1 2 3)) 90)</span>
+<span class="c1">; )</span>
+<span class="c1">;</span>
+<span class="c1">;</span>
+<span class="c1">; Implementation Dependencies:</span>
+<span class="c1">; -------------------------------</span>
+<span class="c1">; * helper:arpeggio</span>
+<span class="c1">; * play (midi version)</span>
+<span class="c1">;</span>
+<span class="c1">;</span>
+<span class="c1">;</span>
+<span class="c1">;</span>
+<span class="c1">;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;</span>
 </pre></div>
 
 	</div>
@@ -291,18 +341,6 @@
 		<h5>Similar Entries</h5>
 		<hr>
 		<div class="-lead">
-			
-				<li>
-					<a class="lead" href="arp.html">arp</a>
-					&nbsp;&nbsp;
-				
-					<small class="
-						text-success
-						
-						
-						">
-						scheme</small>
-				</li>
 			
 				<li>
 					<a class="lead" href="helper-arpeggio.html">helper:arpeggio</a>

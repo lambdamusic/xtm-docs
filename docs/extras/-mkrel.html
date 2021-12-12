@@ -27,7 +27,7 @@
 	<link rel="shortcut icon" href="../media/static/favicon.ico" />
     
 	
-	<title>color:yellow : Extempore Docs</title>
+	<title>:mkrel : Extempore Docs</title>
 
 	
 
@@ -211,7 +211,7 @@
 
 	  
 	  
-	  <div class="navbar-brand navbar-function">|&nbsp;<a class="navbar-function">color:yellow</a>
+	  <div class="navbar-brand navbar-function">|&nbsp;<a class="navbar-function">:mkrel</a>
 		</div>
 	  
 		  
@@ -239,7 +239,7 @@
 	  	
 
 	
-	<h1>color:yellow
+	<h1>:mkrel
 		&nbsp;&nbsp;<small style="font-size: 30%;" class="
 			label label-success
 			
@@ -250,9 +250,9 @@
 	<hr>
 	<div class="lead">
 		Defined in:&nbsp;
-		<a href="https://github.com/lambdamusic/xtm-hacking/blob/master/init-extempore/legacy.xtm" target="_blank">
+		<a href="https://github.com/lambdamusic/xtm-hacking/blob/master/init-extempore/init_music.xtm" target="_blank">
 			
-			https://github.com/lambdamusic/xtm-hacking/blob/master/init-extempore/legacy.xtm		
+			https://github.com/lambdamusic/xtm-hacking/blob/master/init-extempore/init_music.xtm		
 		</a>
 		
 	</div>
@@ -261,7 +261,25 @@
 	<h5>Implementation</h5>
 	<hr>
 	<div class="">
-		<div class="highlight"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="nv">color:yellow</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">1</span><span class="p">))</span>
+		<div class="highlight"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="nv">:mkrel</span>
+  <span class="p">(</span><span class="k">lambda </span><span class="p">(</span><span class="nf">root</span> <span class="nv">degree</span> <span class="nv">mode</span><span class="p">)</span>
+        <span class="p">(</span><span class="nb">car </span><span class="p">(</span><span class="nf">mkrelscale</span> <span class="nv">root</span> <span class="nv">degree</span> <span class="nv">mode</span> <span class="mi">1</span><span class="p">))))</span>
+<span class="c1">;</span>
+<span class="c1">;</span>
+<span class="c1">; mkrel</span>
+<span class="c1">;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;</span>
+<span class="c1">;</span>
+<span class="c1">; Shortcut for pc:relative / returns a single note</span>
+<span class="c1">;</span>
+<span class="c1">; Args:</span>
+<span class="c1">; root    [eg: 60]</span>
+<span class="c1">; reldegree    [eg: int, positive or negative]</span>
+<span class="c1">; mode    [eg: &#39;ionian]</span>
+<span class="c1">;</span>
+<span class="c1">;</span>
+<span class="c1">; Example:</span>
+<span class="c1">; (mkrel 60 0 &#39;pentatonic) ;; 60</span>
+<span class="c1">;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;</span>
 </pre></div>
 
 	</div>
@@ -277,6 +295,29 @@
 		  
 	<a class="btn btn-default btn-xs" href="../extras.html">Back to Index
 	</a>
+	
+	
+	
+	<div style="margin-top: 50px;">
+		<br />
+		<h5>Similar Entries</h5>
+		<hr>
+		<div class="-lead">
+			
+				<li>
+					<a class="lead" href="-mkrelscale.html">:mkrelscale</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+		</div>
+	</div>	
 	
 	
 	

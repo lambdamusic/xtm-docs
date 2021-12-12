@@ -27,7 +27,7 @@
 	<link rel="shortcut icon" href="../media/static/favicon.ico" />
     
 	
-	<title>sl : Extempore Docs</title>
+	<title>helper:multiply_octaves : Extempore Docs</title>
 
 	
 
@@ -211,7 +211,7 @@
 
 	  
 	  
-	  <div class="navbar-brand navbar-function">|&nbsp;<a class="navbar-function">sl</a>
+	  <div class="navbar-brand navbar-function">|&nbsp;<a class="navbar-function">helper:multiply_octaves</a>
 		</div>
 	  
 		  
@@ -239,7 +239,7 @@
 	  	
 
 	
-	<h1>sl
+	<h1>helper:multiply_octaves
 		&nbsp;&nbsp;<small style="font-size: 30%;" class="
 			label label-success
 			
@@ -250,9 +250,9 @@
 	<hr>
 	<div class="lead">
 		Defined in:&nbsp;
-		<a href="https://github.com/lambdamusic/xtm-hacking/blob/master/init-extempore/init_aliases.xtm" target="_blank">
+		<a href="https://github.com/lambdamusic/xtm-hacking/blob/master/init-extempore/init_music.xtm" target="_blank">
 			
-			https://github.com/lambdamusic/xtm-hacking/blob/master/init-extempore/init_aliases.xtm		
+			https://github.com/lambdamusic/xtm-hacking/blob/master/init-extempore/init_music.xtm		
 		</a>
 		
 	</div>
@@ -261,7 +261,26 @@
 	<h5>Implementation</h5>
 	<hr>
 	<div class="">
-		<div class="highlight"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="nv">sl</span> <span class="nv">slice</span><span class="p">)</span>
+		<div class="highlight"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="nv">helper:multiply_octaves</span> 
+  <span class="p">(</span><span class="k">lambda </span><span class="p">(</span><span class="nf">scale</span> <span class="nv">octaves</span><span class="p">)</span>
+    <span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nb">= </span><span class="nv">octaves</span> <span class="mi">1</span><span class="p">)</span>
+      <span class="nv">scale</span><span class="p">)</span>
+      <span class="p">(</span><span class="nf">dotimes</span> <span class="p">(</span><span class="nf">i</span> <span class="nv">octaves</span><span class="p">)</span>
+        <span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nb">&gt; </span><span class="nv">i</span> <span class="mi">0</span><span class="p">)</span>
+          <span class="p">(</span><span class="k">set! </span><span class="nv">scale</span> <span class="p">(</span><span class="nb">append </span><span class="nv">scale</span> <span class="p">(</span><span class="nf">add</span> <span class="p">(</span><span class="nb">* </span><span class="mi">12</span> <span class="nv">i</span><span class="p">)</span> <span class="nv">scale</span><span class="p">)))))</span>
+          <span class="nv">scale</span><span class="p">))</span>
+<span class="c1">;</span>
+<span class="c1">;</span>
+<span class="c1">; helper:multiply_octaves</span>
+<span class="c1">;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;</span>
+<span class="c1">; helper function: from a list, extend it by adding 12 to all elements (one octave)</span>
+<span class="c1">;</span>
+<span class="c1">; Args:</span>
+<span class="c1">;</span>
+<span class="c1">; Example:</span>
+<span class="c1">; (helper:multiply_octaves (pc:scale 0 &#39;ionian) 2)) </span>
+<span class="c1">;; =&gt; retuns 2 octaves of the scale</span>
+<span class="c1">;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;</span>
 </pre></div>
 
 	</div>
@@ -277,53 +296,6 @@
 		  
 	<a class="btn btn-default btn-xs" href="../extras.html">Back to Index
 	</a>
-	
-	
-	
-	<div style="margin-top: 50px;">
-		<br />
-		<h5>Similar Entries</h5>
-		<hr>
-		<div class="-lead">
-			
-				<li>
-					<a class="lead" href="cl-slice.html">cl:slice</a>
-					&nbsp;&nbsp;
-				
-					<small class="
-						text-success
-						
-						
-						">
-						scheme</small>
-				</li>
-			
-				<li>
-					<a class="lead" href="cl-slice-left.html">cl:slice-left</a>
-					&nbsp;&nbsp;
-				
-					<small class="
-						text-success
-						
-						
-						">
-						scheme</small>
-				</li>
-			
-				<li>
-					<a class="lead" href="slice.html">slice</a>
-					&nbsp;&nbsp;
-				
-					<small class="
-						text-success
-						
-						
-						">
-						scheme</small>
-				</li>
-			
-		</div>
-	</div>	
 	
 	
 	

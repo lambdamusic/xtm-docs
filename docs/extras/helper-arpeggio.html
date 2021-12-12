@@ -267,6 +267,21 @@
           <span class="p">(</span><span class="nf">vols</span> <span class="p">(</span><span class="nf">cl:expand-list2</span> <span class="nv">volumes</span> <span class="p">(</span><span class="nf">len</span> <span class="nv">notes</span><span class="p">)))</span>
           <span class="p">(</span><span class="nf">total_dur</span> <span class="p">(</span><span class="nf">sum_list</span> <span class="nv">durs</span><span class="p">))</span>
           <span class="p">(</span><span class="nf">wait</span> <span class="p">(</span><span class="nb">car </span><span class="nv">durs</span><span class="p">)))</span>
+      <span class="p">(</span><span class="nf">when</span> <span class="no">#f</span> <span class="p">(</span><span class="nf">println</span> <span class="nv">notes</span> <span class="nv">durs</span><span class="p">))</span>
+      <span class="p">(</span><span class="nf">play</span> <span class="p">(</span><span class="nb">eval </span><span class="nv">offset</span><span class="p">)</span> <span class="nv">ch</span> <span class="p">(</span><span class="nb">eval </span><span class="p">(</span><span class="nb">car </span><span class="nv">notes</span><span class="p">))</span> <span class="p">(</span><span class="nb">car </span><span class="nv">vols</span><span class="p">)</span> <span class="nv">total_dur</span> <span class="p">)</span>
+      <span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nb">not </span><span class="p">(</span><span class="nb">null? </span><span class="p">(</span><span class="nb">cdr </span><span class="nv">notes</span><span class="p">)))</span>
+        <span class="p">(</span><span class="nf">callback</span> <span class="p">(</span><span class="nf">*metro*</span> <span class="p">(</span><span class="nb">+ </span><span class="nv">beat</span> <span class="p">(</span><span class="nb">* </span><span class="mi">1</span><span class="nv">/2</span> <span class="nv">wait</span><span class="p">)))</span> 
+          <span class="ss">&#39;helper:arpeggio</span> <span class="p">(</span><span class="nb">+ </span><span class="nv">beat</span> <span class="nv">wait</span><span class="p">)</span> <span class="nv">offset</span>
+          <span class="p">(</span><span class="nf">rest</span> <span class="nv">notes</span><span class="p">)</span> <span class="p">(</span><span class="nf">rest</span> <span class="nv">durs</span><span class="p">)</span> <span class="p">(</span><span class="nf">rest</span> <span class="nv">vols</span><span class="p">)</span> <span class="nv">ch</span><span class="p">)))))</span> 
+<span class="c1">;</span>
+<span class="c1">;</span>
+<span class="c1">;; inner function for :arp</span>
+<span class="c1">;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;</span>
+<span class="c1">;;; eg </span>
+<span class="c1">; (helper:arpeggio (*metro* &#39;get-beat) 0 </span>
+<span class="c1">;   &#39;(c4 f4 g4 c5) 3 90 3) ;; durs/vols do not need to be a list</span>
+<span class="c1">; (helper:arpeggio (*metro* &#39;get-beat) 0</span>
+<span class="c1">;   &#39;(c4 f4 g4 c5) &#39;(3) &#39;(90) 3) ;; a list works too</span>
 </pre></div>
 
 	</div>

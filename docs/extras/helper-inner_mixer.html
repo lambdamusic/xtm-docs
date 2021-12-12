@@ -268,10 +268,48 @@
             <span class="p">(</span><span class="k">let </span>
                 <span class="p">((</span><span class="nf">oldval</span> <span class="p">(</span><span class="nb">eval </span><span class="p">(</span><span class="nb">cadr </span><span class="p">(</span><span class="nb">assoc </span><span class="nv">ch</span> <span class="nv">*mixers*</span><span class="p">))))</span>
                 <span class="p">(</span><span class="nf">newval</span> <span class="mi">0</span><span class="p">))</span> 
-                
+                <span class="c1">;</span>
                 <span class="p">(</span><span class="k">if </span><span class="nv">*debug*</span>
                     <span class="p">(</span><span class="nf">log-info</span> <span class="nv">ch</span> <span class="nv">increment</span> <span class="nv">min-limit</span> <span class="nv">max-limit</span> <span class="nv">oldval</span><span class="p">)</span>
                     <span class="p">)</span>
+                <span class="c1">;</span>
+                <span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nb">not </span><span class="p">(</span><span class="nb">integer? </span><span class="nv">min-limit</span><span class="p">))</span> 
+                    <span class="c1">;; trick to show specific channel: &#39;none is passed by macro </span>
+                    <span class="p">(</span><span class="nf">print-mixer</span> <span class="nv">ch</span> <span class="nv">oldval</span> <span class="ss">&#39;show</span><span class="p">)</span> 
+                    <span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="k">and </span><span class="p">(</span><span class="nb">negative? </span><span class="nv">increment</span><span class="p">)</span> 
+                             <span class="p">(</span><span class="nb">&gt;= </span><span class="nv">min-limit</span> <span class="nv">oldval</span><span class="p">))</span>
+                        <span class="c1">;; when decreasing, min-limit can&#39;t be higher than old value</span>
+                        <span class="p">(</span><span class="nf">print-mixer</span> <span class="nv">ch</span> <span class="nv">oldval</span> <span class="ss">&#39;show</span><span class="p">)</span>
+                    
+                        <span class="p">(</span><span class="k">begin </span>
+                            <span class="c1">;</span>
+                            <span class="c1">;; check max boundaries</span>
+                            <span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nb">&lt; </span><span class="nv">min-limit</span> <span class="nv">*mixer-lower-limit*</span><span class="p">)</span>
+                                <span class="p">(</span><span class="k">set! </span><span class="nv">min-limit</span> <span class="nv">*mixer-lower-limit*</span><span class="p">))</span> 
+                            <span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nb">&gt; </span><span class="nv">max-limit</span> <span class="nv">*mixer-upper-limit*</span><span class="p">)</span>
+                                <span class="p">(</span><span class="k">set! </span><span class="nv">max-limit</span> <span class="nv">*mixer-upper-limit*</span><span class="p">))</span>
+                            <span class="c1">;</span>
+                            <span class="c1">;; test increment</span>
+                            <span class="p">(</span><span class="k">set! </span><span class="nv">newval</span> <span class="p">(</span><span class="nb">+ </span><span class="nv">oldval</span> <span class="nv">increment</span><span class="p">))</span>
+                            <span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nb">&lt; </span><span class="nv">newval</span> <span class="nv">min-limit</span><span class="p">)</span>
+                                <span class="p">(</span><span class="k">set! </span><span class="nv">newval</span> <span class="nv">min-limit</span><span class="p">))</span>
+                            <span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nb">&gt; </span><span class="nv">newval</span> <span class="nv">max-limit</span><span class="p">)</span>
+                                <span class="p">(</span><span class="k">set! </span><span class="nv">newval</span> <span class="nv">max-limit</span><span class="p">))</span>
+                            <span class="c1">;</span>
+                            <span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nb">= </span><span class="nv">newval</span> <span class="nv">oldval</span><span class="p">)</span>
+                                <span class="p">(</span><span class="nf">print-mixer</span> <span class="nv">ch</span> <span class="nv">newval</span> <span class="ss">&#39;show</span><span class="p">)</span>
+                                <span class="p">(</span><span class="k">begin </span>
+                                    <span class="c1">;;set cache</span>
+                                    <span class="p">(</span><span class="nb">eval </span><span class="o">`</span><span class="p">(</span><span class="k">set! </span><span class="o">,</span><span class="p">(</span><span class="nb">cadr </span><span class="p">(</span><span class="nb">assoc </span><span class="nv">ch</span> <span class="nv">*mixers*</span><span class="p">))</span> <span class="nv">newval</span><span class="p">))</span>
+                                    <span class="c1">;;mcc</span>
+                                    <span class="p">(</span><span class="nf">send-midi-cc</span> <span class="p">(</span><span class="nf">now</span><span class="p">)</span> <span class="nv">*mididevice*</span> 
+                                        <span class="p">(</span><span class="nf">real-&gt;integer</span> <span class="nv">ch</span><span class="p">)</span> 
+                                        <span class="p">(</span><span class="nf">real-&gt;integer</span> <span class="nv">newval</span><span class="p">)</span> 
+                                        <span class="mi">0</span><span class="p">)</span>
+                                    <span class="p">(</span><span class="nf">print-mixer</span> <span class="nv">ch</span> <span class="nv">newval</span> <span class="ss">&#39;changed</span><span class="p">)</span>
+                                <span class="p">))</span>
+                            <span class="p">)</span>
+    <span class="p">))))))</span>
 </pre></div>
 
 	</div>
