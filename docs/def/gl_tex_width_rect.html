@@ -1,0 +1,4040 @@
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-2000254-3"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-2000254-3');
+</script>
+
+
+
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link rel="shortcut icon" href="../media/static/favicon.ico" />
+    
+	
+	<title>gl_tex_width_rect : Extempore Docs</title>
+
+	
+
+    <!-- Bootstrap ## original specs-->
+    
+	
+	<!-- Bootswatch https://bootswatch.com/ -->
+	 <link href="../media/static/libs/bootswatch3.2/cosmo/bootstrap.min.css" rel="stylesheet">
+	 
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+		
+		
+	<style type="text/css" media="screen">
+
+
+		/* Sticky footer styles 
+		-------------------------------------------------- */
+		html {
+		  position: relative;
+		  min-height: 100%;
+		}
+		body {
+		  /* Margin bottom by footer height */
+		  margin-bottom: 200px;
+		  padding-top: 70px;
+		}
+		.footer {
+		  position: absolute;
+		  padding-top: 10px;
+		  bottom: 0;
+		  width: 100%;
+		  /* Set the fixed height of the footer here */
+		  height: 150px;
+		  background-color: #f5f5f5;
+		}
+		
+
+		.navbar-subtitle.navbar-brand {
+			color: #ffffff;
+			font-style: normal;
+		}
+
+		.navbar-function {
+			color: lightgreen;
+			font-style: normal;
+			font-family: monospace;
+		}
+		.navbar-function:hover {
+			color: lightgreen;
+			font-style: normal;
+			font-family: monospace;
+			text-decoration: none;
+		}
+		
+		.navbar-subtitle.navbar-brand a {
+			color: #ffffff;
+			font-style: normal;
+			text-decoration: underline;
+		}
+
+		.navbar-subtitle.navbar-brand a.active {
+			background: green;
+			font-style: normal;
+			text-decoration: underline;
+		}
+
+		.navbar-subtitle.navbar-brand:hover {
+			color: #ffffff;
+			font-style: normal;
+		}
+		
+	</style>	
+		
+		
+	
+	
+	
+	<style type="text/css" media="screen">
+
+	  .highlight .hll { background-color: #ffffcc }
+	.highlight  { background: #f8f8f8; }
+	.highlight .c { color: #408080; font-style: italic } /* Comment */
+	.highlight .err { border: 1px solid #FF0000 } /* Error */
+	.highlight .k { color: #008000; font-weight: bold } /* Keyword */
+	.highlight .o { color: #666666 } /* Operator */
+	.highlight .cm { color: #408080; font-style: italic } /* Comment.Multiline */
+	.highlight .cp { color: #BC7A00 } /* Comment.Preproc */
+	.highlight .c1 { color: #408080; font-style: italic } /* Comment.Single */
+	.highlight .cs { color: #408080; font-style: italic } /* Comment.Special */
+	.highlight .gd { color: #A00000 } /* Generic.Deleted */
+	.highlight .ge { font-style: italic } /* Generic.Emph */
+	.highlight .gr { color: #FF0000 } /* Generic.Error */
+	.highlight .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+	.highlight .gi { color: #00A000 } /* Generic.Inserted */
+	.highlight .go { color: #888888 } /* Generic.Output */
+	.highlight .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+	.highlight .gs { font-weight: bold } /* Generic.Strong */
+	.highlight .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+	.highlight .gt { color: #0044DD } /* Generic.Traceback */
+	.highlight .kc { color: #008000; font-weight: bold } /* Keyword.Constant */
+	.highlight .kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
+	.highlight .kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
+	.highlight .kp { color: #008000 } /* Keyword.Pseudo */
+	.highlight .kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
+	.highlight .kt { color: #B00040 } /* Keyword.Type */
+	.highlight .m { color: #666666 } /* Literal.Number */
+	.highlight .s { color: #BA2121 } /* Literal.String */
+	.highlight .na { color: #7D9029 } /* Name.Attribute */
+	.highlight .nb { color: #008000 } /* Name.Builtin */
+	.highlight .nc { color: #0000FF; font-weight: bold } /* Name.Class */
+	.highlight .no { color: #880000 } /* Name.Constant */
+	.highlight .nd { color: #AA22FF } /* Name.Decorator */
+	.highlight .ni { color: #999999; font-weight: bold } /* Name.Entity */
+	.highlight .ne { color: #D2413A; font-weight: bold } /* Name.Exception */
+	.highlight .nf { color: #0000FF } /* Name.Function */
+	.highlight .nl { color: #A0A000 } /* Name.Label */
+	.highlight .nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+	.highlight .nt { color: #008000; font-weight: bold } /* Name.Tag */
+	.highlight .nv { color: #19177C } /* Name.Variable */
+	.highlight .ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
+	.highlight .w { color: #bbbbbb } /* Text.Whitespace */
+	.highlight .mb { color: #666666 } /* Literal.Number.Bin */
+	.highlight .mf { color: #666666 } /* Literal.Number.Float */
+	.highlight .mh { color: #666666 } /* Literal.Number.Hex */
+	.highlight .mi { color: #666666 } /* Literal.Number.Integer */
+	.highlight .mo { color: #666666 } /* Literal.Number.Oct */
+	.highlight .sb { color: #BA2121 } /* Literal.String.Backtick */
+	.highlight .sc { color: #BA2121 } /* Literal.String.Char */
+	.highlight .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
+	.highlight .s2 { color: #BA2121 } /* Literal.String.Double */
+	.highlight .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
+	.highlight .sh { color: #BA2121 } /* Literal.String.Heredoc */
+	.highlight .si { color: #BB6688; font-weight: bold } /* Literal.String.Interpol */
+	.highlight .sx { color: #008000 } /* Literal.String.Other */
+	.highlight .sr { color: #BB6688 } /* Literal.String.Regex */
+	.highlight .s1 { color: #BA2121 } /* Literal.String.Single */
+	.highlight .ss { color: #19177C } /* Literal.String.Symbol */
+	.highlight .bp { color: #008000 } /* Name.Builtin.Pseudo */
+	.highlight .vc { color: #19177C } /* Name.Variable.Class */
+	.highlight .vg { color: #19177C } /* Name.Variable.Global */
+	.highlight .vi { color: #19177C } /* Name.Variable.Instance */
+	.highlight .il { color: #666666 } /* Literal.Number.Integer.Long */
+	
+	</style>
+	
+	
+		
+		
+  </head>
+  <body>
+	  
+	
+	
+	
+
+	
+<!-- https://getbootstrap.com/docs/3.4/components/#navbar -->
+
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="../index.html">Extempore Functions Index</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="../index.html">Core release (v0.8.9) <span class="sr-only">(current)</span></a></li>
+        <li ><a href="../index/extras.html">Extra functions</a></li>
+
+        
+        
+
+      </ul>
+      <form id="searchForm" class="navbar-form navbar-right" method="GET">
+        <div class="form-group">
+          <input type="text" style="width: 250px;" class="form-control " placeholder="Search" required type="search" name="q">
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+      </form>
+
+
+      <script>
+        var loc = location.origin;
+        document.getElementById("searchForm").action = loc + "/search.html";
+      </script>
+
+      <a style="display: none;" href="../search.html">hidden link</a>
+
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+
+
+
+  
+
+	  
+	  <div class="container">
+	  	
+
+	
+	<h1>gl_tex_width_rect
+		&nbsp;&nbsp;<small style="font-size: 30%;" class="
+			
+			
+			label label-warning
+			">xtlang</small>
+	
+	</h1>
+	<hr>
+	<div class="lead">
+		Defined in:&nbsp;
+		<a href="https://github.com/digego/extempore/tree/v0.8.9/libs/external/soil.xtm" target="_blank">
+			
+			https://github.com/digego/extempore/tree/v0.8.9/libs/external/soil.xtm		
+		</a>
+		
+	</div>
+	
+	<br />
+	<h5>Implementation</h5>
+	<hr>
+	<div class="">
+		<div class="highlight"><pre><span></span><span class="p">(</span><span class="nf">bind-func</span> <span class="nv">gl_tex_width_rect</span>
+  <span class="p">(</span><span class="k">lambda </span><span class="p">(</span><span class="nf">tex</span><span class="p">)</span>
+    <span class="p">(</span><span class="nf">glDisable</span> <span class="nv">GL_TEXTURE_2D</span><span class="p">)</span>
+    <span class="p">(</span><span class="nf">glEnable</span> <span class="nv">GL_TEXTURE_RECTANGLE_ARB</span><span class="p">)</span>
+    <span class="p">(</span><span class="nf">glBindTexture</span> <span class="nv">GL_TEXTURE_RECTANGLE_ARB</span> <span class="nv">tex</span><span class="p">)</span>
+    <span class="p">(</span><span class="k">let </span><span class="p">((</span><span class="nf">v:|1,i32|*</span> <span class="p">(</span><span class="nf">salloc</span><span class="p">)))</span>
+      <span class="p">(</span><span class="nf">glGetTexLevelParameteriv</span> <span class="nv">GL_TEXTURE_RECTANGLE_ARB</span> <span class="mi">0</span> <span class="nv">GL_TEXTURE_WIDTH</span> <span class="p">(</span><span class="nf">cast</span> <span class="nv">v</span><span class="p">))</span>
+      <span class="p">(</span><span class="nf">glDisable</span> <span class="nv">GL_TEXTURE_RECTANGLE_ARB</span><span class="p">)</span>
+      <span class="p">(</span><span class="nf">glBindTexture</span> <span class="nv">GL_TEXTURE_RECTANGLE_ARB</span> <span class="mi">0</span><span class="p">)</span>
+      <span class="p">(</span><span class="nf">aref</span> <span class="nv">v</span> <span class="mi">0</span><span class="p">))))</span>
+</pre></div>
+
+	</div>
+	
+
+	
+	
+	
+	
+		
+	
+	<br /><br />
+		  
+	<a class="btn btn-default btn-xs" href="../index.html">Back to Index
+	</a>
+	
+	
+	
+	<div style="margin-top: 50px;">
+		<br />
+		<h5>Similar Entries</h5>
+		<hr>
+		<div class="-lead">
+			
+				<li>
+					<a class="lead" href="Crect.html">Crect</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="FBO_color_texture.html">FBO_color_texture</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="FBO_create_with_textures.html">FBO_create_with_textures</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="FBO_depth_texture.html">FBO_depth_texture</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="FBO_width.html">FBO_width</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="GUI_context.html">GUI_context</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="GUI_width.html">GUI_width</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="PARAM_PAN_WIDTH.html">PARAM_PAN_WIDTH</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="PARAM_PAN_WIDTH-1.html">PARAM_PAN_WIDTH</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="PARAM_PAN_WIDTH-2.html">PARAM_PAN_WIDTH</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="Rectangle.html">Rectangle</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="Rectangle-1.html">Rectangle</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="Texture.html">Texture</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="Texture-1.html">Texture</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="Texture-2.html">Texture</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="Texture-3.html">Texture</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="Texture-4.html">Texture</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="Texture-5.html">Texture</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="Texture_bind_data.html">Texture_bind_data</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="Texture_bind_data-1.html">Texture_bind_data</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="Texture_bind_image.html">Texture_bind_image</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="Texture_create.html">Texture_create</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="Texture_create_FBO_depth_texture.html">Texture_create_FBO_depth_texture</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="Texture_delete.html">Texture_delete</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="_glib_main_loop_call.html">_glib_main_loop_call</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="_glib_main_loop_call-1.html">_glib_main_loop_call</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="_glib_main_loop_call-2.html">_glib_main_loop_call</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="ai_load_ogl_texture.html">ai_load_ogl_texture</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="ai_load_ogl_texture_from_buffer.html">ai_load_ogl_texture_from_buffer</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="biWidth.html">biWidth</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="bind-gl-proc.html">bind-gl-proc</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						text-info
+						
+						">
+						macro</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="bind-glew.html">bind-glew</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						text-info
+						
+						">
+						macro</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="bmWidth.html">bmWidth</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="bmWidthBytes.html">bmWidthBytes</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="colour_tex.html">colour_tex</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="cpvforangle.html">cpvforangle</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="cpvtoangle.html">cpvtoangle</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="create_fbo_no_depth_rect.html">create_fbo_no_depth_rect</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="create_fbo_rect.html">create_fbo_rect</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="create_texture_shader.html">create_texture_shader</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="create_triangle_shader.html">create_triangle_shader</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="create_triangle_shader-1.html">create_triangle_shader</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="depth_tex.html">depth_tex</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="fbo_create_depth_buffer_rect.html">fbo_create_depth_buffer_rect</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="fbo_create_texture.html">fbo_create_texture</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="fbo_create_texture_rect.html">fbo_create_texture_rect</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="fill_direction_vector.html">fill_direction_vector</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="fill_direction_vector-1.html">fill_direction_vector</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="forced-gl-getprocaddress.html">forced-gl-getprocaddress</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="forced-gl-getprocaddress-1.html">forced-gl-getprocaddress</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="get_context_menu_handler.html">get_context_menu_handler</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="ghttp_set_content_type_plaintext.html">ghttp_set_content_type_plaintext</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="gl-draw.html">gl-draw</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="gl-loop.html">gl-loop</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="gl-loop-1.html">gl-loop</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="gl-loop-2.html">gl-loop</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="gl-loop-3.html">gl-loop</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="gl-loop-4.html">gl-loop</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="gl-loop-5.html">gl-loop</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="gl-loop-6.html">gl-loop</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="gl-loop-7.html">gl-loop</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="gl-loop-8.html">gl-loop</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="gl-loop-9.html">gl-loop</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="gl-loop-10.html">gl-loop</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="glCube.html">glCube</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="gl_cp.html">gl_cp</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="gl_draw.html">gl_draw</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="gl_draw-1.html">gl_draw</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="gl_draw-2.html">gl_draw</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="gl_draw-3.html">gl_draw</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="gl_draw-4.html">gl_draw</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="gl_draw-5.html">gl_draw</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="gl_draw-6.html">gl_draw</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="gl_draw-7.html">gl_draw</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="gl_draw-8.html">gl_draw</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="gl_draw-9.html">gl_draw</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="gl_draw-10.html">gl_draw</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="gl_draw_arrows.html">gl_draw_arrows</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="gl_draw_loop.html">gl_draw_loop</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="gl_draw_loop-1.html">gl_draw_loop</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="gl_draw_loop-2.html">gl_draw_loop</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="gl_draw_loop-3.html">gl_draw_loop</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="gl_draw_loop-4.html">gl_draw_loop</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="gl_draw_loop-5.html">gl_draw_loop</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="gl_draw_loop-6.html">gl_draw_loop</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="gl_draw_loop-7.html">gl_draw_loop</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="gl_draw_loop-8.html">gl_draw_loop</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="gl_draw_loop-9.html">gl_draw_loop</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="gl_draw_loop-10.html">gl_draw_loop</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="gl_draw_loop-11.html">gl_draw_loop</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="gl_draw_loop-12.html">gl_draw_loop</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="gl_draw_loop-13.html">gl_draw_loop</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="gl_draw_particles.html">gl_draw_particles</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="gl_load_image.html">gl_load_image</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="gl_load_image_rect.html">gl_load_image_rect</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="gl_load_movie_textures.html">gl_load_movie_textures</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="gl_load_movie_textures-1.html">gl_load_movie_textures</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="gl_load_tex.html">gl_load_tex</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="gl_load_tex_bgr.html">gl_load_tex_bgr</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="gl_load_tex_ext.html">gl_load_tex_ext</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="gl_load_tex_ext_bgr.html">gl_load_tex_ext_bgr</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="gl_load_tex_rect.html">gl_load_tex_rect</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="gl_look_at.html">gl_look_at</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="gl_print_driver_info.html">gl_print_driver_info</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="gl_print_driver_info-1.html">gl_print_driver_info</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="gl_print_driver_info-2.html">gl_print_driver_info</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="gl_print_error.html">gl_print_error</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="gl_print_error-1.html">gl_print_error</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="gl_print_error-2.html">gl_print_error</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="gl_print_error-3.html">gl_print_error</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="gl_print_error_no_msg.html">gl_print_error_no_msg</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="gl_print_error_with_msg.html">gl_print_error_with_msg</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="gl_render.html">gl_render</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="gl_render-1.html">gl_render</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="gl_render-2.html">gl_render</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="gl_render-3.html">gl_render</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="gl_render-4.html">gl_render</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="gl_render-5.html">gl_render</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="gl_render-6.html">gl_render</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="gl_render-7.html">gl_render</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="gl_render-8.html">gl_render</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="gl_render-9.html">gl_render</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="gl_render-10.html">gl_render</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="gl_render-11.html">gl_render</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="gl_render-12.html">gl_render</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="gl_render-13.html">gl_render</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="gl_render-14.html">gl_render</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="gl_set_proc_address.html">gl_set_proc_address</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="gl_set_view.html">gl_set_view</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="gl_setup.html">gl_setup</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="gl_tex_height.html">gl_tex_height</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="gl_tex_height_rect.html">gl_tex_height_rect</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="gl_tex_width.html">gl_tex_width</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="glctx.html">glctx</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="glctx-1.html">glctx</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="glctx-2.html">glctx</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="glctx-3.html">glctx</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="glew-name-from-gl-name.html">glew-name-from-gl-name</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="glew_init.html">glew_init</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="glfw_char_callback-GLFWcharfun.html">glfw_char_callback:GLFWcharfun</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="glfw_create_fullscreen_interaction_window.html">glfw_create_fullscreen_interaction_window</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="glfw_create_fullscreen_interaction_window-1.html">glfw_create_fullscreen_interaction_window</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="glfw_create_fullscreen_window.html">glfw_create_fullscreen_window</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="glfw_create_fullscreen_window-1.html">glfw_create_fullscreen_window</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="glfw_create_interaction_window.html">glfw_create_interaction_window</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="glfw_create_window.html">glfw_create_window</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="glfw_cursor_position_callback-GLFWcursorposfun.html">glfw_cursor_position_callback:GLFWcursorposfun</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="glfw_destroy_window.html">glfw_destroy_window</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="glfw_error_callback-GLFWerrorfun.html">glfw_error_callback:GLFWerrorfun</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="glfw_get_framebuffer_height.html">glfw_get_framebuffer_height</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="glfw_get_framebuffer_width.html">glfw_get_framebuffer_width</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="glfw_get_pixel_ratio.html">glfw_get_pixel_ratio</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="glfw_get_window_height.html">glfw_get_window_height</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="glfw_get_window_width.html">glfw_get_window_width</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="glfw_init.html">glfw_init</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="glfw_init_and_create_compatibility_window.html">glfw_init_and_create_compatibility_window</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="glfw_init_and_create_fullscreen_compatibility_window.html">glfw_init_and_create_fullscreen_compatibility_window</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="glfw_init_and_create_fullscreen_interaction_compatibility_window.html">glfw_init_and_create_fullscreen_interaction_compatibility_window</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="glfw_init_and_create_fullscreen_interaction_window.html">glfw_init_and_create_fullscreen_interaction_window</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="glfw_init_and_create_fullscreen_interaction_window-1.html">glfw_init_and_create_fullscreen_interaction_window</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="glfw_init_and_create_fullscreen_window.html">glfw_init_and_create_fullscreen_window</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="glfw_init_and_create_fullscreen_window-1.html">glfw_init_and_create_fullscreen_window</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="glfw_init_and_create_interaction_compatibility_window.html">glfw_init_and_create_interaction_compatibility_window</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="glfw_init_and_create_interaction_window.html">glfw_init_and_create_interaction_window</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="glfw_init_and_create_window.html">glfw_init_and_create_window</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="glfw_key_callback-GLFWkeyfun.html">glfw_key_callback:GLFWkeyfun</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="glfw_make_context_current.html">glfw_make_context_current</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="glfw_mouse_button_callback-GLFWmousebuttonfun.html">glfw_mouse_button_callback:GLFWmousebuttonfun</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="glfw_poll_events.html">glfw_poll_events</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="glfw_print_primary_monitor_details.html">glfw_print_primary_monitor_details</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="glfw_print_version_string.html">glfw_print_version_string</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="glfw_print_video_mode_details.html">glfw_print_video_mode_details</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="glfw_set_compatibility_profile.html">glfw_set_compatibility_profile</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="glfw_set_core_profile.html">glfw_set_core_profile</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="glfw_swap_buffers.html">glfw_swap_buffers</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="glfw_terminate.html">glfw_terminate</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="glfw_window_focus_callback-GLFWwindowfocusfun.html">glfw_window_focus_callback:GLFWwindowfocusfun</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="glfw_window_position_callback-GLFWwindowposfun.html">glfw_window_position_callback:GLFWwindowposfun</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="glfw_window_should_close.html">glfw_window_should_close</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="glib-main-loop.html">glib-main-loop</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="glib-main-loop-1.html">glib-main-loop</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="glib_main_loop.html">glib_main_loop</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="global_transform2d.html">global_transform2d</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="global_var_test1.html">global_var_test1</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="global_var_test1b.html">global_var_test1b</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="glong_alloc.html">glong_alloc</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="glong_halloc.html">glong_halloc</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="glong_zalloc.html">glong_zalloc</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="glwrapper-arg-list-symbols.html">glwrapper-arg-list-symbols</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="glwrapper-arg-list-symbols-1.html">glwrapper-arg-list-symbols</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="godot_global_get_singleton.html">godot_global_get_singleton</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="godot_variant_new_rect2.html">godot_variant_new_rect2</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="gui_draw_rect.html">gui_draw_rect</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="gui_draw_text_in_bounds.html">gui_draw_text_in_bounds</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="half_rectangular_window_func.html">half_rectangular_window_func</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="half_rectangular_window_func2.html">half_rectangular_window_func2</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="impc-aot-insert-ext-globalvar-binding-details.html">impc:aot:insert-ext-globalvar-binding-details</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="impc-aot-insert-gl-proc-binding-details.html">impc:aot:insert-gl-proc-binding-details</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="impc-aot-insert-globalvar-binding-details.html">impc:aot:insert-globalvar-binding-details</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="impc-ir-make-arglist-str.html">impc:ir:make-arglist-str</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="impc-ti-get-global-var-types.html">impc:ti:get-global-var-types</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="impc-ti-get-globalvar-docstring.html">impc:ti:get-globalvar-docstring</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="impc-ti-get-globalvar-type.html">impc:ti:get-globalvar-type</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="impc-ti-gl-proc-alist-index.html">impc:ti:gl-proc-alist-index</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="impc-ti-globalvar-exists%3F.html">impc:ti:globalvar-exists?</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="impc-ti-print-globalvar-cache.html">impc:ti:print-globalvar-cache</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="impc-ti-register-new-globalvar.html">impc:ti:register-new-globalvar</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="impc-ti-remove-single-element-lists.html">impc:ti:remove-single-element-lists</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="impc-ti-reset-globalvar-cache.html">impc:ti:reset-globalvar-cache</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="impc-ti-set-globalvar-docstring.html">impc:ti:set-globalvar-docstring</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="init_gl.html">init_gl</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="init_globals.html">init_globals</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="load-tex.html">load-tex</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="load-tex-1.html">load-tex</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="load_assim_material_texture.html">load_assim_material_texture</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="move_triangle.html">move_triangle</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="my-gl-loop.html">my-gl-loop</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="nvg_create_context.html">nvg_create_context</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="nvg_draw_text.html">nvg_draw_text</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="ocv_puttext.html">ocv_puttext</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="ocv_rectangle.html">ocv_rectangle</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="opengl-loop.html">opengl-loop</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="opengl-loop-1.html">opengl-loop</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="opengl-loop-2.html">opengl-loop</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="opengl-loop-3.html">opengl-loop</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="opengl-test.html">opengl-test</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="opengl-test-1.html">opengl-test</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="opengl-test-2.html">opengl-test</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="opengl-test-3.html">opengl-test</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="psystem_texid.html">psystem_texid</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="rect.html">rect</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						text-info
+						
+						">
+						macro</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="rectangular_window_func.html">rectangular_window_func</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="rectr.html">rectr</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						text-info
+						
+						">
+						macro</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="set_slide_texture.html">set_slide_texture</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="set_width_and_height.html">set_width_and_height</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="shader_update_projection_texture.html">shader_update_projection_texture</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="some_gl_init.html">some_gl_init</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="texture_setup.html">texture_setup</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="width.html">width</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="width-1.html">width</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="width-2.html">width</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="width-3.html">width</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="width-4.html">width</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="width-5.html">width</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="width-6.html">width</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="width-7.html">width</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="width-8.html">width</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="width-9.html">width</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="width-10.html">width</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="width-11.html">width</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="world_texture_setup.html">world_texture_setup</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="world_width.html">world_width</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="xtm-setup-and-start-gl-loop.html">xtm-setup-and-start-gl-loop</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="xtm-vg-create-context.html">xtm-vg-create-context</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="xtm_add_rect.html">xtm_add_rect</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="xtm_add_rect-1.html">xtm_add_rect</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="xtm_add_rect-2.html">xtm_add_rect</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="xtm_add_rectd.html">xtm_add_rectd</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="xtm_add_round_rect.html">xtm_add_round_rect</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="xtm_add_round_rectd.html">xtm_add_round_rectd</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="xtm_add_rounded_rect.html">xtm_add_rounded_rect</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="xtm_add_rounded_rect-1.html">xtm_add_rounded_rect</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="xtm_add_rounded_rect_varying.html">xtm_add_rounded_rect_varying</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="xtm_add_rounded_rect_varying-1.html">xtm_add_rounded_rect_varying</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="xtm_draw_rect.html">xtm_draw_rect</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="xtm_draw_rect_fill.html">xtm_draw_rect_fill</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="xtm_draw_rect_fill-1.html">xtm_draw_rect_fill</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="xtm_draw_rect_fill-2.html">xtm_draw_rect_fill</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="xtm_draw_rect_fill-3.html">xtm_draw_rect_fill</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="xtm_draw_rect_stroke.html">xtm_draw_rect_stroke</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="xtm_draw_rect_stroke-1.html">xtm_draw_rect_stroke</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="xtm_draw_rect_stroke-2.html">xtm_draw_rect_stroke</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="xtm_draw_rect_stroke-3.html">xtm_draw_rect_stroke</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="xtm_draw_rectd.html">xtm_draw_rectd</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="xtm_draw_round_rect.html">xtm_draw_round_rect</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="xtm_draw_round_rectd.html">xtm_draw_round_rectd</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="xtm_draw_rounded_rect_fill.html">xtm_draw_rounded_rect_fill</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="xtm_draw_rounded_rect_fill-1.html">xtm_draw_rounded_rect_fill</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="xtm_draw_rounded_rect_fill-2.html">xtm_draw_rounded_rect_fill</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="xtm_draw_rounded_rect_fill-3.html">xtm_draw_rounded_rect_fill</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="xtm_draw_rounded_rect_stroke.html">xtm_draw_rounded_rect_stroke</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="xtm_draw_rounded_rect_stroke-1.html">xtm_draw_rounded_rect_stroke</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="xtm_draw_rounded_rect_stroke-2.html">xtm_draw_rounded_rect_stroke</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="xtm_draw_rounded_rect_stroke-3.html">xtm_draw_rounded_rect_stroke</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="xtm_draw_rounded_rect_varying_fill.html">xtm_draw_rounded_rect_varying_fill</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="xtm_draw_rounded_rect_varying_fill-1.html">xtm_draw_rounded_rect_varying_fill</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="xtm_draw_rounded_rect_varying_fill-2.html">xtm_draw_rounded_rect_varying_fill</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="xtm_draw_rounded_rect_varying_fill-3.html">xtm_draw_rounded_rect_varying_fill</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="xtm_draw_rounded_rect_varying_stroke.html">xtm_draw_rounded_rect_varying_stroke</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="xtm_draw_rounded_rect_varying_stroke-1.html">xtm_draw_rounded_rect_varying_stroke</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="xtm_draw_rounded_rect_varying_stroke-2.html">xtm_draw_rounded_rect_varying_stroke</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="xtm_draw_rounded_rect_varying_stroke-3.html">xtm_draw_rounded_rect_varying_stroke</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="xtm_draw_tex.html">xtm_draw_tex</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="xtm_draw_tex-1.html">xtm_draw_tex</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="xtm_draw_tex-2.html">xtm_draw_tex</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="xtm_draw_tex-3.html">xtm_draw_tex</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="xtm_draw_tex-4.html">xtm_draw_tex</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="xtm_draw_tex-5.html">xtm_draw_tex</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="xtm_draw_tex-6.html">xtm_draw_tex</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="xtm_frame_data_to_tex.html">xtm_frame_data_to_tex</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="xtm_light_angle.html">xtm_light_angle</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="xtm_projection_texture_load.html">xtm_projection_texture_load</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="xtm_projecton_texture_weight.html">xtm_projecton_texture_weight</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="xtm_vg_clear_rect.html">xtm_vg_clear_rect</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="xtm_vg_create_contextf.html">xtm_vg_create_contextf</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="xtm_vg_create_contexti32.html">xtm_vg_create_contexti32</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="xtmdoc-globalvar-handler.html">xtmdoc-globalvar-handler</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+		</div>
+	</div>	
+	
+	
+	
+	
+		
+	<div class="row">
+		<br /><br />
+	</div>	
+	
+
+
+
+	  </div>
+	  
+	  
+  	<div class="footer">
+  		
+		
+  	  <div class="container">
+		<a name="aboutsite"></a>
+		<h3>About</h3>
+		<p>This site was auto generated from the Extempore code base and is not officially part of the language documentation.</p>
+
+  	    <p class="text-muted -text-center">See also: <a href="https://extemporelang.github.io/">The Extempore language</a> | <a href="https://github.com/lambdamusic/xtm-docs">Website source</a> | <a href="http://www.michelepasin.org/projects/impromptudocs/">Who did this</a> 
+			
+		</p>
+  	  </div>
+	  
+		
+
+  	  
+  	</div>
+
+	  
+	  
+	  
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="../media/static/libs/bootstrap-3.2.0-dist/js/bootstrap.min.js"></script>
+	
+
+	<script src="https://unpkg.com/lunr/lunr.js"></script>
+
+	
+
+	
+	
+	
+	
+  </body>
+</html>

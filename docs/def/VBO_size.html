@@ -1,0 +1,1129 @@
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-2000254-3"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-2000254-3');
+</script>
+
+
+
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link rel="shortcut icon" href="../media/static/favicon.ico" />
+    
+	
+	<title>VBO_size : Extempore Docs</title>
+
+	
+
+    <!-- Bootstrap ## original specs-->
+    
+	
+	<!-- Bootswatch https://bootswatch.com/ -->
+	 <link href="../media/static/libs/bootswatch3.2/cosmo/bootstrap.min.css" rel="stylesheet">
+	 
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+		
+		
+	<style type="text/css" media="screen">
+
+
+		/* Sticky footer styles 
+		-------------------------------------------------- */
+		html {
+		  position: relative;
+		  min-height: 100%;
+		}
+		body {
+		  /* Margin bottom by footer height */
+		  margin-bottom: 200px;
+		  padding-top: 70px;
+		}
+		.footer {
+		  position: absolute;
+		  padding-top: 10px;
+		  bottom: 0;
+		  width: 100%;
+		  /* Set the fixed height of the footer here */
+		  height: 150px;
+		  background-color: #f5f5f5;
+		}
+		
+
+		.navbar-subtitle.navbar-brand {
+			color: #ffffff;
+			font-style: normal;
+		}
+
+		.navbar-function {
+			color: lightgreen;
+			font-style: normal;
+			font-family: monospace;
+		}
+		.navbar-function:hover {
+			color: lightgreen;
+			font-style: normal;
+			font-family: monospace;
+			text-decoration: none;
+		}
+		
+		.navbar-subtitle.navbar-brand a {
+			color: #ffffff;
+			font-style: normal;
+			text-decoration: underline;
+		}
+
+		.navbar-subtitle.navbar-brand a.active {
+			background: green;
+			font-style: normal;
+			text-decoration: underline;
+		}
+
+		.navbar-subtitle.navbar-brand:hover {
+			color: #ffffff;
+			font-style: normal;
+		}
+		
+	</style>	
+		
+		
+	
+	
+	
+	<style type="text/css" media="screen">
+
+	  .highlight .hll { background-color: #ffffcc }
+	.highlight  { background: #f8f8f8; }
+	.highlight .c { color: #408080; font-style: italic } /* Comment */
+	.highlight .err { border: 1px solid #FF0000 } /* Error */
+	.highlight .k { color: #008000; font-weight: bold } /* Keyword */
+	.highlight .o { color: #666666 } /* Operator */
+	.highlight .cm { color: #408080; font-style: italic } /* Comment.Multiline */
+	.highlight .cp { color: #BC7A00 } /* Comment.Preproc */
+	.highlight .c1 { color: #408080; font-style: italic } /* Comment.Single */
+	.highlight .cs { color: #408080; font-style: italic } /* Comment.Special */
+	.highlight .gd { color: #A00000 } /* Generic.Deleted */
+	.highlight .ge { font-style: italic } /* Generic.Emph */
+	.highlight .gr { color: #FF0000 } /* Generic.Error */
+	.highlight .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+	.highlight .gi { color: #00A000 } /* Generic.Inserted */
+	.highlight .go { color: #888888 } /* Generic.Output */
+	.highlight .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+	.highlight .gs { font-weight: bold } /* Generic.Strong */
+	.highlight .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+	.highlight .gt { color: #0044DD } /* Generic.Traceback */
+	.highlight .kc { color: #008000; font-weight: bold } /* Keyword.Constant */
+	.highlight .kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
+	.highlight .kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
+	.highlight .kp { color: #008000 } /* Keyword.Pseudo */
+	.highlight .kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
+	.highlight .kt { color: #B00040 } /* Keyword.Type */
+	.highlight .m { color: #666666 } /* Literal.Number */
+	.highlight .s { color: #BA2121 } /* Literal.String */
+	.highlight .na { color: #7D9029 } /* Name.Attribute */
+	.highlight .nb { color: #008000 } /* Name.Builtin */
+	.highlight .nc { color: #0000FF; font-weight: bold } /* Name.Class */
+	.highlight .no { color: #880000 } /* Name.Constant */
+	.highlight .nd { color: #AA22FF } /* Name.Decorator */
+	.highlight .ni { color: #999999; font-weight: bold } /* Name.Entity */
+	.highlight .ne { color: #D2413A; font-weight: bold } /* Name.Exception */
+	.highlight .nf { color: #0000FF } /* Name.Function */
+	.highlight .nl { color: #A0A000 } /* Name.Label */
+	.highlight .nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+	.highlight .nt { color: #008000; font-weight: bold } /* Name.Tag */
+	.highlight .nv { color: #19177C } /* Name.Variable */
+	.highlight .ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
+	.highlight .w { color: #bbbbbb } /* Text.Whitespace */
+	.highlight .mb { color: #666666 } /* Literal.Number.Bin */
+	.highlight .mf { color: #666666 } /* Literal.Number.Float */
+	.highlight .mh { color: #666666 } /* Literal.Number.Hex */
+	.highlight .mi { color: #666666 } /* Literal.Number.Integer */
+	.highlight .mo { color: #666666 } /* Literal.Number.Oct */
+	.highlight .sb { color: #BA2121 } /* Literal.String.Backtick */
+	.highlight .sc { color: #BA2121 } /* Literal.String.Char */
+	.highlight .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
+	.highlight .s2 { color: #BA2121 } /* Literal.String.Double */
+	.highlight .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
+	.highlight .sh { color: #BA2121 } /* Literal.String.Heredoc */
+	.highlight .si { color: #BB6688; font-weight: bold } /* Literal.String.Interpol */
+	.highlight .sx { color: #008000 } /* Literal.String.Other */
+	.highlight .sr { color: #BB6688 } /* Literal.String.Regex */
+	.highlight .s1 { color: #BA2121 } /* Literal.String.Single */
+	.highlight .ss { color: #19177C } /* Literal.String.Symbol */
+	.highlight .bp { color: #008000 } /* Name.Builtin.Pseudo */
+	.highlight .vc { color: #19177C } /* Name.Variable.Class */
+	.highlight .vg { color: #19177C } /* Name.Variable.Global */
+	.highlight .vi { color: #19177C } /* Name.Variable.Instance */
+	.highlight .il { color: #666666 } /* Literal.Number.Integer.Long */
+	
+	</style>
+	
+	
+		
+		
+  </head>
+  <body>
+	  
+	
+	
+	
+
+	
+<!-- https://getbootstrap.com/docs/3.4/components/#navbar -->
+
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="../index.html">Extempore Functions Index</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="../index.html">Core release (v0.8.9) <span class="sr-only">(current)</span></a></li>
+        <li ><a href="../index/extras.html">Extra functions</a></li>
+
+        
+        
+
+      </ul>
+      <form id="searchForm" class="navbar-form navbar-right" method="GET">
+        <div class="form-group">
+          <input type="text" style="width: 250px;" class="form-control " placeholder="Search" required type="search" name="q">
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+      </form>
+
+
+      <script>
+        var loc = location.origin;
+        document.getElementById("searchForm").action = loc + "/search.html";
+      </script>
+
+      <a style="display: none;" href="../search.html">hidden link</a>
+
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+
+
+
+  
+
+	  
+	  <div class="container">
+	  	
+
+	
+	<h1>VBO_size
+		&nbsp;&nbsp;<small style="font-size: 30%;" class="
+			
+			
+			label label-warning
+			">xtlang</small>
+	
+	</h1>
+	<hr>
+	<div class="lead">
+		Defined in:&nbsp;
+		<a href="https://github.com/digego/extempore/tree/v0.8.9/libs/external/gl/gl-objects.xtm" target="_blank">
+			
+			https://github.com/digego/extempore/tree/v0.8.9/libs/external/gl/gl-objects.xtm		
+		</a>
+		
+	</div>
+	
+	<br />
+	<h5>Implementation</h5>
+	<hr>
+	<div class="">
+		<div class="highlight"><pre><span></span><span class="p">(</span><span class="nf">bind-func</span> <span class="nv">VBO_size</span>
+  <span class="p">(</span><span class="k">lambda </span><span class="p">(</span><span class="nf">vbo:VBO*</span><span class="p">)</span>
+    <span class="p">(</span><span class="nf">tref</span> <span class="nv">vbo</span> <span class="mi">2</span><span class="p">)))</span>
+</pre></div>
+
+	</div>
+	
+
+	
+	
+	
+	
+		
+	
+	<br /><br />
+		  
+	<a class="btn btn-default btn-xs" href="../index.html">Back to Index
+	</a>
+	
+	
+	
+	<div style="margin-top: 50px;">
+		<br />
+		<h5>Similar Entries</h5>
+		<hr>
+		<div class="-lead">
+			
+				<li>
+					<a class="lead" href="PARAM_REVERB_SIZE.html">PARAM_REVERB_SIZE</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="PARAM_REVERB_SIZE-1.html">PARAM_REVERB_SIZE</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="PARAM_REVERB_SIZE-2.html">PARAM_REVERB_SIZE</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="QRcode_size.html">QRcode_size</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="VBO.html">VBO</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="VBO-1.html">VBO</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="VBO-2.html">VBO</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="VBO-3.html">VBO</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="VBO-4.html">VBO</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="VBO-5.html">VBO</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="VBO-6.html">VBO</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="VBO-7.html">VBO</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="VBO_create.html">VBO_create</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="VBO_create-1.html">VBO_create</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="VBO_create-2.html">VBO_create</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="VBO_create-3.html">VBO_create</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="VBO_data.html">VBO_data</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="VBO_delete.html">VBO_delete</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="VBO_id.html">VBO_id</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="VBO_type.html">VBO_type</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="VBO_update_data.html">VBO_update_data</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="ai_build_mesh_vbo.html">ai_build_mesh_vbo</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="biSize.html">biSize</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="biSizeImage.html">biSizeImage</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="bindfunc_with_zone_size.html">bindfunc_with_zone_size</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="bindfunc_with_zone_size_and_docstring.html">bindfunc_with_zone_size_and_docstring</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="create_vbo.html">create_vbo</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="file_size.html">file_size</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="get-scale-stepsize.html">get-scale-stepsize</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="get-var-em-size.html">get-var-em-size</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="get_vbo.html">get_vbo</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="godot_array_size.html">godot_array_size</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="gui_window_size_callback.html">gui_window_size_callback</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="h3d_object_size.html">h3d_object_size</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="iffchunk_size.html">iffchunk_size</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="impc-compiler-print-needs-zone-size-error.html">impc:compiler:print-needs-zone-size-error</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="impc-ir-check-type-size-calculations.html">impc:ir:check-type-size-calculations</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="impc-ir-compiler-heap-alloc-with-size.html">impc:ir:compiler:heap-alloc-with-size</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="impc-ir-compiler-heap-alloc-without-size.html">impc:ir:compiler:heap-alloc-without-size</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="impc-ir-compiler-obj-size.html">impc:ir:compiler:obj-size</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="impc-ir-compiler-stack-alloc-with-size.html">impc:ir:compiler:stack-alloc-with-size</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="impc-ir-compiler-stack-alloc-without-size.html">impc:ir:compiler:stack-alloc-without-size</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="impc-ir-compiler-zone-alloc-with-size.html">impc:ir:compiler:zone-alloc-with-size</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="impc-ir-compiler-zone-alloc-without-size.html">impc:ir:compiler:zone-alloc-without-size</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="impc-ir-get-tuple-type-size.html">impc:ir:get-tuple-type-size</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="impc-ir-get-type-size.html">impc:ir:get-type-size</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="impc-ir-objectsize-intrinsic.html">impc:ir:objectsize-intrinsic</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="impc-ti-get-closure-zone-size.html">impc:ti:get-closure-zone-size</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="impc-ti-obj-size-check.html">impc:ti:obj-size-check</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="impc-ti-set-closure-zone-size.html">impc:ti:set-closure-zone-size</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="ocv_resize.html">ocv_resize</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="ocv_resize-1.html">ocv_resize</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="ocv_resize-2.html">ocv_resize</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="ocv_resize1.html">ocv_resize1</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="ocv_resize2.html">ocv_resize2</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="ocv_size.html">ocv_size</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="psystem_size.html">psystem_size</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="psystem_sizes.html">psystem_sizes</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="resize.html">resize</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="resize-1.html">resize</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="size.html">size</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="size-1.html">size</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="t-closure-size%3F.html">t:closure-size?</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="world_data_size.html">world_data_size</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="xtm_build_mesh_vbo.html">xtm_build_mesh_vbo</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+		</div>
+	</div>	
+	
+	
+	
+	
+		
+	<div class="row">
+		<br /><br />
+	</div>	
+	
+
+
+
+	  </div>
+	  
+	  
+  	<div class="footer">
+  		
+		
+  	  <div class="container">
+		<a name="aboutsite"></a>
+		<h3>About</h3>
+		<p>This site was auto generated from the Extempore code base and is not officially part of the language documentation.</p>
+
+  	    <p class="text-muted -text-center">See also: <a href="https://extemporelang.github.io/">The Extempore language</a> | <a href="https://github.com/lambdamusic/xtm-docs">Website source</a> | <a href="http://www.michelepasin.org/projects/impromptudocs/">Who did this</a> 
+			
+		</p>
+  	  </div>
+	  
+		
+
+  	  
+  	</div>
+
+	  
+	  
+	  
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="../media/static/libs/bootstrap-3.2.0-dist/js/bootstrap.min.js"></script>
+	
+
+	<script src="https://unpkg.com/lunr/lunr.js"></script>
+
+	
+
+	
+	
+	
+	
+  </body>
+</html>

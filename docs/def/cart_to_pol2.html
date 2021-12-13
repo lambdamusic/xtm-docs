@@ -1,0 +1,3189 @@
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-2000254-3"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-2000254-3');
+</script>
+
+
+
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link rel="shortcut icon" href="../media/static/favicon.ico" />
+    
+	
+	<title>cart_to_pol2 : Extempore Docs</title>
+
+	
+
+    <!-- Bootstrap ## original specs-->
+    
+	
+	<!-- Bootswatch https://bootswatch.com/ -->
+	 <link href="../media/static/libs/bootswatch3.2/cosmo/bootstrap.min.css" rel="stylesheet">
+	 
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+		
+		
+	<style type="text/css" media="screen">
+
+
+		/* Sticky footer styles 
+		-------------------------------------------------- */
+		html {
+		  position: relative;
+		  min-height: 100%;
+		}
+		body {
+		  /* Margin bottom by footer height */
+		  margin-bottom: 200px;
+		  padding-top: 70px;
+		}
+		.footer {
+		  position: absolute;
+		  padding-top: 10px;
+		  bottom: 0;
+		  width: 100%;
+		  /* Set the fixed height of the footer here */
+		  height: 150px;
+		  background-color: #f5f5f5;
+		}
+		
+
+		.navbar-subtitle.navbar-brand {
+			color: #ffffff;
+			font-style: normal;
+		}
+
+		.navbar-function {
+			color: lightgreen;
+			font-style: normal;
+			font-family: monospace;
+		}
+		.navbar-function:hover {
+			color: lightgreen;
+			font-style: normal;
+			font-family: monospace;
+			text-decoration: none;
+		}
+		
+		.navbar-subtitle.navbar-brand a {
+			color: #ffffff;
+			font-style: normal;
+			text-decoration: underline;
+		}
+
+		.navbar-subtitle.navbar-brand a.active {
+			background: green;
+			font-style: normal;
+			text-decoration: underline;
+		}
+
+		.navbar-subtitle.navbar-brand:hover {
+			color: #ffffff;
+			font-style: normal;
+		}
+		
+	</style>	
+		
+		
+	
+	
+	
+	<style type="text/css" media="screen">
+
+	  .highlight .hll { background-color: #ffffcc }
+	.highlight  { background: #f8f8f8; }
+	.highlight .c { color: #408080; font-style: italic } /* Comment */
+	.highlight .err { border: 1px solid #FF0000 } /* Error */
+	.highlight .k { color: #008000; font-weight: bold } /* Keyword */
+	.highlight .o { color: #666666 } /* Operator */
+	.highlight .cm { color: #408080; font-style: italic } /* Comment.Multiline */
+	.highlight .cp { color: #BC7A00 } /* Comment.Preproc */
+	.highlight .c1 { color: #408080; font-style: italic } /* Comment.Single */
+	.highlight .cs { color: #408080; font-style: italic } /* Comment.Special */
+	.highlight .gd { color: #A00000 } /* Generic.Deleted */
+	.highlight .ge { font-style: italic } /* Generic.Emph */
+	.highlight .gr { color: #FF0000 } /* Generic.Error */
+	.highlight .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+	.highlight .gi { color: #00A000 } /* Generic.Inserted */
+	.highlight .go { color: #888888 } /* Generic.Output */
+	.highlight .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+	.highlight .gs { font-weight: bold } /* Generic.Strong */
+	.highlight .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+	.highlight .gt { color: #0044DD } /* Generic.Traceback */
+	.highlight .kc { color: #008000; font-weight: bold } /* Keyword.Constant */
+	.highlight .kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
+	.highlight .kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
+	.highlight .kp { color: #008000 } /* Keyword.Pseudo */
+	.highlight .kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
+	.highlight .kt { color: #B00040 } /* Keyword.Type */
+	.highlight .m { color: #666666 } /* Literal.Number */
+	.highlight .s { color: #BA2121 } /* Literal.String */
+	.highlight .na { color: #7D9029 } /* Name.Attribute */
+	.highlight .nb { color: #008000 } /* Name.Builtin */
+	.highlight .nc { color: #0000FF; font-weight: bold } /* Name.Class */
+	.highlight .no { color: #880000 } /* Name.Constant */
+	.highlight .nd { color: #AA22FF } /* Name.Decorator */
+	.highlight .ni { color: #999999; font-weight: bold } /* Name.Entity */
+	.highlight .ne { color: #D2413A; font-weight: bold } /* Name.Exception */
+	.highlight .nf { color: #0000FF } /* Name.Function */
+	.highlight .nl { color: #A0A000 } /* Name.Label */
+	.highlight .nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+	.highlight .nt { color: #008000; font-weight: bold } /* Name.Tag */
+	.highlight .nv { color: #19177C } /* Name.Variable */
+	.highlight .ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
+	.highlight .w { color: #bbbbbb } /* Text.Whitespace */
+	.highlight .mb { color: #666666 } /* Literal.Number.Bin */
+	.highlight .mf { color: #666666 } /* Literal.Number.Float */
+	.highlight .mh { color: #666666 } /* Literal.Number.Hex */
+	.highlight .mi { color: #666666 } /* Literal.Number.Integer */
+	.highlight .mo { color: #666666 } /* Literal.Number.Oct */
+	.highlight .sb { color: #BA2121 } /* Literal.String.Backtick */
+	.highlight .sc { color: #BA2121 } /* Literal.String.Char */
+	.highlight .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
+	.highlight .s2 { color: #BA2121 } /* Literal.String.Double */
+	.highlight .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
+	.highlight .sh { color: #BA2121 } /* Literal.String.Heredoc */
+	.highlight .si { color: #BB6688; font-weight: bold } /* Literal.String.Interpol */
+	.highlight .sx { color: #008000 } /* Literal.String.Other */
+	.highlight .sr { color: #BB6688 } /* Literal.String.Regex */
+	.highlight .s1 { color: #BA2121 } /* Literal.String.Single */
+	.highlight .ss { color: #19177C } /* Literal.String.Symbol */
+	.highlight .bp { color: #008000 } /* Name.Builtin.Pseudo */
+	.highlight .vc { color: #19177C } /* Name.Variable.Class */
+	.highlight .vg { color: #19177C } /* Name.Variable.Global */
+	.highlight .vi { color: #19177C } /* Name.Variable.Instance */
+	.highlight .il { color: #666666 } /* Literal.Number.Integer.Long */
+	
+	</style>
+	
+	
+		
+		
+  </head>
+  <body>
+	  
+	
+	
+	
+
+	
+<!-- https://getbootstrap.com/docs/3.4/components/#navbar -->
+
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="../index.html">Extempore Functions Index</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="../index.html">Core release (v0.8.9) <span class="sr-only">(current)</span></a></li>
+        <li ><a href="../index/extras.html">Extra functions</a></li>
+
+        
+        
+
+      </ul>
+      <form id="searchForm" class="navbar-form navbar-right" method="GET">
+        <div class="form-group">
+          <input type="text" style="width: 250px;" class="form-control " placeholder="Search" required type="search" name="q">
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+      </form>
+
+
+      <script>
+        var loc = location.origin;
+        document.getElementById("searchForm").action = loc + "/search.html";
+      </script>
+
+      <a style="display: none;" href="../search.html">hidden link</a>
+
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+
+
+
+  
+
+	  
+	  <div class="container">
+	  	
+
+	
+	<h1>cart_to_pol2
+		&nbsp;&nbsp;<small style="font-size: 30%;" class="
+			
+			
+			label label-warning
+			">xtlang</small>
+	
+	</h1>
+	<hr>
+	<div class="lead">
+		Defined in:&nbsp;
+		<a href="https://github.com/digego/extempore/tree/v0.8.9/libs/contrib/TSM_library.xtm" target="_blank">
+			
+			https://github.com/digego/extempore/tree/v0.8.9/libs/contrib/TSM_library.xtm		
+		</a>
+		
+	</div>
+	
+	<br />
+	<h5>Implementation</h5>
+	<hr>
+	<div class="">
+		<div class="highlight"><pre><span></span><span class="p">(</span><span class="nf">bind-func</span> <span class="nv">cart_to_pol2</span>
+  <span class="s">&quot;transform a whole buffer cart-&gt;pol in-place&quot;</span>
+  <span class="p">(</span><span class="k">lambda </span><span class="p">(</span><span class="nf">a:Complexf*</span> <span class="nv">n:i64</span><span class="p">)</span>
+    <span class="p">(</span><span class="k">let </span><span class="p">((</span><span class="nf">temp:float</span> <span class="mf">0.0</span><span class="p">))</span>
+    <span class="p">(</span><span class="nf">doloop</span> <span class="p">(</span><span class="nf">i</span> <span class="nv">n</span><span class="p">)</span>
+      <span class="p">(</span><span class="k">set! </span><span class="nv">temp</span> <span class="p">(</span><span class="nb">sqrt </span><span class="p">(</span><span class="nb">+ </span><span class="p">(</span><span class="nb">* </span><span class="p">(</span><span class="nf">tref</span> <span class="p">(</span><span class="nf">pref</span> <span class="nv">a</span> <span class="nv">i</span><span class="p">)</span> <span class="mi">0</span><span class="p">)</span> <span class="p">(</span><span class="nf">tref</span> <span class="p">(</span><span class="nf">pref</span> <span class="nv">a</span> <span class="nv">i</span><span class="p">)</span> <span class="mi">0</span><span class="p">))</span>
+                          <span class="p">(</span><span class="nb">* </span><span class="p">(</span><span class="nf">tref</span> <span class="p">(</span><span class="nf">pref</span> <span class="nv">a</span> <span class="nv">i</span><span class="p">)</span> <span class="mi">1</span><span class="p">)</span> <span class="p">(</span><span class="nf">tref</span> <span class="p">(</span><span class="nf">pref</span> <span class="nv">a</span> <span class="nv">i</span><span class="p">)</span> <span class="mi">1</span><span class="p">)))))</span>
+      <span class="p">(</span><span class="nf">tset!</span> <span class="p">(</span><span class="nf">pref-ptr</span> <span class="nv">a</span> <span class="nv">i</span><span class="p">)</span> <span class="mi">1</span>
+             <span class="p">(</span><span class="nf">atan2</span> <span class="p">(</span><span class="nf">tref</span> <span class="p">(</span><span class="nf">pref</span> <span class="nv">a</span> <span class="nv">i</span><span class="p">)</span> <span class="mi">1</span><span class="p">)</span> <span class="p">(</span><span class="nf">tref</span> <span class="p">(</span><span class="nf">pref</span> <span class="nv">a</span> <span class="nv">i</span><span class="p">)</span> <span class="mi">0</span><span class="p">)))</span>
+      <span class="p">(</span><span class="nf">tset!</span> <span class="p">(</span><span class="nf">pref-ptr</span> <span class="nv">a</span> <span class="nv">i</span><span class="p">)</span> <span class="mi">0</span> <span class="nv">temp</span><span class="p">))</span>
+    <span class="nv">void</span><span class="p">)))</span>
+</pre></div>
+
+	</div>
+	
+
+	
+	
+	
+	
+		
+	
+	<br /><br />
+		  
+	<a class="btn btn-default btn-xs" href="../index.html">Back to Index
+	</a>
+	
+	
+	
+	<div style="margin-top: 50px;">
+		<br />
+		<h5>Similar Entries</h5>
+		<hr>
+		<div class="-lead">
+			
+				<li>
+					<a class="lead" href="BTree_walk_postorder.html">BTree_walk_postorder</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="LEGATO_OFF.html">LEGATO_OFF</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="LEGATO_ON.html">LEGATO_ON</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="LFO_OPT_FRQ_TO_AMP.html">LFO_OPT_FRQ_TO_AMP</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="LFO_OPT_FRQ_TO_FRQ.html">LFO_OPT_FRQ_TO_FRQ</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="LR_to_MS_2_channels.html">LR_to_MS_2_channels</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="LR_to_MS_3_channels.html">LR_to_MS_3_channels</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="MS_to_LR_2_channels.html">MS_to_LR_2_channels</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="MS_to_LR_3_channels.html">MS_to_LR_3_channels</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="PaDeviceInfo_toString.html">PaDeviceInfo_toString</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="PaHostApiInfo_toString.html">PaHostApiInfo_toString</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="PaHostErrorInfo_toString.html">PaHostErrorInfo_toString</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="PaStreamCallbackTimeInfo_toString.html">PaStreamCallbackTimeInfo_toString</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="PaStreamInfo_toString.html">PaStreamInfo_toString</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="PaStreamParameters_toString.html">PaStreamParameters_toString</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="VtoPtr.html">VtoPtr</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="Widget_button.html">Widget_button</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="Widget_button-1.html">Widget_button</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="Widget_button_c.html">Widget_button_c</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="Widget_find_postorder.html">Widget_find_postorder</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="Widget_walk_postorder.html">Widget_walk_postorder</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="Windows-add-libdir-to-PATH.html">Windows-add-libdir-to-PATH</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="add_the_button.html">add_the_button</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="add_the_button-1.html">add_the_button</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="add_the_button-2.html">add_the_button</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="add_the_button-3.html">add_the_button</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="add_the_radio_button.html">add_the_radio_button</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="ai_color4_to_float4.html">ai_color4_to_float4</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="ai_matrix4_to_float.html">ai_matrix4_to_float</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="anyatom-&gt;string.html">anyatom-&gt;string</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="astra_stop.html">astra_stop</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="atom%3F.html">atom?</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="audiofile_16bitPCM_to_sample_be.html">audiofile_16bitPCM_to_sample_be</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="audiofile_16bitPCM_to_sample_le.html">audiofile_16bitPCM_to_sample_le</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="audiofile_24bitPCM_to_sample_be.html">audiofile_24bitPCM_to_sample_be</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="audiofile_24bitPCM_to_sample_le.html">audiofile_24bitPCM_to_sample_le</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="audiofile_float_to_sample_be.html">audiofile_float_to_sample_be</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="audiofile_float_to_sample_le.html">audiofile_float_to_sample_le</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="bind-data-constructors.html">bind-data-constructors</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="bind-data-deconstructors.html">bind-data-deconstructors</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="bind-data-deconstructors-macros.html">bind-data-deconstructors-macros</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="bind-data-type-constructor.html">bind-data-type-constructor</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="bottom.html">bottom</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="cart_to_pol.html">cart_to_pol</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="cart_to_pol-1.html">cart_to_pol</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="cart_to_pol-2.html">cart_to_pol</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="cart_to_pol-3.html">cart_to_pol</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="cas-xtm-to-string.html">cas-xtm-to-string</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="check-token.html">check-token</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="cl-atom%3F.html">cl:atom?</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="constructor-name-and-type.html">constructor-name-and-type</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="cpClosestPointOnSegment.html">cpClosestPointOnSegment</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="cpvtoangle.html">cpvtoangle</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="create_shadertoy_shader.html">create_shadertoy_shader</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="curl_setopts_authenticate.html">curl_setopts_authenticate</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="curl_setopts_basic.html">curl_setopts_basic</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="curl_setopts_header.html">curl_setopts_header</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="custom-match.html">custom-match</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="deconstructor-name-and-type.html">deconstructor-name-and-type</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="degToRad.html">degToRad</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="draw-skeleton.html">draw-skeleton</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="f4ToArray.html">f4ToArray</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="factor.html">factor</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						text-info
+						
+						">
+						macro</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="factorial.html">factorial</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="factorize-scheme.html">factorize-scheme</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="fill_direction_vector.html">fill_direction_vector</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="fill_direction_vector-1.html">fill_direction_vector</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="fleet_connect_to_nodes.html">fleet_connect_to_nodes</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="get_touch_id.html">get_touch_id</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="get_touch_x.html">get_touch_x</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="get_touch_y.html">get_touch_y</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="ghttp_copy_request_body_into_buffer.html">ghttp_copy_request_body_into_buffer</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="give-token.html">give-token</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="glfw_mouse_button_callback-GLFWmousebuttonfun.html">glfw_mouse_button_callback:GLFWmousebuttonfun</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="glfw_print_primary_monitor_details.html">glfw_print_primary_monitor_details</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="godot_global_get_singleton.html">godot_global_get_singleton</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="godot_variant_new_vector2.html">godot_variant_new_vector2</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="godot_variant_new_vector3.html">godot_variant_new_vector3</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="godot_vector2_new.html">godot_vector2_new</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="godot_vector2_pvar.html">godot_vector2_pvar</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="godot_vector2_set_x.html">godot_vector2_set_x</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="godot_vector2_set_y.html">godot_vector2_set_y</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="godot_vector2_var.html">godot_vector2_var</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="godot_vector3_new.html">godot_vector3_new</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="godot_vector3_pvar.html">godot_vector3_pvar</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="godot_vector3_var.html">godot_vector3_var</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="gui_find_leaf_postorder.html">gui_find_leaf_postorder</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="histogram.html">histogram</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="histogram-1.html">histogram</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="host_to_ip.html">host_to_ip</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="impc-compiler-print-bind-func-details-to-log.html">impc:compiler:print-bind-func-details-to-log</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="impc-compiler-print-binding-details-to-log.html">impc:compiler:print-binding-details-to-log</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="impc-compiler-print-dylib-loading-details-to-log.html">impc:compiler:print-dylib-loading-details-to-log</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="impc-compiler-print-lib-binding-details-to-log.html">impc:compiler:print-lib-binding-details-to-log</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="impc-compiler-print-polying-details-to-log.html">impc:compiler:print-polying-details-to-log</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="impc-ir-compiler-make-vector.html">impc:ir:compiler:make-vector</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="impc-ir-compiler-vector-ref.html">impc:ir:compiler:vector-ref</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="impc-ir-compiler-vector-set.html">impc:ir:compiler:vector-set</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="impc-ir-compiler-vector-shuffle.html">impc:ir:compiler:vector-shuffle</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="impc-ir-get-type-from-pretty-vector.html">impc:ir:get-type-from-pretty-vector</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="impc-ir-get-vector-type-from-str.html">impc:ir:get-vector-type-from-str</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="impc-ir-regex-structs-or-atoms.html">impc:ir:regex-structs-or-atoms</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="impc-ir-vector%3F.html">impc:ir:vector?</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="impc-ti-add-types-to-source.html">impc:ti:add-types-to-source</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="impc-ti-add-types-to-source-atom.html">impc:ti:add-types-to-source-atom</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="impc-ti-bitwise-not-to-eor.html">impc:ti:bitwise-not-to-eor</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="impc-ti-check-to-update-generic-vars.html">impc:ti:check-to-update-generic-vars</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="impc-ti-compile-type-dataconstructors.html">impc:ti:compile-type-dataconstructors</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="impc-ti-make-vector-check.html">impc:ti:make-vector-check</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="impc-ti-numeric-cast-operator.html">impc:ti:numeric-cast-operator</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="impc-ti-try-to-resolve-named-types.html">impc:ti:try-to-resolve-named-types</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="impc-ti-vector-ref-check.html">impc:ti:vector-ref-check</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="impc-ti-vector-set-check.html">impc:ti:vector-set-check</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="impc-ti-vector-shuffle-check.html">impc:ti:vector-shuffle-check</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="integrator_c.html">integrator_c</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="is_touch_down.html">is_touch_down</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="is_touch_move.html">is_touch_move</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="is_touch_palm.html">is_touch_palm</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="is_touch_pen.html">is_touch_pen</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="is_touch_up.html">is_touch_up</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="json_obj_iterator.html">json_obj_iterator</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="kinect_stop.html">kinect_stop</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="list-&gt;vector.html">list-&gt;vector</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="make-vector-with-proc.html">make-vector-with-proc</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="mat4_to_mat3.html">mat4_to_mat3</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="mat4_to_mat3-1.html">mat4_to_mat3</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="match-vector.html">match-vector</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="my_button_cb.html">my_button_cb</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="node_reply_loop_stop.html">node_reply_loop_stop</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="ocv_copyto.html">ocv_copyto</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="ocv_total.html">ocv_total</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="on_register_custom_schemes.html">on_register_custom_schemes</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="pc-diatonic.html">pc:diatonic</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="pol_to_cart.html">pol_to_cart</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="pol_to_cart-1.html">pol_to_cart</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="pol_to_cart-2.html">pol_to_cart</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="pol_to_cart-3.html">pol_to_cart</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="pol_to_cart2.html">pol_to_cart2</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="rados-connect-to-cluster.html">rados-connect-to-cluster</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="rados-connect-to-pool.html">rados-connect-to-pool</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="reduce-ptrdepth-to-zero.html">reduce-ptrdepth-to-zero</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="rtod.html">rtod</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="rtof.html">rtof</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="rtoi1.html">rtoi1</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="rtoi16.html">rtoi16</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="rtoi32.html">rtoi32</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="rtoi64.html">rtoi64</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="rtoi8.html">rtoi8</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="scientific-pitch-notation-to-midi-number.html">scientific-pitch-notation-to-midi-number</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="send-skeleton-osc.html">send-skeleton-osc</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="sf_read_file_into_buffer.html">sf_read_file_into_buffer</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="shadertoy-loop.html">shadertoy-loop</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="stop.html">stop</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="stop-note.html">stop-note</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="stop_load.html">stop_load</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="stop_running.html">stop_running</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="stop_sim.html">stop_sim</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="store_frame_OLA.html">store_frame_OLA</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="store_frame_PV.html">store_frame_PV</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="store_frame_iPL.html">store_frame_iPL</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="store_frame_sPL.html">store_frame_sPL</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="string-&gt;anyatom.html">string-&gt;anyatom</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="sys-host-to-ip.html">sys:host-to-ip</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="t-vector%3F.html">t:vector?</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="take-token.html">take-token</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="toString.html">toString</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="toString-1.html">toString</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="toString-2.html">toString</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="toString-3.html">toString</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="toString-4.html">toString</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="toString-5.html">toString</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="toString-6.html">toString</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="toString-7.html">toString</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="toString-8.html">toString</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="toString-9.html">toString</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="toString-10.html">toString</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="toString-11.html">toString</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="toString-12.html">toString</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="toString-13.html">toString</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="toString-14.html">toString</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="toString-15.html">toString</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="toString-16.html">toString</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="toString-17.html">toString</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="toString-18.html">toString</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="toString-19.html">toString</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="toString-20.html">toString</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="toString-21.html">toString</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="toString-22.html">toString</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="toString-23.html">toString</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="toString-24.html">toString</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="toString-25.html">toString</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="toString-26.html">toString</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="toString-27.html">toString</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="toString-28.html">toString</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="toString-29.html">toString</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="toString-30.html">toString</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="toString-31.html">toString</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="toString-32.html">toString</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="toString-33.html">toString</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="toString-34.html">toString</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="toString-35.html">toString</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="toString-36.html">toString</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="toString-37.html">toString</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="toString-38.html">toString</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="toString-39.html">toString</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="toString-40.html">toString</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="toString_help.html">toString_help</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="toString_help-1.html">toString_help</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="toString_help-2.html">toString_help</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="toString_return.html">toString_return</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="toString_space.html">toString_space</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="top.html">top</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="topclock-bpm.html">topclock-bpm</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="topclock-election.html">topclock-election</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="topclock-receive.html">topclock-receive</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="topclock-streamer.html">topclock-streamer</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="topclock-sync.html">topclock-sync</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="topclock-variable.html">topclock-variable</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="toplap-clock-election.html">toplap-clock-election</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="toplap-clock-sync.html">toplap-clock-sync</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="variable-constructor.html">variable-constructor</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="vector-&gt;list.html">vector-&gt;list</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="vector-equal%3F.html">vector-equal?</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="vector-fill!.html">vector-fill!</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="vector-test2.html">vector-test2</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="vector_gfx-XTMRENDERCB.html">vector_gfx:XTMRENDERCB</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="vector_test.html">vector_test</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="vector_test_a.html">vector_test_a</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="with-input-output-from-to-files.html">with-input-output-from-to-files</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="with-output-to-file.html">with-output-to-file</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="world_set_to_checkerboard.html">world_set_to_checkerboard</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="world_set_to_inverse.html">world_set_to_inverse</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="xtm_frame_data_to_tex.html">xtm_frame_data_to_tex</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="xtm_projecton_texture_weight.html">xtm_projecton_texture_weight</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="xtm_stop_note.html">xtm_stop_note</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						
+						text-warning
+						">
+						xtlang</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="xtmdoc-export-caches-to-json.html">xtmdoc-export-caches-to-json</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+		</div>
+	</div>	
+	
+	
+	
+	
+		
+	<div class="row">
+		<br /><br />
+	</div>	
+	
+
+
+
+	  </div>
+	  
+	  
+  	<div class="footer">
+  		
+		
+  	  <div class="container">
+		<a name="aboutsite"></a>
+		<h3>About</h3>
+		<p>This site was auto generated from the Extempore code base and is not officially part of the language documentation.</p>
+
+  	    <p class="text-muted -text-center">See also: <a href="https://extemporelang.github.io/">The Extempore language</a> | <a href="https://github.com/lambdamusic/xtm-docs">Website source</a> | <a href="http://www.michelepasin.org/projects/impromptudocs/">Who did this</a> 
+			
+		</p>
+  	  </div>
+	  
+		
+
+  	  
+  	</div>
+
+	  
+	  
+	  
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="../media/static/libs/bootstrap-3.2.0-dist/js/bootstrap.min.js"></script>
+	
+
+	<script src="https://unpkg.com/lunr/lunr.js"></script>
+
+	
+
+	
+	
+	
+	
+  </body>
+</html>
