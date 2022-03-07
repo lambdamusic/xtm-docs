@@ -34,7 +34,7 @@
     
 	
 	<!-- Bootswatch https://bootswatch.com/ -->
-	 <link href="../media/static/libs/bootswatch3.2/cosmo/bootstrap.min.css" rel="stylesheet">
+	 <link href="../media/static/libs/bootswatch3.2/lumen/bootstrap.min.css" rel="stylesheet">
 	 
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -265,7 +265,22 @@
 	<h5>Implementation</h5>
 	<hr>
 	<div class="">
-		<div class="highlight"><pre><span></span><span class="p">(</span><span class="nf">bind-func</span> <span class="nv">cvMakeColour</span> <span class="p">(</span><span class="k">lambda </span><span class="p">(</span><span class="nf">r</span> <span class="nv">g</span> <span class="nv">b</span><span class="p">)</span> <span class="c1">;; returns CvScalar</span>
+		<div class="highlight"><pre><span></span><span class="c1">;; drawing functions</span>
+<span class="p">(</span><span class="nf">bind-lib</span> <span class="nv">ocv_core_lib</span> <span class="nv">cvCircle</span> <span class="p">[</span><span class="nv">void,CvArr*,ExtCvPoint,i32,CvScalar,i32,i32,i32</span><span class="p">]</span><span class="nv">*</span><span class="p">)</span>
+<span class="p">(</span><span class="nf">bind-lib</span> <span class="nv">ocv_core_lib</span> <span class="nv">cvClipLine</span> <span class="p">[</span><span class="nv">i32,ExtCvSize,CvPoint*,CvPoint*</span><span class="p">]</span><span class="nv">*</span><span class="p">)</span>
+<span class="p">(</span><span class="nf">bind-lib</span> <span class="nv">ocv_core_lib</span> <span class="nv">cvDrawContours</span> <span class="p">[</span><span class="nv">void,CvArr*,CvSeq*,CvScalar,CvScalar,i32,i32,i32</span><span class="p">]</span><span class="nv">*</span><span class="p">)</span>
+<span class="p">(</span><span class="nf">bind-lib</span> <span class="nv">ocv_core_lib</span> <span class="nv">cvEllipse</span> <span class="p">[</span><span class="nv">void,CvArr*,ExtCvPoint,ExtCvSize,double,double,double,CvScalar,i32,i32,i32</span><span class="p">]</span><span class="nv">*</span><span class="p">)</span>
+<span class="c1">;(bind-lib ocv_core_lib cvEllipseBox [void,CvArr*,CvBox2D,CvScalar,i32,i32,i32]*)</span>
+<span class="p">(</span><span class="nf">bind-lib</span> <span class="nv">ocv_core_lib</span> <span class="nv">cvFillConvexPoly</span> <span class="p">[</span><span class="nv">void,CvArr*,CvPoint*,i32,CvScalar,i32,i32</span><span class="p">]</span><span class="nv">*</span><span class="p">)</span>
+<span class="p">(</span><span class="nf">bind-lib</span> <span class="nv">ocv_core_lib</span> <span class="nv">cvFillPoly</span> <span class="p">[</span><span class="nv">void,CvArr*,CvPoint**,i32*,i32,CvScalar,i32,i32</span><span class="p">]</span><span class="nv">*</span><span class="p">)</span>
+<span class="p">(</span><span class="nf">bind-lib</span> <span class="nv">ocv_core_lib</span> <span class="nv">cvGetTextSize</span> <span class="p">[</span><span class="nv">void,i8*,CvFont*,CvSize*,i32*</span><span class="p">]</span><span class="nv">*</span><span class="p">)</span>
+<span class="p">(</span><span class="nf">bind-lib</span> <span class="nv">ocv_core_lib</span> <span class="nv">cvInitFont</span> <span class="p">[</span><span class="nv">void,CvFont*,i32,double,double,double,i32,i32</span><span class="p">]</span><span class="nv">*</span><span class="p">)</span>
+<span class="p">(</span><span class="nf">bind-lib</span> <span class="nv">ocv_core_lib</span> <span class="nv">cvInitLineIterator</span> <span class="p">[</span><span class="nv">i32,CvArr*,ExtCvPoint,CvPoint,i8*,i32,i32,i32</span><span class="p">]</span><span class="nv">*</span><span class="p">)</span>
+<span class="p">(</span><span class="nf">bind-lib</span> <span class="nv">ocv_core_lib</span> <span class="nv">cvLine</span> <span class="p">[</span><span class="nv">void,CvArr*,ExtCvPoint,ExtCvPoint,CvScalar,i32,i32,i32</span><span class="p">]</span><span class="nv">*</span><span class="p">)</span>
+<span class="p">(</span><span class="nf">bind-lib</span> <span class="nv">ocv_core_lib</span> <span class="nv">cvPolyLine</span> <span class="p">[</span><span class="nv">void,CvArr*,CvPoint**,i32*,i32,i32,CvScalar,i32,i32,i32</span><span class="p">]</span><span class="nv">*</span><span class="p">)</span>
+<span class="p">(</span><span class="nf">bind-lib</span> <span class="nv">ocv_core_lib</span> <span class="nv">cvPutText</span> <span class="p">[</span><span class="nv">void,CvArr*,i8*,ExtCvPoint,CvFont*,CvScalar</span><span class="p">]</span><span class="nv">*</span><span class="p">)</span>
+<span class="p">(</span><span class="nf">bind-lib</span> <span class="nv">ocv_core_lib</span> <span class="nv">cvRectangle</span> <span class="p">[</span><span class="nv">void,CvArr*,ExtCvPoint,ExtCvPoint,CvScalar,i32,i32,i32</span><span class="p">]</span><span class="nv">*</span><span class="p">)</span>
+<span class="p">(</span><span class="nf">bind-func</span> <span class="nv">cvMakeColour</span> <span class="p">(</span><span class="k">lambda </span><span class="p">(</span><span class="nf">r</span> <span class="nv">g</span> <span class="nv">b</span><span class="p">)</span> <span class="c1">;; returns CvScalar</span>
         <span class="p">(</span><span class="k">let </span><span class="p">((</span><span class="nf">s:CvScalar*</span> <span class="p">(</span><span class="nf">salloc</span><span class="p">))</span> <span class="p">(</span><span class="nf">a</span> <span class="p">(</span><span class="nf">tref-ptr</span> <span class="nv">s</span> <span class="mi">0</span><span class="p">)))</span>
           <span class="p">(</span><span class="nf">aset!</span> <span class="nv">a</span> <span class="mi">0</span> <span class="nv">b</span><span class="p">)</span> <span class="p">(</span><span class="nf">aset!</span> <span class="nv">a</span> <span class="mi">1</span> <span class="nv">g</span><span class="p">)</span> <span class="p">(</span><span class="nf">aset!</span> <span class="nv">a</span> <span class="mi">0</span> <span class="nv">r</span><span class="p">)</span> <span class="p">(</span><span class="nf">pref</span> <span class="nv">s</span> <span class="mi">0</span><span class="p">))))</span>
 </pre></div>
@@ -304,9 +319,9 @@
   	  <div class="container">
 		<a name="aboutsite"></a>
 		<h3>About</h3>
-		<p>This site was auto generated from the Extempore code base and is not officially part of the language documentation.</p>
+		<p>The Extempore Functions Index was made to simplify learning about <a href="https://extemporelang.github.io/">Extempore</a> - a programming language for musical <a href="https://en.wikipedia.org/wiki/Live_coding">livecoding</a> and algorithmic composition.</p>
 
-  	    <p class="text-muted -text-center">See also: <a href="https://extemporelang.github.io/">The Extempore language</a> | <a href="https://github.com/lambdamusic/xtm-docs">Website source</a> | <a href="http://www.michelepasin.org/projects/impromptudocs/">Who did this</a> 
+  	    <p class="text-muted -text-center">See also: <a href="https://github.com/lambdamusic/xtm-docs" target="_blank">Github source</a> | <a href="http://www.michelepasin.org/projects/impromptudocs/" target="_blank">Project info</a> 
 			
 		</p>
   	  </div>

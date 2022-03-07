@@ -34,7 +34,7 @@
     
 	
 	<!-- Bootswatch https://bootswatch.com/ -->
-	 <link href="../media/static/libs/bootswatch3.2/cosmo/bootstrap.min.css" rel="stylesheet">
+	 <link href="../media/static/libs/bootswatch3.2/lumen/bootstrap.min.css" rel="stylesheet">
 	 
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -265,7 +265,28 @@
 	<h5>Implementation</h5>
 	<hr>
 	<div class="">
-		<div class="highlight"><pre><span></span><span class="p">(</span><span class="k">define-syntax </span><span class="nv">plet</span>
+		<div class="highlight"><pre><span></span><span class="c1">;; Matches patterns against datums, and executes c{body} in an environment</span>
+<span class="c1">;; with pattern variables bound. For example, here&#39;s how</span>
+<span class="c1">;; one might use c{plet} to implement vector addition, where a vector is a</span>
+<span class="c1">;; cons pair:</span>
+<span class="c1">;; &lt;pre&gt;</span>
+<span class="c1">;; (define vec1 (cons 1 2))</span>
+<span class="c1">;; ;Value: vec1</span>
+<span class="c1">;;</span>
+<span class="c1">;; (define vec2 (cons 3 4))</span>
+<span class="c1">;; ;Value: vec2</span>
+<span class="c1">;;</span>
+<span class="c1">;; (define (vector-add x y)</span>
+<span class="c1">;;   (plet (((?x1 . ?x2) x)</span>
+<span class="c1">;;          ((?y1 . ?y2) y))</span>
+<span class="c1">;;         (cons (+ x1 y1) (+ x2 y2))))</span>
+<span class="c1">;; ;Value: vector-add</span>
+<span class="c1">;;</span>
+<span class="c1">;; (vector-add vec1 vec2)</span>
+<span class="c1">;; ;Value 86: (4 . 6)</span>
+<span class="c1">;;&lt;/pre&gt;</span>
+<span class="c1">;; @args ({(pattern datum)}) body</span>
+<span class="p">(</span><span class="k">define-syntax </span><span class="nv">plet</span>
   <span class="p">(</span><span class="nf">er-macro-transformer</span>
    <span class="p">(</span><span class="k">lambda </span><span class="p">(</span><span class="nf">expr</span> <span class="nv">rename</span> <span class="nv">compare</span><span class="p">)</span>
      <span class="p">(</span><span class="k">let </span><span class="p">((</span><span class="nf">pattern-pairs</span> <span class="p">(</span><span class="nb">cadr </span><span class="nv">expr</span><span class="p">))</span>    <span class="c1">; pattern-pairs := {(pattern_i datum_i)}</span>
@@ -354,9 +375,9 @@
   	  <div class="container">
 		<a name="aboutsite"></a>
 		<h3>About</h3>
-		<p>This site was auto generated from the Extempore code base and is not officially part of the language documentation.</p>
+		<p>The Extempore Functions Index was made to simplify learning about <a href="https://extemporelang.github.io/">Extempore</a> - a programming language for musical <a href="https://en.wikipedia.org/wiki/Live_coding">livecoding</a> and algorithmic composition.</p>
 
-  	    <p class="text-muted -text-center">See also: <a href="https://extemporelang.github.io/">The Extempore language</a> | <a href="https://github.com/lambdamusic/xtm-docs">Website source</a> | <a href="http://www.michelepasin.org/projects/impromptudocs/">Who did this</a> 
+  	    <p class="text-muted -text-center">See also: <a href="https://github.com/lambdamusic/xtm-docs" target="_blank">Github source</a> | <a href="http://www.michelepasin.org/projects/impromptudocs/" target="_blank">Project info</a> 
 			
 		</p>
   	  </div>

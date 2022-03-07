@@ -34,7 +34,7 @@
     
 	
 	<!-- Bootswatch https://bootswatch.com/ -->
-	 <link href="../media/static/libs/bootswatch3.2/cosmo/bootstrap.min.css" rel="stylesheet">
+	 <link href="../media/static/libs/bootswatch3.2/lumen/bootstrap.min.css" rel="stylesheet">
 	 
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -265,7 +265,16 @@
 	<h5>Implementation</h5>
 	<hr>
 	<div class="">
-		<div class="highlight"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="nv">helper:arpeggio</span>
+		<div class="highlight"><pre><span></span><span class="c1">;</span>
+<span class="c1">;</span>
+<span class="c1">;; inner function for :arp</span>
+<span class="c1">;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;</span>
+<span class="c1">;;; eg </span>
+<span class="c1">; (helper:arpeggio (*metro* &#39;get-beat) 0 </span>
+<span class="c1">;   &#39;(c4 f4 g4 c5) 3 90 3) ;; durs/vols do not need to be a list</span>
+<span class="c1">; (helper:arpeggio (*metro* &#39;get-beat) 0</span>
+<span class="c1">;   &#39;(c4 f4 g4 c5) &#39;(3) &#39;(90) 3) ;; a list works too</span>
+<span class="p">(</span><span class="k">define </span><span class="nv">helper:arpeggio</span>
   <span class="p">(</span><span class="k">lambda </span><span class="p">(</span><span class="nf">beat</span> <span class="nv">offset</span> <span class="nv">notes</span> <span class="nv">durations</span> <span class="nv">volumes</span> <span class="nv">ch</span><span class="p">)</span>
     <span class="p">(</span><span class="k">let* </span><span class="p">((</span><span class="nf">durs</span> <span class="p">(</span><span class="nf">cl:expand-list2</span> <span class="nv">durations</span> <span class="p">(</span><span class="nf">len</span> <span class="nv">notes</span><span class="p">)))</span>
           <span class="p">(</span><span class="nf">vols</span> <span class="p">(</span><span class="nf">cl:expand-list2</span> <span class="nv">volumes</span> <span class="p">(</span><span class="nf">len</span> <span class="nv">notes</span><span class="p">)))</span>
@@ -276,16 +285,7 @@
       <span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nb">not </span><span class="p">(</span><span class="nb">null? </span><span class="p">(</span><span class="nb">cdr </span><span class="nv">notes</span><span class="p">)))</span>
         <span class="p">(</span><span class="nf">callback</span> <span class="p">(</span><span class="nf">*metro*</span> <span class="p">(</span><span class="nb">+ </span><span class="nv">beat</span> <span class="p">(</span><span class="nb">* </span><span class="mi">1</span><span class="nv">/2</span> <span class="nv">wait</span><span class="p">)))</span> 
           <span class="ss">&#39;helper:arpeggio</span> <span class="p">(</span><span class="nb">+ </span><span class="nv">beat</span> <span class="nv">wait</span><span class="p">)</span> <span class="nv">offset</span>
-          <span class="p">(</span><span class="nf">rest</span> <span class="nv">notes</span><span class="p">)</span> <span class="p">(</span><span class="nf">rest</span> <span class="nv">durs</span><span class="p">)</span> <span class="p">(</span><span class="nf">rest</span> <span class="nv">vols</span><span class="p">)</span> <span class="nv">ch</span><span class="p">)))))</span> 
-<span class="c1">;</span>
-<span class="c1">;</span>
-<span class="c1">;; inner function for :arp</span>
-<span class="c1">;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;</span>
-<span class="c1">;;; eg </span>
-<span class="c1">; (helper:arpeggio (*metro* &#39;get-beat) 0 </span>
-<span class="c1">;   &#39;(c4 f4 g4 c5) 3 90 3) ;; durs/vols do not need to be a list</span>
-<span class="c1">; (helper:arpeggio (*metro* &#39;get-beat) 0</span>
-<span class="c1">;   &#39;(c4 f4 g4 c5) &#39;(3) &#39;(90) 3) ;; a list works too</span>
+          <span class="p">(</span><span class="nf">rest</span> <span class="nv">notes</span><span class="p">)</span> <span class="p">(</span><span class="nf">rest</span> <span class="nv">durs</span><span class="p">)</span> <span class="p">(</span><span class="nf">rest</span> <span class="nv">vols</span><span class="p">)</span> <span class="nv">ch</span><span class="p">)))))</span>
 </pre></div>
 
 	</div>
@@ -322,9 +322,9 @@
   	  <div class="container">
 		<a name="aboutsite"></a>
 		<h3>About</h3>
-		<p>This site was auto generated from the Extempore code base and is not officially part of the language documentation.</p>
+		<p>The Extempore Functions Index was made to simplify learning about <a href="https://extemporelang.github.io/">Extempore</a> - a programming language for musical <a href="https://en.wikipedia.org/wiki/Live_coding">livecoding</a> and algorithmic composition.</p>
 
-  	    <p class="text-muted -text-center">See also: <a href="https://extemporelang.github.io/">The Extempore language</a> | <a href="https://github.com/lambdamusic/xtm-docs">Website source</a> | <a href="http://www.michelepasin.org/projects/impromptudocs/">Who did this</a> 
+  	    <p class="text-muted -text-center">See also: <a href="https://github.com/lambdamusic/xtm-docs" target="_blank">Github source</a> | <a href="http://www.michelepasin.org/projects/impromptudocs/" target="_blank">Project info</a> 
 			
 		</p>
   	  </div>

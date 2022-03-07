@@ -34,7 +34,7 @@
     
 	
 	<!-- Bootswatch https://bootswatch.com/ -->
-	 <link href="../media/static/libs/bootswatch3.2/cosmo/bootstrap.min.css" rel="stylesheet">
+	 <link href="../media/static/libs/bootswatch3.2/lumen/bootstrap.min.css" rel="stylesheet">
 	 
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -265,7 +265,11 @@
 	<h5>Implementation</h5>
 	<hr>
 	<div class="">
-		<div class="highlight"><pre><span></span><span class="p">(</span><span class="nf">bind-func</span> <span class="nv">sampler_note</span>
+		<div class="highlight"><pre><span></span><span class="c1">;; (sys:load &quot;libs/external/instruments_ext.xtm&quot;)</span>
+<span class="c1">;; hermite sampler  (multi-channels version)</span>
+<span class="c1">;;</span>
+<span class="c1">;; slower but less noisy (default)</span>
+<span class="p">(</span><span class="nf">bind-func</span> <span class="nv">sampler_note</span>
   <span class="p">(</span><span class="k">lambda </span><span class="p">()</span>
     <span class="p">(</span><span class="k">let </span><span class="p">((</span><span class="nf">amp_env:|4,float|</span> <span class="p">(</span><span class="nf">array</span> <span class="mf">3.0</span><span class="nv">:f</span> <span class="mf">0.0</span> <span class="mf">1.0</span> <span class="mf">20.0</span><span class="p">)))</span>
       <span class="p">(</span><span class="k">lambda </span><span class="p">(</span><span class="nf">data:NoteData*</span> <span class="nv">samples:|128,SAMPLE*|*</span> <span class="nv">samples_length:|128,i64|*</span> <span class="nv">samples_offsets:|128,i64|*</span> <span class="nv">samples_channels:|128,i64|*</span> <span class="nv">index:i64</span> <span class="nv">nargs</span> <span class="nv">dargs</span><span class="p">)</span>
@@ -1118,9 +1122,9 @@
   	  <div class="container">
 		<a name="aboutsite"></a>
 		<h3>About</h3>
-		<p>This site was auto generated from the Extempore code base and is not officially part of the language documentation.</p>
+		<p>The Extempore Functions Index was made to simplify learning about <a href="https://extemporelang.github.io/">Extempore</a> - a programming language for musical <a href="https://en.wikipedia.org/wiki/Live_coding">livecoding</a> and algorithmic composition.</p>
 
-  	    <p class="text-muted -text-center">See also: <a href="https://extemporelang.github.io/">The Extempore language</a> | <a href="https://github.com/lambdamusic/xtm-docs">Website source</a> | <a href="http://www.michelepasin.org/projects/impromptudocs/">Who did this</a> 
+  	    <p class="text-muted -text-center">See also: <a href="https://github.com/lambdamusic/xtm-docs" target="_blank">Github source</a> | <a href="http://www.michelepasin.org/projects/impromptudocs/" target="_blank">Project info</a> 
 			
 		</p>
   	  </div>

@@ -57,6 +57,23 @@ python manage.py parse_xtm
 Just an idea, but feel free to get in touch if you're willing to improve/extend it.  
 
 
+## Changelog
+
+### March 7, 2022
+
+* improved search
+* improve code extraction with comments before functions
+
+
+### December 13, 2021
+
+* adding site search in front end
+* reorg urls
+  * make a unique URL for function index (both custom and not)
+  * make list pages functions list
+  * updated fundetails so that it takes '.html' version of pages 
+
+
 ## Links
 
 * http://extempore.moso.com.au/

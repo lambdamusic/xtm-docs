@@ -34,7 +34,7 @@
     
 	
 	<!-- Bootswatch https://bootswatch.com/ -->
-	 <link href="../media/static/libs/bootswatch3.2/cosmo/bootstrap.min.css" rel="stylesheet">
+	 <link href="../media/static/libs/bootswatch3.2/lumen/bootstrap.min.css" rel="stylesheet">
 	 
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -265,7 +265,14 @@
 	<h5>Implementation</h5>
 	<hr>
 	<div class="">
-		<div class="highlight"><pre><span></span><span class="p">(</span><span class="nf">bind-func</span> <span class="nv">g_signal_connect</span> <span class="p">(</span><span class="k">lambda </span><span class="p">(</span><span class="nf">a:gpointer</span> <span class="nv">b:gchar*</span> <span class="nv">c:GCallback</span> <span class="nv">d:gpointer</span><span class="p">)</span> <span class="p">(</span><span class="nf">g_signal_connect_data</span> <span class="nv">a</span> <span class="nv">b</span> <span class="nv">c</span> <span class="nv">d</span> <span class="nv">null</span> <span class="mi">0</span><span class="p">)))</span>
+		<div class="highlight"><pre><span></span><span class="c1">;; signal stuff</span>
+<span class="p">(</span><span class="nf">bind-alias</span> <span class="nv">GClosure</span> <span class="nv">i8</span><span class="p">)</span>
+<span class="p">(</span><span class="nf">bind-alias</span> <span class="nv">GClosureNotify</span> <span class="p">[</span><span class="nv">void,gpointer,GClosure*</span><span class="p">]</span><span class="nv">*</span><span class="p">)</span>
+<span class="p">(</span><span class="nf">bind-lib</span> <span class="nv">libgobject</span> <span class="nv">g_signal_connect_data</span> <span class="p">[</span><span class="nv">gulong,gpointer,gchar*,GCallback,gpointer,GClosureNotify,i32</span><span class="p">]</span><span class="nv">*</span><span class="p">)</span>
+<span class="p">(</span><span class="nf">bind-func</span> <span class="nv">g_signal_connect</span> <span class="p">(</span><span class="k">lambda </span><span class="p">(</span><span class="nf">a:gpointer</span> <span class="nv">b:gchar*</span> <span class="nv">c:GCallback</span> <span class="nv">d:gpointer</span><span class="p">)</span> <span class="p">(</span><span class="nf">g_signal_connect_data</span> <span class="nv">a</span> <span class="nv">b</span> <span class="nv">c</span> <span class="nv">d</span> <span class="nv">null</span> <span class="mi">0</span><span class="p">)))</span>
+<span class="p">(</span><span class="nf">bind-lib</span> <span class="nv">libgobject</span> <span class="nv">g_signal_connect_object</span> <span class="p">[</span><span class="nv">gulong,gpointer,gchar*,GCallback,gpointer,i32</span><span class="p">]</span><span class="nv">*</span><span class="p">)</span>
+<span class="p">(</span><span class="nf">bind-lib</span> <span class="nv">libgobject</span> <span class="nv">g_signal_emitv</span> <span class="p">[</span><span class="nv">void,GValue*,guint,GQuark,GValue*</span><span class="p">]</span><span class="nv">*</span><span class="p">)</span>
+<span class="p">(</span><span class="nf">bind-lib</span> <span class="nv">libgobject</span> <span class="nv">g_signal_lookup</span> <span class="p">[</span><span class="nv">guint,gchar*,GType</span><span class="p">]</span><span class="nv">*</span><span class="p">)</span>
 </pre></div>
 
 	</div>
@@ -16153,9 +16160,9 @@
   	  <div class="container">
 		<a name="aboutsite"></a>
 		<h3>About</h3>
-		<p>This site was auto generated from the Extempore code base and is not officially part of the language documentation.</p>
+		<p>The Extempore Functions Index was made to simplify learning about <a href="https://extemporelang.github.io/">Extempore</a> - a programming language for musical <a href="https://en.wikipedia.org/wiki/Live_coding">livecoding</a> and algorithmic composition.</p>
 
-  	    <p class="text-muted -text-center">See also: <a href="https://extemporelang.github.io/">The Extempore language</a> | <a href="https://github.com/lambdamusic/xtm-docs">Website source</a> | <a href="http://www.michelepasin.org/projects/impromptudocs/">Who did this</a> 
+  	    <p class="text-muted -text-center">See also: <a href="https://github.com/lambdamusic/xtm-docs" target="_blank">Github source</a> | <a href="http://www.michelepasin.org/projects/impromptudocs/" target="_blank">Project info</a> 
 			
 		</p>
   	  </div>
