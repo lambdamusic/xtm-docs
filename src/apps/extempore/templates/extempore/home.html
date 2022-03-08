@@ -1,0 +1,105 @@
+{% extends "extempore/base.html" %}
+
+{# {% load ontotags %} #}
+
+{% block navbar %}
+
+	{% include 'extempore/navbar.html' %}
+
+{% endblock navbar %}
+
+
+
+
+
+{% block bodycontent %}
+
+
+
+<div class="row">
+
+	{% if namespaces %}
+	<div class="col-md-2 well">
+		<small class="text-muted text-uppercase">Groups:</small>
+		<br />
+		{% for x  in namespaces  %}
+			<br />
+			<a href="#{{x}}" class="btn btn-sm btn-default" style="margin-bottom: 2px;">{{x}}</a>
+		{% endfor %}
+
+
+	</div>
+
+	<div class="col-md-9 col-md-offset-1" >
+
+	{% else %}
+
+	<div class="col-md-11 col-md-offset-1" >
+
+	{% endif %}
+
+
+
+		{% if q %}
+
+			<h3>{{items|length}} matching functions
+				<a class="btn btn-default btn-xs" href="{% url 'extempore:home'  %}">reset
+					</a>
+			</h3>
+			<hr>
+		{% else %}
+
+			<h3>{{items|length}} functions in total</h3>
+			<hr>
+
+		{% endif %}
+
+
+
+		{% for f in items  %}
+
+
+			{% ifchanged f.get_namespace %}
+
+				<a name="{{f.get_namespace}}">&nbsp;</a>
+				<br /><br />
+				{% if not forloop.first %}<br />{% endif %}
+				<h4><small class="text-muted">GROUP:&nbsp;</small> {{f.get_namespace}}</h4>
+
+			{% endifchanged %}
+
+			<li>
+				<a class="lead" href="{{f.get_absolute_url}}">{{f.name}}</a>
+				&nbsp;&nbsp;
+
+				<small class="
+					{% ifequal f.funtype "scheme"  %}text-success{% endifequal %}
+					{% ifequal f.funtype "macro"  %}text-info{% endifequal %}
+					{% ifequal f.funtype "xtlang"  %}text-warning{% endifequal %}
+					">
+					{{f.funtype}}</small>
+
+				{# {{f.get_namespace}} #}
+			</li>
+
+		{% endfor %}
+
+
+
+	</div>
+
+
+
+</div>
+
+
+
+
+<div class="row">
+	&nbsp;
+	<br />
+	&nbsp;
+</div>
+
+
+{% endblock bodycontent %}
