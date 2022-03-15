@@ -254,9 +254,9 @@
 	<hr>
 	<div class="lead">
 		Defined in:&nbsp;
-		<a href="https://github.com/lambdamusic/xtm-hacking/blob/master/init-extempore/init_midi.xtm" target="_blank">
+		<a href="https://github.com/lambdamusic/xtm-hacking/blob/master/init-extempore/init_mixer.xtm" target="_blank">
 			
-			https://github.com/lambdamusic/xtm-hacking/blob/master/init-extempore/init_midi.xtm		
+			https://github.com/lambdamusic/xtm-hacking/blob/master/init-extempore/init_mixer.xtm		
 		</a>
 		
 	</div>
@@ -266,17 +266,15 @@
 	<hr>
 	<div class="">
 		<div class="highlight"><pre><span></span><span class="c1">;</span>
-<span class="c1">;</span>
-<span class="c1">; :mix - an alternate version of `mixer` with +/- syntax</span>
+<span class="c1">;; :mix - control Ableton LIVE mixer channels via MIDI CC</span>
 <span class="c1">;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;</span>
-<span class="c1">; MIDI mixer controls / developed for ABLETON LIVE </span>
 <span class="c1">;</span>
 <span class="c1">; Args:</span>
 <span class="c1">; -----</span>
-<span class="c1">; ch: the CC channel to use</span>
+<span class="c1">; ch: the CC channel (1-10 for volumes)</span>
 <span class="c1">; action: +/- for increment/decrement </span>
-<span class="c1">; value: the value up/down for the fader </span>
-<span class="c1">; boundary: the min or max fader value</span>
+<span class="c1">; value: the fader value number (0 to 127)</span>
+<span class="c1">; boundary: the min or max value where to stop</span>
 <span class="c1">;</span>
 <span class="c1">; Notes:</span>
 <span class="c1">; ------</span>
@@ -284,39 +282,34 @@
 <span class="c1">; Values are set in real-time using now() // [not beat]</span>
 <span class="c1">; IMPORTANT: communication is one-way only XTM=&gt;DAW (not back-synced from DAW)</span>
 <span class="c1">;</span>
-<span class="c1">; Example:</span>
-<span class="c1">; --------</span>
-<span class="c1">;</span>
-<span class="c1">;; (:mix)           -- show current cached values for all mixers</span>
-<span class="c1">;;</span>
-<span class="c1">;; (:mix 1)          -- [1 arg]: show current cached value for channel 1 </span>
-<span class="c1">;;</span>
-<span class="c1">;; (:mix 1 10)       -- [2 args]: set channel 1 to 10 (up to DEFAULT MAX)</span>
-<span class="c1">;; (:mix &#39;all 10)    -- [2 args]: set all channels to 10 </span>
-<span class="c1">;;</span>
-<span class="c1">;; (:mix 1 &#39;+ 1)       -- [3 args]: increment channel 1 by 1 (up to DEFAULT MAX)</span>
-<span class="c1">;; (:mix 1 &#39;- 1)       -- [3 args]: decrement channel 1 by -1 (up to DEFAULT MIN)</span>
-<span class="c1">;;</span>
-<span class="c1">;; (:mix 1 &#39;+ 1 50)    -- [4 args]: increment channel 1 by 1, up to 50</span>
-<span class="c1">;; (:mix 1 &#39;- 1 10)    -- [4 args]: decrement channel 1 by -1, up to 10 </span>
-<span class="c1">;</span>
 <span class="c1">; DEFAULT MIN = 0 </span>
 <span class="c1">; DEFAULT MAX = 90 </span>
+<span class="c1">;</span>
+<span class="c1">; Example:</span>
+<span class="c1">; --------</span>
+<span class="c1">;; (:mix) or (:mix &#39;all)  -- show all active values</span>
+<span class="c1">;; (:mix 1)          -- [1 arg]: show current cached value for channel 1 </span>
+<span class="c1">;; (:mix 1 10)       -- [2 args]: set channel 1 to 10 (up to DEFAULT MAX)</span>
+<span class="c1">;; (:mix &#39;all 10)    -- [2 args]: set all channels to 10 </span>
+<span class="c1">;; (:mix 1 &#39;+ 1)       -- [3 args]: increment channel 1 by 1 (up to DEFAULT MAX)</span>
+<span class="c1">;; (:mix 1 &#39;- 1)       -- [3 args]: decrement channel 1 by -1 (up to DEFAULT MIN)</span>
+<span class="c1">;; (:mix 1 &#39;+ 1 50)    -- [4 args]: increment channel 1 by 1, up to 50</span>
+<span class="c1">;; (:mix 1 &#39;- 1 10)    -- [4 args]: decrement channel 1 by -1, up to 10 </span>
 <span class="c1">;</span>
 <span class="c1">;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;</span>
 <span class="p">(</span><span class="nf">impc:aot:do-or-emit</span>
    <span class="p">(</span><span class="nf">define-macro</span> <span class="p">(</span><span class="nf">:mix</span> <span class="o">.</span> <span class="nv">args</span><span class="p">)</span>
       <span class="p">(</span><span class="k">cond </span><span class="p">((</span><span class="nf">length-equal?</span> <span class="nv">args</span> <span class="mi">0</span><span class="p">)</span>
               <span class="c1">;; eg (:mix)</span>
-              <span class="p">(</span><span class="nf">print-mixers-all</span><span class="p">))</span>
+              <span class="p">(</span><span class="nf">helper:print-mixers-all</span><span class="p">))</span>
             <span class="p">((</span><span class="nf">length-equal?</span> <span class="nv">args</span> <span class="mi">1</span><span class="p">)</span> 
-                <span class="c1">;; eg (:mix 5) ;; trick to show specific channel</span>
+                <span class="c1">;; eg (:mix 5) ;; Show VAL for specific channel</span>
             <span class="o">`</span><span class="p">(</span><span class="nf">helper:inner_mixer</span> <span class="o">,</span><span class="p">(</span><span class="nb">car </span><span class="nv">args</span><span class="p">)</span> <span class="mi">0</span> <span class="ss">&#39;none</span> <span class="ss">&#39;none</span><span class="p">))</span> 
             <span class="p">((</span><span class="nf">length-equal?</span> <span class="nv">args</span> <span class="mi">2</span><span class="p">)</span> 
                 <span class="c1">;; eg (:mix 5 10) =&gt; set to &#39;10&#39; (min/max=default)</span>
                 <span class="c1">;;; eg (:mix &#39;all 40) =&gt; set all to &#39;40&#39;</span>
               <span class="o">`</span><span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nb">equal? </span><span class="o">,</span><span class="p">(</span><span class="nb">car </span><span class="nv">args</span><span class="p">)</span> <span class="ss">&#39;all</span><span class="p">)</span> 
-                <span class="p">(</span><span class="nf">mixer-all</span> <span class="o">,</span><span class="p">(</span><span class="nb">cadr </span><span class="nv">args</span><span class="p">))</span> 
+                <span class="p">(</span><span class="nf">helper:mixer-all</span> <span class="o">,</span><span class="p">(</span><span class="nb">cadr </span><span class="nv">args</span><span class="p">))</span> 
                 <span class="p">(</span><span class="nf">helper:inner_mixer</span> <span class="o">,</span><span class="p">(</span><span class="nb">car </span><span class="nv">args</span><span class="p">)</span> <span class="o">,</span><span class="p">(</span><span class="nb">cadr </span><span class="nv">args</span><span class="p">)</span> <span class="o">,</span><span class="p">(</span><span class="nb">cadr </span><span class="nv">args</span><span class="p">)</span> <span class="o">,</span><span class="p">(</span><span class="nb">cadr </span><span class="nv">args</span><span class="p">))))</span> 
             <span class="p">((</span><span class="nf">length-equal?</span> <span class="nv">args</span> <span class="mi">3</span><span class="p">)</span>  
                 <span class="c1">;; eg (:mix 5 &#39;+ 1) =&gt; increment by &#39;1&#39; (min/max=default)</span>
@@ -371,19 +364,7 @@
 				</li>
 			
 				<li>
-					<a class="lead" href="mixer.html">mixer</a>
-					&nbsp;&nbsp;
-				
-					<small class="
-						
-						text-info
-						
-						">
-						macro</small>
-				</li>
-			
-				<li>
-					<a class="lead" href="mixer-all.html">mixer-all</a>
+					<a class="lead" href="helper-mixer-all.html">helper:mixer-all</a>
 					&nbsp;&nbsp;
 				
 					<small class="
@@ -395,7 +376,7 @@
 				</li>
 			
 				<li>
-					<a class="lead" href="print-mixer.html">print-mixer</a>
+					<a class="lead" href="helper-print-mixer.html">helper:print-mixer</a>
 					&nbsp;&nbsp;
 				
 					<small class="
@@ -407,7 +388,7 @@
 				</li>
 			
 				<li>
-					<a class="lead" href="print-mixers-all.html">print-mixers-all</a>
+					<a class="lead" href="helper-print-mixers-all.html">helper:print-mixers-all</a>
 					&nbsp;&nbsp;
 				
 					<small class="

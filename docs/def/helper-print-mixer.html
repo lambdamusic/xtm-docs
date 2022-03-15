@@ -26,7 +26,7 @@
 	<link rel="icon" href="../media/static/favicon.ico">
     
 	
-	<title>utils:mkinterval-inner : Extempore Docs</title>
+	<title>helper:print-mixer : Extempore Docs</title>
 
 	
 
@@ -243,7 +243,7 @@
 	  	
 
 	
-	<h1>utils:mkinterval-inner
+	<h1>helper:print-mixer
 		&nbsp;&nbsp;<small style="font-size: 30%;" class="
 			label label-success
 			
@@ -254,9 +254,9 @@
 	<hr>
 	<div class="lead">
 		Defined in:&nbsp;
-		<a href="https://github.com/lambdamusic/xtm-hacking/blob/master/init-extempore/init_music.xtm" target="_blank">
+		<a href="https://github.com/lambdamusic/xtm-hacking/blob/master/init-extempore/init_mixer.xtm" target="_blank">
 			
-			https://github.com/lambdamusic/xtm-hacking/blob/master/init-extempore/init_music.xtm		
+			https://github.com/lambdamusic/xtm-hacking/blob/master/init-extempore/init_mixer.xtm		
 		</a>
 		
 	</div>
@@ -266,13 +266,21 @@
 	<hr>
 	<div class="">
 		<div class="highlight"><pre><span></span><span class="c1">;</span>
-<span class="c1">; helper for :mkinterval    </span>
-<span class="c1">; calculate the interval using pc classes</span>
-<span class="c1">; if results is not within the max/min range, then return the range boundaries (quantized for the requested scale!)</span>
-<span class="c1">;</span>
-<span class="p">(</span><span class="k">define </span><span class="nv">utils:mkinterval-inner</span>
-  <span class="p">(</span><span class="k">lambda </span><span class="p">(</span><span class="nf">root</span> <span class="nv">degree</span> <span class="nv">scale_or_quality</span><span class="p">)</span>
-    <span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nb">member </span><span class="nv">scale_or_quality</span> <span class="nv">*interval-quality*</span><span class="p">)</span>
+<span class="c1">; helper:print-mixer</span>
+<span class="c1">;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;</span>
+<span class="c1">; helper </span>
+<span class="c1">;; pretty print Ableton LIVE mixer val</span>
+<span class="c1">; &lt;status&gt;: &#39;changed&#39; =&gt; stronger color  </span>
+<span class="c1">; &lt;status&gt;: default =&gt; regular print  </span>
+<span class="p">(</span><span class="k">define </span><span class="nv">helper:print-mixer</span>
+    <span class="p">(</span><span class="k">lambda </span><span class="p">(</span><span class="nf">ch</span> <span class="nv">val</span> <span class="nv">status</span><span class="p">)</span>
+        <span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nb">equal? </span><span class="nv">status</span> <span class="ss">&#39;changed</span><span class="p">)</span>
+            <span class="p">(</span><span class="nf">print-with-colors</span> <span class="ss">&#39;cyan</span> <span class="ss">&#39;default</span> <span class="no">#f</span> 
+                <span class="p">(</span><span class="nf">println</span> <span class="ss">&#39;MIXER</span> <span class="nv">ch</span> <span class="ss">&#39;=&gt;</span> <span class="nv">val</span><span class="p">))</span>
+            <span class="c1">;; else: monitor value only</span>
+            <span class="p">(</span><span class="nf">println</span> <span class="ss">&#39;MIXER</span> <span class="nv">ch</span> <span class="ss">&#39;==</span> <span class="nv">val</span><span class="p">)</span>
+        <span class="p">)</span>
+    <span class="p">))</span>
 </pre></div>
 
 	</div>
@@ -288,6 +296,29 @@
 		  
 	<a class="btn btn-default btn-xs" href="../index/extras.html">Back to Index
 	</a>
+	
+	
+	
+	<div style="margin-top: 50px;">
+		<br />
+		<h5>Similar Entries</h5>
+		<hr>
+		<div class="-lead">
+			
+				<li>
+					<a class="lead" href="helper-print-mixers-all.html">helper:print-mixers-all</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+		</div>
+	</div>	
 	
 	
 	

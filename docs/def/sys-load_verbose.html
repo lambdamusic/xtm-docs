@@ -270,7 +270,7 @@
 <span class="c1">;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;</span>
 <span class="p">(</span><span class="k">define </span><span class="nv">sys:load_verbose</span>
   <span class="p">(</span><span class="k">lambda </span><span class="p">(</span><span class="nf">path</span><span class="p">)</span>
-    <span class="p">(</span><span class="nf">println</span> <span class="ss">&#39;Loading</span> <span class="ss">&#39;*</span> <span class="nv">path</span> <span class="ss">&#39;*</span><span class="p">)</span>
+    <span class="p">(</span><span class="nf">log-info</span> <span class="ss">&#39;Loading</span> <span class="nv">path</span><span class="p">)</span>
     <span class="p">(</span><span class="nf">sys:load</span> <span class="nv">path</span><span class="p">)</span>
     <span class="p">))</span>
 </pre></div>

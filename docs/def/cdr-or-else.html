@@ -26,7 +26,7 @@
 	<link rel="icon" href="../media/static/favicon.ico">
     
 	
-	<title>print-mixers-all : Extempore Docs</title>
+	<title>cdr-or-else : Extempore Docs</title>
 
 	
 
@@ -243,20 +243,20 @@
 	  	
 
 	
-	<h1>print-mixers-all
+	<h1>cdr-or-else
 		&nbsp;&nbsp;<small style="font-size: 30%;" class="
-			label label-success
 			
+			label label-info
 			
-			">scheme</small>
+			">macro</small>
 	
 	</h1>
 	<hr>
 	<div class="lead">
 		Defined in:&nbsp;
-		<a href="https://github.com/lambdamusic/xtm-hacking/blob/master/init-extempore/init_midi.xtm" target="_blank">
+		<a href="https://github.com/lambdamusic/xtm-hacking/blob/master/init-extempore/init_lisp.xtm" target="_blank">
 			
-			https://github.com/lambdamusic/xtm-hacking/blob/master/init-extempore/init_midi.xtm		
+			https://github.com/lambdamusic/xtm-hacking/blob/master/init-extempore/init_lisp.xtm		
 		</a>
 		
 	</div>
@@ -266,17 +266,16 @@
 	<hr>
 	<div class="">
 		<div class="highlight"><pre><span></span><span class="c1">;</span>
-<span class="c1">; print-mixers-all</span>
-<span class="c1">;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;</span>
-<span class="c1">; pretty print Ableton LIVE  all mixers</span>
-<span class="p">(</span><span class="k">define </span><span class="nv">print-mixers-all</span>
-    <span class="p">(</span><span class="k">lambda </span><span class="p">()</span>
-    <span class="p">(</span><span class="nf">println</span> <span class="ss">&#39;---*Mixers</span> <span class="ss">&#39;cache*---</span><span class="p">)</span>
-    <span class="p">(</span><span class="nb">for-each </span><span class="p">(</span><span class="k">lambda </span><span class="p">(</span><span class="nf">p</span><span class="p">)</span>
-            <span class="p">(</span><span class="nf">print-mixer</span> <span class="p">(</span><span class="nb">car </span><span class="nv">p</span><span class="p">)</span> <span class="p">(</span><span class="nb">eval </span><span class="p">(</span><span class="nb">cadr </span><span class="nv">p</span><span class="p">))</span> <span class="ss">&#39;show</span><span class="p">))</span>
-        <span class="nv">*mixers*</span><span class="p">)</span>
-    <span class="p">(</span><span class="nf">println</span> <span class="p">)</span>
-        <span class="p">))</span>
+<span class="c1">;; try to apply cdr to arg1, do it and return that, otherwise return arg2</span>
+<span class="c1">;; if the arg1 list still has elements =&gt; True</span>
+<span class="c1">;; used in temporal recursions to loop through a list, and eventually go back to a seed list</span>
+<span class="c1">;;</span>
+<span class="c1">;; example</span>
+<span class="c1">;; (cdr-or-else &#39;(a) &#39;(a b)) ; =&gt; &#39;(a b)</span>
+<span class="p">(</span><span class="nf">define-macro</span> <span class="p">(</span><span class="nf">cdr-or-else</span> <span class="nv">list1</span> <span class="nv">list2</span><span class="p">)</span>
+   <span class="o">`</span><span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nb">null? </span><span class="p">(</span><span class="nb">cdr </span><span class="o">,</span><span class="nv">list1</span><span class="p">))</span>
+        <span class="o">,</span><span class="nv">list2</span>
+        <span class="p">(</span><span class="nb">cdr </span><span class="o">,</span><span class="nv">list1</span><span class="p">)))</span>
 </pre></div>
 
 	</div>

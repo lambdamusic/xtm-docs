@@ -26,7 +26,7 @@
 	<link rel="icon" href="../media/static/favicon.ico">
     
 	
-	<title>mixer : Extempore Docs</title>
+	<title>helper:mkinterval-inner : Extempore Docs</title>
 
 	
 
@@ -243,20 +243,20 @@
 	  	
 
 	
-	<h1>mixer
+	<h1>helper:mkinterval-inner
 		&nbsp;&nbsp;<small style="font-size: 30%;" class="
+			label label-success
 			
-			label label-info
 			
-			">macro</small>
+			">scheme</small>
 	
 	</h1>
 	<hr>
 	<div class="lead">
 		Defined in:&nbsp;
-		<a href="https://github.com/lambdamusic/xtm-hacking/blob/master/init-extempore/init_midi.xtm" target="_blank">
+		<a href="https://github.com/lambdamusic/xtm-hacking/blob/master/init-extempore/init_music.xtm" target="_blank">
 			
-			https://github.com/lambdamusic/xtm-hacking/blob/master/init-extempore/init_midi.xtm		
+			https://github.com/lambdamusic/xtm-hacking/blob/master/init-extempore/init_music.xtm		
 		</a>
 		
 	</div>
@@ -266,57 +266,13 @@
 	<hr>
 	<div class="">
 		<div class="highlight"><pre><span></span><span class="c1">;</span>
+<span class="c1">; helper for :mkinterval    </span>
+<span class="c1">; calculate the interval using pc classes</span>
+<span class="c1">; if results is not within the max/min range, then return the range boundaries (quantized for the requested scale!)</span>
 <span class="c1">;</span>
-<span class="c1">; mixer  </span>
-<span class="c1">;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;</span>
-<span class="c1">; MIDI mixer controls / developed for ABLETON LIVE </span>
-<span class="c1">;</span>
-<span class="c1">; Args:</span>
-<span class="c1">; -----</span>
-<span class="c1">; ch: the CC channel to use</span>
-<span class="c1">; increment: the value up/down for the fader </span>
-<span class="c1">; boundary: the min or max fader value</span>
-<span class="c1">;</span>
-<span class="c1">; Notes:</span>
-<span class="c1">; ------</span>
-<span class="c1">; CHANNEL 10 =&gt; the MASTER vol in ABLETON</span>
-<span class="c1">; setting values happens in real-time using now() // [not beat]</span>
-<span class="c1">; IMPORTANT: communication is one-way only XTM=&gt;DAW (not back-synced from DAW)</span>
-<span class="c1">;</span>
-<span class="c1">; Example:</span>
-<span class="c1">; --------</span>
-<span class="c1">;</span>
-<span class="c1">;; (mixer)           -- show current cached values for all mixers</span>
-<span class="c1">;;</span>
-<span class="c1">;; (mixer 1)          -- [1 arg]: show current cached value for channel 1 </span>
-<span class="c1">;;</span>
-<span class="c1">;; (mixer 1 10)       -- [2 args]: increment channel 1 by 10 (up to DEFAULT MAX)</span>
-<span class="c1">;; (mixer 1 -10)       -- [2 args]: decrement channel 1 by -10 (up to DEFAULT MIN)</span>
-<span class="c1">;;</span>
-<span class="c1">;; (mixer 1 10 50)    -- [3 args]: increment channel 1 by 10, up to 50</span>
-<span class="c1">;; (mixer 1 -1 10)      -- [3 args]: decrement channel 1 by -1, up to 10 </span>
-<span class="c1">;</span>
-<span class="c1">; DEFAULT MIN = 0 </span>
-<span class="c1">; DEFAULT MAX = 90 </span>
-<span class="c1">;</span>
-<span class="c1">;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;</span>
-<span class="p">(</span><span class="nf">impc:aot:do-or-emit</span>
-   <span class="p">(</span><span class="nf">define-macro</span> <span class="p">(</span><span class="nf">mixer</span> <span class="o">.</span> <span class="nv">args</span><span class="p">)</span>
-      <span class="p">(</span><span class="k">cond </span><span class="p">((</span><span class="nf">length-equal?</span> <span class="nv">args</span> <span class="mi">1</span><span class="p">)</span> 
-                <span class="c1">;; eg (mixer 5)</span>
-            <span class="o">`</span><span class="p">(</span><span class="nf">helper:inner_mixer</span> <span class="o">,</span><span class="p">(</span><span class="nb">car </span><span class="nv">args</span><span class="p">)</span> <span class="mi">0</span> <span class="ss">&#39;none</span> <span class="ss">&#39;none</span><span class="p">))</span> <span class="c1">;; trick to show specific channel</span>
-            <span class="p">((</span><span class="nf">length-equal?</span> <span class="nv">args</span> <span class="mi">2</span><span class="p">)</span> 
-                <span class="c1">;; eg (mixer 5 10) =&gt; increment by &#39;10&#39; (min/max=default)</span>
-            <span class="o">`</span><span class="p">(</span><span class="nf">helper:inner_mixer</span> <span class="o">,</span><span class="p">(</span><span class="nb">car </span><span class="nv">args</span><span class="p">)</span> <span class="o">,</span><span class="p">(</span><span class="nb">cadr </span><span class="nv">args</span><span class="p">)</span> <span class="nv">*mixer-default-lower-limit*</span> <span class="nv">*mixer-default-upper-limit*</span><span class="p">))</span> 
-            <span class="p">((</span><span class="nf">length-equal?</span> <span class="nv">args</span> <span class="mi">3</span><span class="p">)</span>  
-                <span class="c1">;; eg (mixer 5 1 20) =&gt; increment by &#39;1&#39; till 20</span>
-                <span class="c1">;; eg (mixer 5 -1 20) =&gt; increment by &#39;-1&#39; till 20</span>
-             <span class="o">`</span><span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nb">negative? </span><span class="o">,</span><span class="p">(</span><span class="nb">cadr </span><span class="nv">args</span><span class="p">))</span> 
-                <span class="p">(</span><span class="nf">helper:inner_mixer</span> <span class="o">,</span><span class="p">(</span><span class="nb">car </span><span class="nv">args</span><span class="p">)</span> <span class="o">,</span><span class="p">(</span><span class="nb">cadr </span><span class="nv">args</span><span class="p">)</span> <span class="o">,</span><span class="p">(</span><span class="nb">caddr </span><span class="nv">args</span><span class="p">)</span> <span class="nv">*mixer-upper-limit*</span><span class="p">)</span>
-                <span class="p">(</span><span class="nf">helper:inner_mixer</span> <span class="o">,</span><span class="p">(</span><span class="nb">car </span><span class="nv">args</span><span class="p">)</span> <span class="o">,</span><span class="p">(</span><span class="nb">cadr </span><span class="nv">args</span><span class="p">)</span> <span class="nv">*mixer-lower-limit*</span> <span class="o">,</span><span class="p">(</span><span class="nb">caddr </span><span class="nv">args</span><span class="p">))</span>
-                <span class="p">))</span>
-            <span class="p">(</span><span class="no">#t</span> <span class="p">(</span><span class="nf">print-mixers-all</span><span class="p">))))</span>
-<span class="p">)</span>
+<span class="p">(</span><span class="k">define </span><span class="nv">helper:mkinterval-inner</span>
+  <span class="p">(</span><span class="k">lambda </span><span class="p">(</span><span class="nf">root</span> <span class="nv">degree</span> <span class="nv">scale_or_quality</span><span class="p">)</span>
+    <span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nb">member </span><span class="nv">scale_or_quality</span> <span class="nv">*interval-quality*</span><span class="p">)</span>
 </pre></div>
 
 	</div>
@@ -332,65 +288,6 @@
 		  
 	<a class="btn btn-default btn-xs" href="../index/extras.html">Back to Index
 	</a>
-	
-	
-	
-	<div style="margin-top: 50px;">
-		<br />
-		<h5>Similar Entries</h5>
-		<hr>
-		<div class="-lead">
-			
-				<li>
-					<a class="lead" href="helper-inner_mixer.html">helper:inner_mixer</a>
-					&nbsp;&nbsp;
-				
-					<small class="
-						text-success
-						
-						
-						">
-						scheme</small>
-				</li>
-			
-				<li>
-					<a class="lead" href="mixer-all.html">mixer-all</a>
-					&nbsp;&nbsp;
-				
-					<small class="
-						text-success
-						
-						
-						">
-						scheme</small>
-				</li>
-			
-				<li>
-					<a class="lead" href="print-mixer.html">print-mixer</a>
-					&nbsp;&nbsp;
-				
-					<small class="
-						text-success
-						
-						
-						">
-						scheme</small>
-				</li>
-			
-				<li>
-					<a class="lead" href="print-mixers-all.html">print-mixers-all</a>
-					&nbsp;&nbsp;
-				
-					<small class="
-						text-success
-						
-						
-						">
-						scheme</small>
-				</li>
-			
-		</div>
-	</div>	
 	
 	
 	

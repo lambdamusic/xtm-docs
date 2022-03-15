@@ -308,10 +308,10 @@
   <span class="c1">; (println args)</span>
    <span class="p">(</span><span class="k">cond </span><span class="p">((</span><span class="nb">null? </span><span class="nv">args</span><span class="p">)</span> 
         <span class="c1">; 0 args: return a &#39;major&#39; interval using the &#39;ionian mode</span>
-        <span class="p">(</span><span class="nf">utils:mkinterval-inner</span> <span class="nv">root</span> <span class="nv">degree</span> <span class="ss">&#39;ionian</span><span class="p">))</span>     
+        <span class="p">(</span><span class="nf">helper:mkinterval-inner</span> <span class="nv">root</span> <span class="nv">degree</span> <span class="ss">&#39;ionian</span><span class="p">))</span>     
         <span class="p">((</span><span class="nf">length-equal?</span> <span class="nv">args</span> <span class="mi">1</span><span class="p">)</span> 
         <span class="c1">;; 1 arg: use whatever scale-mode symbol is passed</span>
-        <span class="p">(</span><span class="nf">utils:mkinterval-inner</span> <span class="nv">root</span> <span class="nv">degree</span> <span class="p">(</span><span class="nb">car </span><span class="nv">args</span><span class="p">)))</span>
+        <span class="p">(</span><span class="nf">helper:mkinterval-inner</span> <span class="nv">root</span> <span class="nv">degree</span> <span class="p">(</span><span class="nb">car </span><span class="nv">args</span><span class="p">)))</span>
       <span class="c1">;</span>
       <span class="p">(</span><span class="k">else </span><span class="p">(</span><span class="nf">print</span> <span class="ss">&#39;Error:</span> <span class="ss">&#39;arguments</span> <span class="ss">&#39;could</span> <span class="ss">&#39;not</span> <span class="ss">&#39;be</span> <span class="ss">&#39;resolved</span><span class="o">.</span><span class="p">))</span>               
       <span class="p">)</span>
@@ -342,7 +342,7 @@
 		<div class="-lead">
 			
 				<li>
-					<a class="lead" href="utils-mkinterval-inner.html">utils:mkinterval-inner</a>
+					<a class="lead" href="helper-mkinterval-inner.html">helper:mkinterval-inner</a>
 					&nbsp;&nbsp;
 				
 					<small class="

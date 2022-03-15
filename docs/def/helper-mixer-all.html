@@ -26,7 +26,7 @@
 	<link rel="icon" href="../media/static/favicon.ico">
     
 	
-	<title>utils:calc-quality-interval : Extempore Docs</title>
+	<title>helper:mixer-all : Extempore Docs</title>
 
 	
 
@@ -243,7 +243,7 @@
 	  	
 
 	
-	<h1>utils:calc-quality-interval
+	<h1>helper:mixer-all
 		&nbsp;&nbsp;<small style="font-size: 30%;" class="
 			label label-success
 			
@@ -254,9 +254,9 @@
 	<hr>
 	<div class="lead">
 		Defined in:&nbsp;
-		<a href="https://github.com/lambdamusic/xtm-hacking/blob/master/init-extempore/init_music.xtm" target="_blank">
+		<a href="https://github.com/lambdamusic/xtm-hacking/blob/master/init-extempore/init_mixer.xtm" target="_blank">
 			
-			https://github.com/lambdamusic/xtm-hacking/blob/master/init-extempore/init_music.xtm		
+			https://github.com/lambdamusic/xtm-hacking/blob/master/init-extempore/init_mixer.xtm		
 		</a>
 		
 	</div>
@@ -265,43 +265,25 @@
 	<h5>Implementation</h5>
 	<hr>
 	<div class="">
-		<div class="highlight"><pre><span></span><span class="c1">; https://en.wikipedia.org/wiki/Interval_(music)#Interval_number_and_quality</span>
-<span class="p">(</span><span class="k">define </span><span class="nv">utils:calc-quality-interval</span>
-  <span class="p">(</span><span class="k">lambda </span><span class="p">(</span><span class="nf">root</span> <span class="nv">number</span> <span class="nv">quality</span><span class="p">)</span>
-    <span class="p">(</span><span class="nf">cond</span>	<span class="p">((</span><span class="k">or </span><span class="p">(</span><span class="nb">= </span><span class="nv">number</span> <span class="mi">0</span><span class="p">)</span> <span class="p">(</span><span class="nb">= </span><span class="nv">number</span> <span class="mi">1</span><span class="p">))</span>
-            <span class="nv">root</span><span class="p">)</span> 
-          <span class="p">((</span><span class="k">and </span><span class="p">(</span><span class="nb">= </span><span class="nv">number</span> <span class="mi">2</span><span class="p">)</span> <span class="p">(</span><span class="nb">equal? </span><span class="nv">quality</span> <span class="ss">&#39;m</span><span class="p">))</span>
-            <span class="p">(</span><span class="nf">add</span> <span class="mi">1</span> <span class="nv">root</span><span class="p">))</span> 
-          <span class="p">((</span><span class="k">and </span><span class="p">(</span><span class="nb">= </span><span class="nv">number</span> <span class="mi">2</span><span class="p">)</span> <span class="p">(</span><span class="nb">equal? </span><span class="nv">quality</span> <span class="ss">&#39;M</span><span class="p">))</span>
-            <span class="p">(</span><span class="nf">add</span> <span class="mi">2</span> <span class="nv">root</span><span class="p">))</span> 
-          <span class="p">((</span><span class="k">and </span><span class="p">(</span><span class="nb">= </span><span class="nv">number</span> <span class="mi">3</span><span class="p">)</span> <span class="p">(</span><span class="nb">equal? </span><span class="nv">quality</span> <span class="ss">&#39;m</span><span class="p">))</span>
-            <span class="p">(</span><span class="nf">add</span> <span class="mi">3</span> <span class="nv">root</span><span class="p">))</span> 
-          <span class="p">((</span><span class="k">and </span><span class="p">(</span><span class="nb">= </span><span class="nv">number</span> <span class="mi">3</span><span class="p">)</span> <span class="p">(</span><span class="nb">equal? </span><span class="nv">quality</span> <span class="ss">&#39;M</span><span class="p">))</span>
-            <span class="p">(</span><span class="nf">add</span> <span class="mi">4</span> <span class="nv">root</span><span class="p">))</span> 
-          <span class="p">((</span><span class="nb">= </span><span class="nv">number</span> <span class="mi">4</span><span class="p">)</span> <span class="c1">;; always perfect / ignore quality value</span>
-            <span class="p">(</span><span class="nf">add</span> <span class="mi">5</span> <span class="nv">root</span><span class="p">))</span> 
-          <span class="p">((</span><span class="nb">= </span><span class="nv">number</span> <span class="mi">5</span><span class="p">)</span> <span class="c1">;; always perfect / ignore quality value</span>
-            <span class="p">(</span><span class="nf">add</span> <span class="mi">7</span> <span class="nv">root</span><span class="p">))</span> 
-          <span class="p">((</span><span class="k">and </span><span class="p">(</span><span class="nb">= </span><span class="nv">number</span> <span class="mi">6</span><span class="p">)</span> <span class="p">(</span><span class="nb">equal? </span><span class="nv">quality</span> <span class="ss">&#39;m</span><span class="p">))</span>
-            <span class="p">(</span><span class="nf">add</span> <span class="mi">8</span> <span class="nv">root</span><span class="p">))</span> 
-          <span class="p">((</span><span class="k">and </span><span class="p">(</span><span class="nb">= </span><span class="nv">number</span> <span class="mi">6</span><span class="p">)</span> <span class="p">(</span><span class="nb">equal? </span><span class="nv">quality</span> <span class="ss">&#39;M</span><span class="p">))</span>
-            <span class="p">(</span><span class="nf">add</span> <span class="mi">9</span> <span class="nv">root</span><span class="p">))</span> 
-          <span class="p">((</span><span class="k">and </span><span class="p">(</span><span class="nb">= </span><span class="nv">number</span> <span class="mi">7</span><span class="p">)</span> <span class="p">(</span><span class="nb">equal? </span><span class="nv">quality</span> <span class="ss">&#39;m</span><span class="p">))</span>
-            <span class="p">(</span><span class="nf">add</span> <span class="mi">10</span> <span class="nv">root</span><span class="p">))</span> 
-          <span class="p">((</span><span class="k">and </span><span class="p">(</span><span class="nb">= </span><span class="nv">number</span> <span class="mi">7</span><span class="p">)</span> <span class="p">(</span><span class="nb">equal? </span><span class="nv">quality</span> <span class="ss">&#39;M</span><span class="p">))</span>
-            <span class="p">(</span><span class="nf">add</span> <span class="mi">11</span> <span class="nv">root</span><span class="p">))</span> 
-          <span class="p">((</span><span class="nb">= </span><span class="nv">number</span> <span class="mi">8</span><span class="p">)</span> <span class="c1">;; always perfect / ignore quality value</span>
-            <span class="p">(</span><span class="nf">add</span> <span class="mi">12</span> <span class="nv">root</span><span class="p">))</span> 
-          <span class="p">((</span><span class="k">and </span><span class="p">(</span><span class="nb">= </span><span class="nv">number</span> <span class="mi">9</span><span class="p">)</span> <span class="p">(</span><span class="nb">equal? </span><span class="nv">quality</span> <span class="ss">&#39;m</span><span class="p">))</span>
-            <span class="p">(</span><span class="nf">add</span> <span class="mi">13</span> <span class="nv">root</span><span class="p">))</span> 
-          <span class="p">((</span><span class="k">and </span><span class="p">(</span><span class="nb">= </span><span class="nv">number</span> <span class="mi">9</span><span class="p">)</span> <span class="p">(</span><span class="nb">equal? </span><span class="nv">quality</span> <span class="ss">&#39;M</span><span class="p">))</span>
-            <span class="p">(</span><span class="nf">add</span> <span class="mi">14</span> <span class="nv">root</span><span class="p">))</span> 
-          <span class="p">((</span><span class="k">and </span><span class="p">(</span><span class="nb">= </span><span class="nv">number</span> <span class="mi">10</span><span class="p">)</span> <span class="p">(</span><span class="nb">equal? </span><span class="nv">quality</span> <span class="ss">&#39;m</span><span class="p">))</span>
-            <span class="p">(</span><span class="nf">add</span> <span class="mi">15</span> <span class="nv">root</span><span class="p">))</span> 
-          <span class="p">((</span><span class="k">and </span><span class="p">(</span><span class="nb">= </span><span class="nv">number</span> <span class="mi">10</span><span class="p">)</span> <span class="p">(</span><span class="nb">equal? </span><span class="nv">quality</span> <span class="ss">&#39;M</span><span class="p">))</span>
-            <span class="p">(</span><span class="nf">add</span> <span class="mi">16</span> <span class="nv">root</span><span class="p">))</span> 
-          <span class="p">(</span><span class="k">else </span><span class="nv">root</span><span class="p">))</span> 
-    <span class="p">))</span>
+		<div class="highlight"><pre><span></span><span class="c1">;</span>
+<span class="c1">; helper:mixer-all</span>
+<span class="c1">;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;</span>
+<span class="c1">;; UTIL: set all 9 mixers to the same val</span>
+<span class="c1">;; never called directly, but via `:mix &#39;all 90`</span>
+<span class="c1">;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;</span>
+<span class="p">(</span><span class="k">define </span><span class="nv">helper:mixer-all</span>
+    <span class="p">(</span><span class="k">lambda </span><span class="p">(</span><span class="nf">val</span><span class="p">)</span>
+        <span class="p">(</span><span class="nf">println</span> <span class="ss">&#39;---*Mixers</span> <span class="ss">&#39;Reset*---</span><span class="p">)</span>
+        <span class="p">(</span><span class="nf">:mix</span> <span class="mi">1</span> <span class="nv">val</span> <span class="p">)</span> 
+        <span class="p">(</span><span class="nf">:mix</span> <span class="mi">2</span> <span class="nv">val</span> <span class="p">)</span>
+        <span class="p">(</span><span class="nf">:mix</span> <span class="mi">3</span> <span class="nv">val</span> <span class="p">)</span>
+        <span class="p">(</span><span class="nf">:mix</span> <span class="mi">4</span> <span class="nv">val</span> <span class="p">)</span>
+        <span class="p">(</span><span class="nf">:mix</span> <span class="mi">5</span> <span class="nv">val</span> <span class="p">)</span>
+        <span class="p">(</span><span class="nf">:mix</span> <span class="mi">6</span> <span class="nv">val</span> <span class="p">)</span>
+        <span class="p">(</span><span class="nf">:mix</span> <span class="mi">7</span> <span class="nv">val</span> <span class="p">)</span>
+        <span class="p">(</span><span class="nf">:mix</span> <span class="mi">8</span> <span class="nv">val</span> <span class="p">)</span>
+        <span class="p">(</span><span class="nf">:mix</span> <span class="mi">9</span> <span class="nv">val</span> <span class="p">)</span>
+        <span class="p">))</span>
 </pre></div>
 
 	</div>

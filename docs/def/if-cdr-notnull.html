@@ -265,12 +265,18 @@
 	<h5>Implementation</h5>
 	<hr>
 	<div class="">
-		<div class="highlight"><pre><span></span><span class="c1">;</span>
-<span class="c1">;; try to apply cdr to arg1, do it and return that, otherwise return arg2</span>
-<span class="p">(</span><span class="nf">define-macro</span> <span class="p">(</span><span class="nf">if-cdr-notnull</span> <span class="nv">list1</span> <span class="nv">list2</span><span class="p">)</span>
-   <span class="o">`</span><span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nb">null? </span><span class="p">(</span><span class="nb">cdr </span><span class="o">,</span><span class="nv">list1</span><span class="p">))</span>
-        <span class="o">,</span><span class="nv">list2</span>
-        <span class="p">(</span><span class="nb">cdr </span><span class="o">,</span><span class="nv">list1</span><span class="p">)))</span>
+		<div class="highlight"><pre><span></span><span class="c1">;;</span>
+<span class="c1">;; if the cdr of the list-condition exists, then proceed / else alternaive</span>
+<span class="c1">;;</span>
+<span class="c1">;; example</span>
+<span class="c1">; (if-cdr-notnull2 &#39;(a)</span>
+<span class="c1">;   (log-info &#39;good-cdr)</span>
+<span class="c1">;   (log-info &#39;bad-cdr))  ;; =&gt; true</span>
+<span class="c1">;;</span>
+<span class="p">(</span><span class="nf">define-macro</span> <span class="p">(</span><span class="nf">if-cdr-notnull</span> <span class="nv">list1</span> <span class="nv">args</span> <span class="o">.</span> <span class="nv">elseargs</span><span class="p">)</span>
+   <span class="o">`</span><span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nb">not </span><span class="p">(</span><span class="nb">null? </span><span class="p">(</span><span class="nb">cdr </span><span class="o">,</span><span class="nv">list1</span><span class="p">)))</span>
+        <span class="o">,</span><span class="nv">args</span>
+        <span class="o">,@</span><span class="nv">elseargs</span><span class="p">)))</span>
 </pre></div>
 
 	</div>

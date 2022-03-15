@@ -15,7 +15,7 @@ from django.db import connection, models
 from django.utils.http import urlquote
 from time import strftime
 
-from settings import XTM_VERSION, XTM_LOCAL_FILES, XTM_GITHUB_URL
+from settings import XTM_VERSION, XTM_LOCAL_FILES, XTM_GITHUB_URL, XTM_EXCLUDE, CUSTOM_GITHUB_URL, CUSTOM_LOCAL_FILES, CUSTOM_EXCLUDE
 from extempore.models import *
 from extempore.management.commands.helper_parser import walk_xtm_files
 from myutils.myutils import *
@@ -78,7 +78,7 @@ def command(ctx, reset, customlib, corelib, test_mode, dryrun):
 		SOURCE_DIR = XTM_LOCAL_FILES
 		URL = XTM_GITHUB_URL
 		IS_CUSTOM = False
-		EXCLUDE = ["/share/extempore/examples", "/share/extempore/tests"]
+		EXCLUDE = XTM_EXCLUDE
 
 		_do_parse_and_save(SOURCE_DIR, URL, IS_CUSTOM, EXCLUDE, dryrun)
 
@@ -86,16 +86,16 @@ def command(ctx, reset, customlib, corelib, test_mode, dryrun):
 
 	if customlib:
 
-		SOURCE_DIR = ["/Users/michele.pasin/Dropbox/code/extempore/xtm-hacking/init-extempore"] 
-		URL = "https://github.com/lambdamusic/xtm-hacking/blob/master/init-extempore"
+		SOURCE_DIR = CUSTOM_LOCAL_FILES
+		URL = CUSTOM_GITHUB_URL
 		IS_CUSTOM = True
-		EXCLUDE = ["init_midi_legacy.xtm", "drum-rack-creation", "init_symbols", "init_aliases", "legacy"]
+		EXCLUDE = CUSTOM_EXCLUDE
 
 		_do_parse_and_save(SOURCE_DIR, URL, IS_CUSTOM, EXCLUDE, dryrun)
 
 
 	if test_mode:
-
+		# Hard coded for testing
 		SOURCE_DIR = ["/Users/michele.pasin/dev2/extempore-docs/xtm-docs/src/apps/extempore/management/commands/tests"] 
 		URL = "https://github.com/lambdamusic/xtm-hacking/blob/master/init-extempore"
 		IS_CUSTOM = True

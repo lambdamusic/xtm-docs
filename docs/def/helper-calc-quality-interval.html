@@ -26,7 +26,7 @@
 	<link rel="icon" href="../media/static/favicon.ico">
     
 	
-	<title>util:pc_to_interval : Extempore Docs</title>
+	<title>helper:calc-quality-interval : Extempore Docs</title>
 
 	
 
@@ -243,7 +243,7 @@
 	  	
 
 	
-	<h1>util:pc_to_interval
+	<h1>helper:calc-quality-interval
 		&nbsp;&nbsp;<small style="font-size: 30%;" class="
 			label label-success
 			
@@ -265,22 +265,43 @@
 	<h5>Implementation</h5>
 	<hr>
 	<div class="">
-		<div class="highlight"><pre><span></span><span class="c1">;; turn a pitch class step interval notation to a more traditional interval notation</span>
-<span class="c1">;; eg </span>
-<span class="c1">;; intervallo di 1 = same note VS 0 in pc steps</span>
-<span class="c1">;; intervallo di 2 = next pitch in scale VS 1 in pc steps</span>
-<span class="c1">;; intervallo di 4 = quarta eg &#39;fa&#39; in do maggiore VS 3 in pc steps</span>
-<span class="c1">;; intervallo di 8 = ottava VS 7 in pc steps</span>
-<span class="c1">;</span>
-<span class="p">(</span><span class="k">define </span><span class="nv">util:pc_to_interval</span>
-  <span class="p">(</span><span class="k">lambda </span><span class="p">(</span><span class="nf">pcstep</span><span class="p">)</span>
-    <span class="p">(</span><span class="nf">cond</span>	<span class="p">((</span><span class="nb">&gt; </span><span class="nv">pcstep</span> <span class="mi">0</span><span class="p">)</span>
-            <span class="p">(</span><span class="nb">- </span><span class="nv">pcstep</span> <span class="mi">1</span><span class="p">))</span>
-          <span class="p">((</span><span class="nb">&lt; </span><span class="nv">pcstep</span> <span class="mi">0</span><span class="p">)</span>
-            <span class="p">(</span><span class="nb">+ </span><span class="nv">pcstep</span> <span class="mi">1</span><span class="p">))</span>
-          <span class="p">(</span><span class="k">else </span><span class="mi">0</span><span class="p">))</span>
-    <span class="p">)</span>
-<span class="p">)</span>
+		<div class="highlight"><pre><span></span><span class="c1">; https://en.wikipedia.org/wiki/Interval_(music)#Interval_number_and_quality</span>
+<span class="p">(</span><span class="k">define </span><span class="nv">helper:calc-quality-interval</span>
+  <span class="p">(</span><span class="k">lambda </span><span class="p">(</span><span class="nf">root</span> <span class="nv">number</span> <span class="nv">quality</span><span class="p">)</span>
+    <span class="p">(</span><span class="nf">cond</span>	<span class="p">((</span><span class="k">or </span><span class="p">(</span><span class="nb">= </span><span class="nv">number</span> <span class="mi">0</span><span class="p">)</span> <span class="p">(</span><span class="nb">= </span><span class="nv">number</span> <span class="mi">1</span><span class="p">))</span>
+            <span class="nv">root</span><span class="p">)</span> 
+          <span class="p">((</span><span class="k">and </span><span class="p">(</span><span class="nb">= </span><span class="nv">number</span> <span class="mi">2</span><span class="p">)</span> <span class="p">(</span><span class="nb">equal? </span><span class="nv">quality</span> <span class="ss">&#39;m</span><span class="p">))</span>
+            <span class="p">(</span><span class="nf">add</span> <span class="mi">1</span> <span class="nv">root</span><span class="p">))</span> 
+          <span class="p">((</span><span class="k">and </span><span class="p">(</span><span class="nb">= </span><span class="nv">number</span> <span class="mi">2</span><span class="p">)</span> <span class="p">(</span><span class="nb">equal? </span><span class="nv">quality</span> <span class="ss">&#39;M</span><span class="p">))</span>
+            <span class="p">(</span><span class="nf">add</span> <span class="mi">2</span> <span class="nv">root</span><span class="p">))</span> 
+          <span class="p">((</span><span class="k">and </span><span class="p">(</span><span class="nb">= </span><span class="nv">number</span> <span class="mi">3</span><span class="p">)</span> <span class="p">(</span><span class="nb">equal? </span><span class="nv">quality</span> <span class="ss">&#39;m</span><span class="p">))</span>
+            <span class="p">(</span><span class="nf">add</span> <span class="mi">3</span> <span class="nv">root</span><span class="p">))</span> 
+          <span class="p">((</span><span class="k">and </span><span class="p">(</span><span class="nb">= </span><span class="nv">number</span> <span class="mi">3</span><span class="p">)</span> <span class="p">(</span><span class="nb">equal? </span><span class="nv">quality</span> <span class="ss">&#39;M</span><span class="p">))</span>
+            <span class="p">(</span><span class="nf">add</span> <span class="mi">4</span> <span class="nv">root</span><span class="p">))</span> 
+          <span class="p">((</span><span class="nb">= </span><span class="nv">number</span> <span class="mi">4</span><span class="p">)</span> <span class="c1">;; always perfect / ignore quality value</span>
+            <span class="p">(</span><span class="nf">add</span> <span class="mi">5</span> <span class="nv">root</span><span class="p">))</span> 
+          <span class="p">((</span><span class="nb">= </span><span class="nv">number</span> <span class="mi">5</span><span class="p">)</span> <span class="c1">;; always perfect / ignore quality value</span>
+            <span class="p">(</span><span class="nf">add</span> <span class="mi">7</span> <span class="nv">root</span><span class="p">))</span> 
+          <span class="p">((</span><span class="k">and </span><span class="p">(</span><span class="nb">= </span><span class="nv">number</span> <span class="mi">6</span><span class="p">)</span> <span class="p">(</span><span class="nb">equal? </span><span class="nv">quality</span> <span class="ss">&#39;m</span><span class="p">))</span>
+            <span class="p">(</span><span class="nf">add</span> <span class="mi">8</span> <span class="nv">root</span><span class="p">))</span> 
+          <span class="p">((</span><span class="k">and </span><span class="p">(</span><span class="nb">= </span><span class="nv">number</span> <span class="mi">6</span><span class="p">)</span> <span class="p">(</span><span class="nb">equal? </span><span class="nv">quality</span> <span class="ss">&#39;M</span><span class="p">))</span>
+            <span class="p">(</span><span class="nf">add</span> <span class="mi">9</span> <span class="nv">root</span><span class="p">))</span> 
+          <span class="p">((</span><span class="k">and </span><span class="p">(</span><span class="nb">= </span><span class="nv">number</span> <span class="mi">7</span><span class="p">)</span> <span class="p">(</span><span class="nb">equal? </span><span class="nv">quality</span> <span class="ss">&#39;m</span><span class="p">))</span>
+            <span class="p">(</span><span class="nf">add</span> <span class="mi">10</span> <span class="nv">root</span><span class="p">))</span> 
+          <span class="p">((</span><span class="k">and </span><span class="p">(</span><span class="nb">= </span><span class="nv">number</span> <span class="mi">7</span><span class="p">)</span> <span class="p">(</span><span class="nb">equal? </span><span class="nv">quality</span> <span class="ss">&#39;M</span><span class="p">))</span>
+            <span class="p">(</span><span class="nf">add</span> <span class="mi">11</span> <span class="nv">root</span><span class="p">))</span> 
+          <span class="p">((</span><span class="nb">= </span><span class="nv">number</span> <span class="mi">8</span><span class="p">)</span> <span class="c1">;; always perfect / ignore quality value</span>
+            <span class="p">(</span><span class="nf">add</span> <span class="mi">12</span> <span class="nv">root</span><span class="p">))</span> 
+          <span class="p">((</span><span class="k">and </span><span class="p">(</span><span class="nb">= </span><span class="nv">number</span> <span class="mi">9</span><span class="p">)</span> <span class="p">(</span><span class="nb">equal? </span><span class="nv">quality</span> <span class="ss">&#39;m</span><span class="p">))</span>
+            <span class="p">(</span><span class="nf">add</span> <span class="mi">13</span> <span class="nv">root</span><span class="p">))</span> 
+          <span class="p">((</span><span class="k">and </span><span class="p">(</span><span class="nb">= </span><span class="nv">number</span> <span class="mi">9</span><span class="p">)</span> <span class="p">(</span><span class="nb">equal? </span><span class="nv">quality</span> <span class="ss">&#39;M</span><span class="p">))</span>
+            <span class="p">(</span><span class="nf">add</span> <span class="mi">14</span> <span class="nv">root</span><span class="p">))</span> 
+          <span class="p">((</span><span class="k">and </span><span class="p">(</span><span class="nb">= </span><span class="nv">number</span> <span class="mi">10</span><span class="p">)</span> <span class="p">(</span><span class="nb">equal? </span><span class="nv">quality</span> <span class="ss">&#39;m</span><span class="p">))</span>
+            <span class="p">(</span><span class="nf">add</span> <span class="mi">15</span> <span class="nv">root</span><span class="p">))</span> 
+          <span class="p">((</span><span class="k">and </span><span class="p">(</span><span class="nb">= </span><span class="nv">number</span> <span class="mi">10</span><span class="p">)</span> <span class="p">(</span><span class="nb">equal? </span><span class="nv">quality</span> <span class="ss">&#39;M</span><span class="p">))</span>
+            <span class="p">(</span><span class="nf">add</span> <span class="mi">16</span> <span class="nv">root</span><span class="p">))</span> 
+          <span class="p">(</span><span class="k">else </span><span class="nv">root</span><span class="p">))</span> 
+    <span class="p">))</span>
 </pre></div>
 
 	</div>
@@ -296,125 +317,6 @@
 		  
 	<a class="btn btn-default btn-xs" href="../index/extras.html">Back to Index
 	</a>
-	
-	
-	
-	<div style="margin-top: 50px;">
-		<br />
-		<h5>Similar Entries</h5>
-		<hr>
-		<div class="-lead">
-			
-				<li>
-					<a class="lead" href="-mkinterval.html">:mkinterval</a>
-					&nbsp;&nbsp;
-				
-					<small class="
-						text-success
-						
-						
-						">
-						scheme</small>
-				</li>
-			
-				<li>
-					<a class="lead" href="cl-list-to-string.html">cl:list-to-string</a>
-					&nbsp;&nbsp;
-				
-					<small class="
-						text-success
-						
-						
-						">
-						scheme</small>
-				</li>
-			
-				<li>
-					<a class="lead" href="cl-string-tokenize.html">cl:string-tokenize</a>
-					&nbsp;&nbsp;
-				
-					<small class="
-						text-success
-						
-						
-						">
-						scheme</small>
-				</li>
-			
-				<li>
-					<a class="lead" href="monitor.html">monitor</a>
-					&nbsp;&nbsp;
-				
-					<small class="
-						
-						text-info
-						
-						">
-						macro</small>
-				</li>
-			
-				<li>
-					<a class="lead" href="pc-quant.html">pc:quant</a>
-					&nbsp;&nbsp;
-				
-					<small class="
-						text-success
-						
-						
-						">
-						scheme</small>
-				</li>
-			
-				<li>
-					<a class="lead" href="pc-ran.html">pc:ran</a>
-					&nbsp;&nbsp;
-				
-					<small class="
-						text-success
-						
-						
-						">
-						scheme</small>
-				</li>
-			
-				<li>
-					<a class="lead" href="to-octave.html">to-octave</a>
-					&nbsp;&nbsp;
-				
-					<small class="
-						text-success
-						
-						
-						">
-						scheme</small>
-				</li>
-			
-				<li>
-					<a class="lead" href="utils-calc-quality-interval.html">utils:calc-quality-interval</a>
-					&nbsp;&nbsp;
-				
-					<small class="
-						text-success
-						
-						
-						">
-						scheme</small>
-				</li>
-			
-				<li>
-					<a class="lead" href="utils-mkinterval-inner.html">utils:mkinterval-inner</a>
-					&nbsp;&nbsp;
-				
-					<small class="
-						text-success
-						
-						
-						">
-						scheme</small>
-				</li>
-			
-		</div>
-	</div>	
 	
 	
 	

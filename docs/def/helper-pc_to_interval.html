@@ -26,7 +26,7 @@
 	<link rel="icon" href="../media/static/favicon.ico">
     
 	
-	<title>print-mixer : Extempore Docs</title>
+	<title>helper:pc_to_interval : Extempore Docs</title>
 
 	
 
@@ -243,7 +243,7 @@
 	  	
 
 	
-	<h1>print-mixer
+	<h1>helper:pc_to_interval
 		&nbsp;&nbsp;<small style="font-size: 30%;" class="
 			label label-success
 			
@@ -254,9 +254,9 @@
 	<hr>
 	<div class="lead">
 		Defined in:&nbsp;
-		<a href="https://github.com/lambdamusic/xtm-hacking/blob/master/init-extempore/init_midi.xtm" target="_blank">
+		<a href="https://github.com/lambdamusic/xtm-hacking/blob/master/init-extempore/init_music.xtm" target="_blank">
 			
-			https://github.com/lambdamusic/xtm-hacking/blob/master/init-extempore/init_midi.xtm		
+			https://github.com/lambdamusic/xtm-hacking/blob/master/init-extempore/init_music.xtm		
 		</a>
 		
 	</div>
@@ -265,21 +265,22 @@
 	<h5>Implementation</h5>
 	<hr>
 	<div class="">
-		<div class="highlight"><pre><span></span><span class="c1">;</span>
-<span class="c1">; print-mixer</span>
-<span class="c1">;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;</span>
-<span class="c1">;; pretty print Ableton LIVE mixer val</span>
-<span class="c1">; &lt;status&gt;: &#39;changed&#39; =&gt; stronger color  </span>
-<span class="c1">; &lt;status&gt;: default =&gt; regular print  </span>
-<span class="p">(</span><span class="k">define </span><span class="nv">print-mixer</span>
-    <span class="p">(</span><span class="k">lambda </span><span class="p">(</span><span class="nf">ch</span> <span class="nv">val</span> <span class="nv">status</span><span class="p">)</span>
-        <span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nb">equal? </span><span class="nv">status</span> <span class="ss">&#39;changed</span><span class="p">)</span>
-            <span class="p">(</span><span class="nf">print-with-colors</span> <span class="ss">&#39;cyan</span> <span class="ss">&#39;default</span> <span class="no">#f</span> 
-                <span class="p">(</span><span class="nf">println</span> <span class="ss">&#39;MIXER</span> <span class="nv">ch</span> <span class="ss">&#39;=&gt;</span> <span class="nv">val</span><span class="p">))</span>
-            <span class="c1">;; else: monitor value only</span>
-            <span class="p">(</span><span class="nf">println</span> <span class="ss">&#39;MIXER</span> <span class="nv">ch</span> <span class="ss">&#39;==</span> <span class="nv">val</span><span class="p">)</span>
-        <span class="p">)</span>
-    <span class="p">))</span>
+		<div class="highlight"><pre><span></span><span class="c1">;; turn a pitch class step interval notation to a more traditional interval notation</span>
+<span class="c1">;; eg </span>
+<span class="c1">;; intervallo di 1 = same note VS 0 in pc steps</span>
+<span class="c1">;; intervallo di 2 = next pitch in scale VS 1 in pc steps</span>
+<span class="c1">;; intervallo di 4 = quarta eg &#39;fa&#39; in do maggiore VS 3 in pc steps</span>
+<span class="c1">;; intervallo di 8 = ottava VS 7 in pc steps</span>
+<span class="c1">;</span>
+<span class="p">(</span><span class="k">define </span><span class="nv">helper:pc_to_interval</span>
+  <span class="p">(</span><span class="k">lambda </span><span class="p">(</span><span class="nf">pcstep</span><span class="p">)</span>
+    <span class="p">(</span><span class="nf">cond</span>	<span class="p">((</span><span class="nb">&gt; </span><span class="nv">pcstep</span> <span class="mi">0</span><span class="p">)</span>
+            <span class="p">(</span><span class="nb">- </span><span class="nv">pcstep</span> <span class="mi">1</span><span class="p">))</span>
+          <span class="p">((</span><span class="nb">&lt; </span><span class="nv">pcstep</span> <span class="mi">0</span><span class="p">)</span>
+            <span class="p">(</span><span class="nb">+ </span><span class="nv">pcstep</span> <span class="mi">1</span><span class="p">))</span>
+          <span class="p">(</span><span class="k">else </span><span class="mi">0</span><span class="p">))</span>
+    <span class="p">)</span>
+<span class="p">)</span>
 </pre></div>
 
 	</div>
@@ -305,7 +306,103 @@
 		<div class="-lead">
 			
 				<li>
-					<a class="lead" href="print-mixers-all.html">print-mixers-all</a>
+					<a class="lead" href="-mkinterval.html">:mkinterval</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="cl-list-to-string.html">cl:list-to-string</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="cl-string-tokenize.html">cl:string-tokenize</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="helper-calc-quality-interval.html">helper:calc-quality-interval</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="helper-mkinterval-inner.html">helper:mkinterval-inner</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="monitor.html">monitor</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						text-info
+						
+						">
+						macro</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="pc-quant.html">pc:quant</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="pc-ran.html">pc:ran</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="to-octave.html">to-octave</a>
 					&nbsp;&nbsp;
 				
 					<small class="

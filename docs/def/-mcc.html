@@ -266,83 +266,36 @@
 	<hr>
 	<div class="">
 		<div class="highlight"><pre><span></span><span class="c1">;</span>
-<span class="c1">;</span>
-<span class="c1">;; :mcc MIDI CONTROL CHANGE  </span>
+<span class="c1">;; :mcc MIDI CONTROL CHANGE SHORTCUT</span>
 <span class="c1">;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;</span>
-<span class="c1">; midi control change with implicit beat &amp; *mididevice*</span>
-<span class="c1">; (mcc cc|40 val|90 {ch|0})  # channel is optional</span>
-<span class="c1">; ++ Uses default *mididevice* symbol </span>
-<span class="c1">;</span>
-<span class="c1">; Args:</span>
+<span class="c1">;; ++ Uses default *mididevice* symbol </span>
+<span class="c1">;; Values are set in real-time using now() // [not beat]</span>
+<span class="c1">;;</span>
+<span class="c1">;; Args:</span>
 <span class="c1">; - control change </span>
 <span class="c1">; - value</span>
-<span class="c1">; - ch midi [optional - default is 0]</span>
+<span class="c1">; - ch midi [optional - default is *mcc-default-channel*]</span>
 <span class="c1">;</span>
-<span class="c1">; Example:</span>
-<span class="c1">; (define *mididevice* (pm_create_output_stream 1))</span>
-<span class="c1">; (let ((beat (*metro* &#39;get-beat)))</span>
-<span class="c1">;     (mcc 49 127) </span>
-<span class="c1">;     ))</span>
+<span class="c1">;; Example:</span>
+<span class="c1">; (mcc 49 127) </span>
+<span class="c1">; </span>
 <span class="c1">;</span>
-<span class="c1">;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;</span>
-<span class="c1">;; Tips about with mcc in ABLETON LIVE </span>
-<span class="c1">;</span>
-<span class="c1">; -- channel is 0 by default</span>
-<span class="c1">; -- value go from 0 to 127 </span>
-<span class="c1">; -- program change has some defaults </span>
-<span class="c1">;</span>
-<span class="c1">;; https://forum.ableton.com/viewtopic.php?t=140489</span>
-<span class="c1">;; =&gt; ~/Library/Preferences/Ableton/Live 9.2.3/User Remote Scripts/extempore/UserConfiguration.txt</span>
-<span class="c1">;</span>
-<span class="c1">;; https://help.ableton.com/hc/en-us/articles/360010389480-Using-MIDI-CC-in-Live</span>
-<span class="c1">;</span>
-<span class="c1">;; RUNDOWN</span>
-<span class="c1">;; some basic cc mappings have defaults, 1 to 26 (see below)</span>
-<span class="c1">;;;; eg volume and send effect knobs can be stored in settings file</span>
-<span class="c1">;</span>
-<span class="c1">; VolumeSlider1: 1</span>
-<span class="c1">; VolumeSlider2: 2</span>
-<span class="c1">; VolumeSlider3: 3</span>
-<span class="c1">; VolumeSlider4: 4</span>
-<span class="c1">; VolumeSlider5: 5</span>
-<span class="c1">; VolumeSlider6: 6</span>
-<span class="c1">; VolumeSlider7: 7</span>
-<span class="c1">; VolumeSlider8: 8</span>
-<span class="c1">;;</span>
-<span class="c1">; Send1Knob1: 11</span>
-<span class="c1">; Send1Knob2: 12</span>
-<span class="c1">; Send1Knob3: 13</span>
-<span class="c1">; Send1Knob4: 14</span>
-<span class="c1">; Send1Knob5: 15</span>
-<span class="c1">; Send1Knob6: 16</span>
-<span class="c1">; Send1Knob7: 17</span>
-<span class="c1">; Send1Knob8: 18</span>
-<span class="c1">; Send2Knob1: 19</span>
-<span class="c1">; Send2Knob2: 20</span>
-<span class="c1">; Send2Knob3: 21</span>
-<span class="c1">; Send2Knob4: 22</span>
-<span class="c1">; Send2Knob5: 23</span>
-<span class="c1">; Send2Knob6: 24</span>
-<span class="c1">; Send2Knob7: 25</span>
-<span class="c1">; Send2Knob8: 26</span>
-<span class="c1">;;</span>
-<span class="c1">;</span>
-<span class="c1">;; Other mappings how to:</span>
- <span class="c1">; 1 - turn on midi learn, select a control </span>
- <span class="c1">; 2 - send signal to store mapping</span>
+<span class="c1">;; In order to set up mappings in Live:</span>
+ <span class="c1">; 1 - turn on midi learn in Live, select a control </span>
+ <span class="c1">; 2 - send :mcc signal to store mapping</span>
 <span class="c1">;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;</span>
 <span class="p">(</span><span class="nf">impc:aot:do-or-emit</span>
     <span class="p">(</span><span class="nf">define-macro</span> <span class="p">(</span><span class="nf">:mcc</span> <span class="o">.</span> <span class="nv">args</span><span class="p">)</span>
                 <span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nf">length-equal?</span> <span class="nv">args</span> <span class="mi">2</span><span class="p">)</span> 
-                    <span class="c1">; 2 args = no channel, default=0  ==&gt; good for Ableton LIVE</span>
-                    <span class="o">`</span><span class="p">(</span><span class="nf">send-midi-cc</span> <span class="p">(</span><span class="nf">*metro*</span> <span class="nv">beat</span><span class="p">)</span> 
+                    <span class="c1">; 2 args = no channel default=0  ==&gt; good for Ableton LIVE</span>
+                    <span class="o">`</span><span class="p">(</span><span class="nf">send-midi-cc</span> <span class="p">(</span><span class="nf">now</span><span class="p">)</span> <span class="c1">;;(*metro* beat) </span>
                         <span class="nv">*mididevice*</span>
                         <span class="p">(</span><span class="nf">real-&gt;integer</span> <span class="o">,</span><span class="p">(</span><span class="nb">car </span><span class="nv">args</span><span class="p">))</span>    <span class="c1">;; control change</span>
                         <span class="p">(</span><span class="nf">real-&gt;integer</span> <span class="o">,</span><span class="p">(</span><span class="nb">cadr </span><span class="nv">args</span><span class="p">))</span>   <span class="c1">;; value</span>
-                        <span class="mi">0</span>
+                        <span class="nv">*mcc-default-channel*</span> <span class="c1">;; channel</span>
                         <span class="p">)</span>
                     <span class="c1">; 3 args = then we have a channel number 0-based</span>
-                    <span class="o">`</span><span class="p">(</span><span class="nf">send-midi-cc</span> <span class="p">(</span><span class="nf">*metro*</span> <span class="nv">beat</span><span class="p">)</span>  
+                    <span class="o">`</span><span class="p">(</span><span class="nf">send-midi-cc</span> <span class="p">(</span><span class="nf">now</span><span class="p">)</span> <span class="c1">;;(*metro* beat)  </span>
                         <span class="nv">*mididevice*</span>
                         <span class="p">(</span><span class="nf">real-&gt;integer</span> <span class="o">,</span><span class="p">(</span><span class="nb">car </span><span class="nv">args</span><span class="p">))</span>            <span class="c1">;; control change</span>
                         <span class="p">(</span><span class="nf">real-&gt;integer</span> <span class="o">,</span><span class="p">(</span><span class="nb">cadr </span><span class="nv">args</span><span class="p">))</span>           <span class="c1">;; value</span>
