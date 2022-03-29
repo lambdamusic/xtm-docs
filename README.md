@@ -82,5 +82,6 @@ Just an idea, but feel free to get in touch if you're willing to improve/extend 
 
 ## Links
 
+* http://extempore.michelepasin.org/
 * http://extempore.moso.com.au/
 * https://github.com/digego/extempore
