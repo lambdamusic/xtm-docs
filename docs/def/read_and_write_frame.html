@@ -56,7 +56,7 @@
 		}
 		body {
 		  /* Margin bottom by footer height */
-		  margin-bottom: 200px;
+		  margin-bottom: 300px;
 		  padding-top: 70px;
 		}
 		.footer {
@@ -65,7 +65,7 @@
 		  bottom: 0;
 		  width: 100%;
 		  /* Set the fixed height of the footer here */
-		  height: 150px;
+		  height: 220px;
 		  background-color: #f5f5f5;
 		}
 		
@@ -209,6 +209,7 @@
       <ul class="nav navbar-nav">
         <li class="active"><a href="../index.html">Core release (v0.8.9) <span class="sr-only">(current)</span></a></li>
         <li ><a href="../index/extras.html">Extra functions</a></li>
+        <li><a href="read_and_write_frame.html#aboutsite">About</a></li>
 
         
         
@@ -216,7 +217,7 @@
       </ul>
       <form id="searchForm" class="navbar-form navbar-right" method="GET">
         <div class="form-group">
-          <input type="text" style="width: 250px;" class="form-control " placeholder="Search" required type="search" name="q">
+          <input type="text" style="width: 350px;" class="form-control " placeholder="Search" required type="search" name="q">
         </div>
         <button type="submit" class="btn btn-default">Submit</button>
       </form>
@@ -2550,11 +2551,14 @@
   	  <div class="container">
 		<a name="aboutsite"></a>
 		<h3>About</h3>
-		<p>The Extempore Functions Index was made to simplify learning about <a href="https://extemporelang.github.io/">Extempore</a> - a programming language for musical <a href="https://en.wikipedia.org/wiki/Live_coding">livecoding</a> and algorithmic composition.</p>
+		<p>The Extempore Functions Index was <a href="http://www.michelepasin.org/projects/impromptudocs/" target="_blank">made</a> to simplify learning about <a target="_blank" href="https://extemporelang.github.io/">Extempore</a> - a programming language for musical <a target="_blank" href="https://en.wikipedia.org/wiki/Live_coding">livecoding</a> and algorithmic composition.</p>
 
-  	    <p class="text-muted -text-center">See also: <a href="https://github.com/lambdamusic/xtm-docs" target="_blank">Github source</a> | <a href="http://www.michelepasin.org/projects/impromptudocs/" target="_blank">Project info</a> 
-			
-		</p>
+		<p>This site is auto-generated from the Extempore source code (available on <a  target="_blank" href="https://github.com/digego/extempore">GitHub</a>). </p>
+
+		<p>Functions definitions are extracted using a bare-bones approach i.e. by matching function keywords separated by newlines delimiters. This is not perfect nor exhaustive, but it works in the majority of cases. The application is written in Python using the Django framework for the website. The source code for the extractor and this website is also available on <a href="https://github.com/lambdamusic/xtm-docs" target="_blank">GitHub</a>.</p> 
+
+		<p><a target="_blank" href="https://www.youtube.com/results?search_query=extempore+livecoding">YouTube</a> has many videos that show Extempore in action.</p>
+
   	  </div>
 	  
 		

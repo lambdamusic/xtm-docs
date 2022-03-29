@@ -7,6 +7,28 @@ The app allows to extract functions definitions from Extempore's source code, sa
 Online: http://extempore.michelepasin.org/
 
 
+## Building the Extempore functions index
+
+First of all, set the path to your local extempore source repo in `local_settings.py`, using the `XTM_LOCAL_FILES` variable.
+
+```bash
+$ python manage.py parse_xtm
+```
+
+or the helper script:
+
+```bash
+$ ./tools/load-xtm-src
+```
+
+
+## Running the Django app
+
+```bash
+./tools/run-dev-local-db
+```
+
+
 ## Development
 
 With Python 3.9 and [virtualenvwrapper](https://virtualenvwrapper.readthedocs.io/en/latest/index.html)
@@ -34,22 +56,6 @@ XTM_LOCAL_FILES = ['/Applications/path/to/extempore']
 # =====================
 ```
 
-## Building the Extempore functions index
-
-First of all, set the path to your local extempore source repo in `local_settings.py`, using the `XTM_LOCAL_FILES` variable.
-
-Then
-
-```bash
-python manage.py parse_xtm
-```
-
-
-## Running the Django app
-
-```bash
-./tools/run-dev-local-db
-```
 
 
 ## Project status
