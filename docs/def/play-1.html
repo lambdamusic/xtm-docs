@@ -7,14 +7,14 @@
 <html lang="en">
   <head>
 
-	<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-2000254-3"></script>
+	<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-T4B4FDV3TR"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 
-  gtag('config', 'UA-2000254-3');
+  gtag('config', 'G-T4B4FDV3TR');
 </script>
 
 
@@ -56,16 +56,17 @@
 		}
 		body {
 		  /* Margin bottom by footer height */
-		  margin-bottom: 300px;
-		  padding-top: 70px;
+		  margin-bottom: 600px;
+		  padding-top: 100px;
 		}
 		.footer {
 		  position: absolute;
-		  padding-top: 10px;
+		  padding-top: 60px;
 		  bottom: 0;
 		  width: 100%;
+		  font-size: 18px;
 		  /* Set the fixed height of the footer here */
-		  height: 220px;
+		  height: 500px;
 		  background-color: #f5f5f5;
 		}
 		
@@ -207,8 +208,8 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li ><a href="../index.html">Core release  <span class="sr-only">(current)</span></a></li>
-        <li class="active"><a href="../index/extras.html">Extra functions</a></li>
+        <li ><a href="../index.html">Core release (v0.8.9)<span class="sr-only">(current)</span></a></li>
+        <li class="active"><a href="../index/extras.html">XTM Extensions</a></li>
         <li><a href="play-1.html#aboutsite">About</a></li>
 
         
@@ -255,9 +256,9 @@
 	<hr>
 	<div class="lead">
 		Defined in:&nbsp;
-		<a href="https://github.com/lambdamusic/xtm-hacking/blob/master/init-extempore/init_midi.xtm" target="_blank">
+		<a href="https://github.com/lambdamusic/extempore-extensions/blob/main/init/init_play.xtm" target="_blank">
 			
-			https://github.com/lambdamusic/xtm-hacking/blob/master/init-extempore/init_midi.xtm		
+			https://github.com/lambdamusic/extempore-extensions/blob/main/init/init_play.xtm		
 		</a>
 		
 	</div>
@@ -269,68 +270,98 @@
 		<div class="highlight"><pre><span></span><span class="c1">;    </span>
 <span class="c1">;    </span>
 <span class="c1">;    </span>
-<span class="c1">;; PLAY MIDI</span>
-<span class="c1">;;;;;;;;;;;;;;;;;;;;;;;;;;;</span>
-<span class="c1">; overrides standard play with a midi version based on scoped *mididevice* symbol</span>
-<span class="c1">; first argument is always the MIDI channel (or optional offset)</span>
+<span class="c1">;; PLAY</span>
+<span class="c1">;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;</span>
+<span class="c1">; Play a midi note, or a bunch of notes together (a chord).</span>
 <span class="c1">;</span>
 <span class="c1">; Args:</span>
-<span class="c1">; - offset [default = 0]</span>
-<span class="c1">; - channel (1-based)</span>
-<span class="c1">; - pitch</span>
-<span class="c1">; - velocity/vol [default = 90]</span>
-<span class="c1">; - dur  [default = 1/2]</span>
+<span class="c1">; --------</span>
+<span class="c1">;; 1st: [OPTIONAL:offset  default = 0]</span>
+<span class="c1">;; 2nd: midi channel, 1-based</span>
+<span class="c1">;; 3rd: pitch or pitch-list </span>
+<span class="c1">;; 4th: vol or vols-list </span>
+<span class="c1">;; 5th: dur or durs-list </span>
+<span class="c1">;</span>
+<span class="c1">; Requires:</span>
+<span class="c1">; --------</span>
+<span class="c1">; beat </span>
+<span class="c1">; *mididevice*</span>
 <span class="c1">;</span>
 <span class="c1">;</span>
 <span class="c1">; Example:</span>
-<span class="c1">; (define *mididevice* (pm_create_output_stream 1))</span>
-<span class="c1">; (define sampler 1)</span>
-<span class="c1">; (let ((beat (*metro* &#39;get-beat)))</span>
-<span class="c1">;     (play sampler c3 90 1/2)</span>
-<span class="c1">;     ))</span>
+<span class="c1">; --------</span>
+<span class="c1">; (let ((beat (*metro* &#39;get-beat))) </span>
+<span class="c1">;   (play piano (:mkmelody 2 60 &#39;dorian &#39;(1 -1 2 -2)) 90 2 )</span>
+<span class="c1">;   (play piano (list c3 c4) 90 2 )</span>
+<span class="c1">;   (play piano c2 90 2 )</span>
+<span class="c1">;   ) </span>
+<span class="c1">; Using offsets:</span>
+<span class="c1">; (let ((beat (*metro* &#39;get-beat))) </span>
+<span class="c1">;   (play &#39;(1/2 3/2) piano (:mkmelody 2 60 &#39;dorian &#39;(1 -1 2 -2)) 90 2 )</span>
+<span class="c1">;   (play 1/2 piano (list c3 c4) 90 2 )</span>
+<span class="c1">;   (play piano c2 90 2 )</span>
+<span class="c1">;   ) </span>
+<span class="c1">;</span>
+<span class="c1">; WARNING: </span>
+<span class="c1">; --------</span>
+<span class="c1">; 1) This function overrides the standard Extempore play function a midi version. To revert back: (sys:load_my_utils &quot;init_midi_legacy.xtm&quot;)</span>
+<span class="c1">;</span>
+<span class="c1">; 2) The offset list needs to be the right length (as plist)</span>
+<span class="c1">; Otherwise a &quot;caar &lt;- unzip1-with-cdr-iterative &lt;- map&quot; appears </span>
+<span class="c1">; that I still haven&#39;t figured how to prevent..</span>
 <span class="c1">;</span>
 <span class="c1">;;;;;;;;;;;;;;;;;;;;;;;;;;;</span>
 <span class="p">(</span><span class="nf">impc:aot:do-or-emit</span>
     <span class="p">(</span><span class="nf">define-macro</span> <span class="p">(</span><span class="nf">play</span> <span class="o">.</span> <span class="nv">args</span><span class="p">)</span>
-        <span class="p">(</span><span class="nf">cond</span>	<span class="p">((</span><span class="nf">length-equal?</span> <span class="nv">args</span> <span class="mi">2</span><span class="p">)</span>
-                <span class="c1">; 2 args: instrument // pitch [defaults: vol:90, dur:1/2]</span>
-              <span class="o">`</span><span class="p">(</span><span class="nf">play-midi-note</span> <span class="p">(</span><span class="nf">*metro*</span> <span class="nv">beat</span><span class="p">)</span> 
-                              <span class="nv">*mididevice*</span>
-                              <span class="p">(</span><span class="nf">real-&gt;integer</span> <span class="o">,</span><span class="p">(</span><span class="nb">cadr </span><span class="nv">args</span><span class="p">))</span> <span class="c1">;; pitch</span>
-                              <span class="mi">90</span> <span class="c1">;; vol</span>
-                              <span class="p">(</span><span class="nf">*metro*</span> <span class="ss">&#39;dur</span> <span class="mi">1</span><span class="nv">/2</span><span class="p">)</span> <span class="c1">;; dur</span>
-                              <span class="c1">;; channel // 0based in xtm, but here it is 1-based</span>
-                              <span class="p">(</span><span class="nb">- </span><span class="p">(</span><span class="nf">real-&gt;integer</span> <span class="o">,</span><span class="p">(</span><span class="nb">car </span><span class="nv">args</span><span class="p">))</span> <span class="mi">1</span><span class="p">)</span>
-                              <span class="p">))</span>   
-              <span class="p">((</span><span class="nf">length-equal?</span> <span class="nv">args</span> <span class="mi">3</span><span class="p">)</span>
-                <span class="c1">; 3 args: instrument // pitch // vol [defaults: dur:1/2]</span>
-              <span class="o">`</span><span class="p">(</span><span class="nf">play-midi-note</span> <span class="p">(</span><span class="nf">*metro*</span> <span class="nv">beat</span><span class="p">)</span> 
-                              <span class="nv">*mididevice*</span>
-                              <span class="p">(</span><span class="nf">real-&gt;integer</span> <span class="o">,</span><span class="p">(</span><span class="nb">cadr </span><span class="nv">args</span><span class="p">))</span> <span class="c1">;; pitch</span>
-                              <span class="p">(</span><span class="nf">real-&gt;integer</span> <span class="o">,</span><span class="p">(</span><span class="nb">caddr </span><span class="nv">args</span><span class="p">))</span> <span class="c1">;; vol</span>
-                              <span class="p">(</span><span class="nf">*metro*</span> <span class="ss">&#39;dur</span> <span class="mi">1</span><span class="nv">/2</span><span class="p">)</span> <span class="c1">;; dur</span>
-                              <span class="c1">;; channel // 0based in xtm, but here it is 1-based</span>
-                              <span class="p">(</span><span class="nb">- </span><span class="p">(</span><span class="nf">real-&gt;integer</span> <span class="o">,</span><span class="p">(</span><span class="nb">car </span><span class="nv">args</span><span class="p">))</span> <span class="mi">1</span><span class="p">)</span>
-                              <span class="p">))</span>  
-              <span class="p">((</span><span class="nf">length-equal?</span> <span class="nv">args</span> <span class="mi">4</span><span class="p">)</span> 
-                <span class="c1">; 4 args: instrument // pitch // vol // dur </span>
-              <span class="o">`</span><span class="p">(</span><span class="nf">play-midi-note</span> <span class="p">(</span><span class="nf">*metro*</span> <span class="nv">beat</span><span class="p">)</span> 
-                              <span class="nv">*mididevice*</span>
-                              <span class="p">(</span><span class="nf">real-&gt;integer</span> <span class="o">,</span><span class="p">(</span><span class="nb">cadr </span><span class="nv">args</span><span class="p">))</span> <span class="c1">;; pitch</span>
-                              <span class="p">(</span><span class="nf">real-&gt;integer</span> <span class="o">,</span><span class="p">(</span><span class="nb">caddr </span><span class="nv">args</span><span class="p">))</span> <span class="c1">;; vol</span>
-                              <span class="p">(</span><span class="nf">*metro*</span> <span class="ss">&#39;dur</span> <span class="o">,</span><span class="p">(</span><span class="nb">cadddr </span><span class="nv">args</span><span class="p">))</span> <span class="c1">;; dur</span>
-                              <span class="c1">;; channel // 0based in xtm, but here it is 1-based</span>
-                              <span class="p">(</span><span class="nb">- </span><span class="p">(</span><span class="nf">real-&gt;integer</span> <span class="o">,</span><span class="p">(</span><span class="nb">car </span><span class="nv">args</span><span class="p">))</span> <span class="mi">1</span><span class="p">)</span>
-                              <span class="p">))</span>                                
-              <span class="p">((</span><span class="nf">length-equal?</span> <span class="nv">args</span> <span class="mi">5</span><span class="p">)</span> <span class="c1">; [defaults: 90, 1/2, 1]</span>
-                <span class="c1">; 4 args: *offset* // instrument // pitch // vol // dur</span>
-              <span class="o">`</span><span class="p">(</span><span class="nf">play-midi-note</span> <span class="p">(</span><span class="nf">*metro*</span> <span class="p">(</span><span class="nb">+ </span><span class="nv">beat</span> <span class="o">,</span><span class="p">(</span><span class="nb">car </span><span class="nv">args</span><span class="p">)))</span>         
-                              <span class="nv">*mididevice*</span>
-                              <span class="p">(</span><span class="nf">real-&gt;integer</span> <span class="o">,</span><span class="p">(</span><span class="nb">caddr </span><span class="nv">args</span><span class="p">))</span>
-                              <span class="p">(</span><span class="nf">real-&gt;integer</span> <span class="o">,</span><span class="p">(</span><span class="nb">cadddr </span><span class="nv">args</span><span class="p">))</span>
-                              <span class="p">(</span><span class="nf">*metro*</span> <span class="ss">&#39;dur</span> <span class="o">,</span><span class="p">(</span><span class="nb">cadr </span><span class="p">(</span><span class="nb">cdddr </span><span class="nv">args</span><span class="p">)))</span>
-                              <span class="p">(</span><span class="nb">- </span><span class="p">(</span><span class="nf">real-&gt;integer</span> <span class="o">,</span><span class="p">(</span><span class="nb">cadr </span> <span class="nv">args</span><span class="p">))</span> <span class="mi">1</span><span class="p">)</span>
-                            <span class="p">))</span>
+        <span class="c1">;;; CASE1) 4 args: inst, pitch, vol, dur (no offset)</span>
+        <span class="p">(</span><span class="nf">cond</span>	<span class="p">((</span><span class="nf">length-equal?</span> <span class="nv">args</span> <span class="mi">4</span><span class="p">)</span> 
+                <span class="o">`</span><span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nb">list? </span><span class="o">,</span><span class="p">(</span><span class="nb">cadr </span><span class="nv">args</span><span class="p">))</span> 
+                  <span class="c1">;; multi-notes: call helper</span>
+                  <span class="p">(</span><span class="nf">helper:playchord</span> 
+                    <span class="nv">beat</span>
+                    <span class="mi">0</span> <span class="c1">;; offset </span>
+                    <span class="o">,</span><span class="p">(</span><span class="nb">car </span><span class="nv">args</span><span class="p">)</span> <span class="c1">;; ch</span>
+                    <span class="o">,</span><span class="p">(</span><span class="nb">cadr </span><span class="nv">args</span><span class="p">)</span> <span class="c1">;; pitch</span>
+                    <span class="o">,</span><span class="p">(</span><span class="nb">caddr </span><span class="nv">args</span><span class="p">)</span> <span class="c1">;; vol</span>
+                    <span class="o">,</span><span class="p">(</span><span class="nb">cadddr </span><span class="nv">args</span><span class="p">)</span> <span class="c1">;; dur</span>
+                    <span class="p">)</span>       
+                  <span class="c1">;; single-note: send midi message          </span>
+                  <span class="p">(</span><span class="nf">play-midi-note</span> <span class="p">(</span><span class="nf">*metro*</span> <span class="nv">beat</span><span class="p">)</span> 
+                                <span class="nv">*mididevice*</span>
+                                <span class="p">(</span><span class="nf">real-&gt;integer</span> <span class="o">,</span><span class="p">(</span><span class="nb">cadr </span><span class="nv">args</span><span class="p">))</span> <span class="c1">;; pitch</span>
+                                <span class="p">(</span><span class="nf">real-&gt;integer</span> <span class="o">,</span><span class="p">(</span><span class="nb">caddr </span><span class="nv">args</span><span class="p">))</span> <span class="c1">;; vol</span>
+                                <span class="p">(</span><span class="nf">*metro*</span> <span class="ss">&#39;dur</span> 
+                                  <span class="p">(</span><span class="nb">* </span><span class="nv">*play-midi-default-dur-factor*</span> <span class="o">,</span><span class="p">(</span><span class="nb">cadddr </span><span class="nv">args</span><span class="p">))</span> 
+                                <span class="p">)</span> <span class="c1">;; dur</span>
+                                <span class="c1">;; channel // 0based in xtm, but here it is 1-based</span>
+                                <span class="p">(</span><span class="nb">- </span><span class="p">(</span><span class="nf">real-&gt;integer</span> <span class="o">,</span><span class="p">(</span><span class="nb">car </span><span class="nv">args</span><span class="p">))</span> <span class="mi">1</span><span class="p">)</span>
+                                <span class="p">))</span>      
+                  <span class="p">)</span>      
+        <span class="c1">;;; CASE2) 5 args: OFFSET, inst, pitch, vol, dur                       </span>
+              <span class="p">((</span><span class="nf">length-equal?</span> <span class="nv">args</span> <span class="mi">5</span><span class="p">)</span> 
+                <span class="o">`</span><span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nb">list? </span><span class="o">,</span><span class="p">(</span><span class="nb">caddr </span><span class="nv">args</span><span class="p">))</span> 
+                  <span class="c1">;; multi-notes: call helper</span>
+                  <span class="p">(</span><span class="nf">helper:playchord</span>
+                    <span class="nv">beat</span>
+                    <span class="o">,</span><span class="p">(</span><span class="nb">car </span><span class="nv">args</span><span class="p">)</span> <span class="c1">;; offset</span>
+                    <span class="o">,</span><span class="p">(</span><span class="nb">cadr </span><span class="nv">args</span><span class="p">)</span> <span class="c1">;; ch</span>
+                    <span class="o">,</span><span class="p">(</span><span class="nb">caddr </span><span class="nv">args</span><span class="p">)</span> <span class="c1">;; pitch</span>
+                    <span class="o">,</span><span class="p">(</span><span class="nb">cadddr </span><span class="nv">args</span><span class="p">)</span> <span class="c1">;; vol</span>
+                    <span class="o">,</span><span class="p">(</span><span class="nf">caddddr</span> <span class="nv">args</span><span class="p">)</span> <span class="c1">;; dur</span>
+                    <span class="p">)</span>       
+                  <span class="c1">;; single-note: send midi message</span>
+                  <span class="p">(</span><span class="nf">play-midi-note</span> <span class="p">(</span><span class="nf">*metro*</span> <span class="p">(</span><span class="nb">+ </span><span class="nv">beat</span> <span class="o">,</span><span class="p">(</span><span class="nb">car </span><span class="nv">args</span><span class="p">)))</span>         
+                                  <span class="nv">*mididevice*</span>
+                                  <span class="p">(</span><span class="nf">real-&gt;integer</span> <span class="o">,</span><span class="p">(</span><span class="nb">caddr </span><span class="nv">args</span><span class="p">))</span>
+                                  <span class="p">(</span><span class="nf">real-&gt;integer</span> <span class="o">,</span><span class="p">(</span><span class="nb">cadddr </span><span class="nv">args</span><span class="p">))</span>
+                                  <span class="p">(</span><span class="nf">*metro*</span> <span class="ss">&#39;dur</span> 
+                                    <span class="p">(</span><span class="nb">* </span><span class="nv">*play-midi-default-dur-factor*</span> 
+                                      <span class="o">,</span><span class="p">(</span><span class="nb">cadr </span><span class="p">(</span><span class="nb">cdddr </span><span class="nv">args</span><span class="p">))))</span>   
+                                  <span class="p">(</span><span class="nb">- </span><span class="p">(</span><span class="nf">real-&gt;integer</span> <span class="o">,</span><span class="p">(</span><span class="nb">cadr </span> <span class="nv">args</span><span class="p">))</span> <span class="mi">1</span><span class="p">)</span>
+                                <span class="p">))</span>  
+              <span class="p">)</span> 
+              <span class="p">(</span><span class="k">else </span><span class="p">(</span><span class="nf">print</span> <span class="ss">&#39;Error:</span> <span class="ss">&#39;arguments</span> <span class="ss">&#39;could</span> <span class="ss">&#39;not</span> <span class="ss">&#39;be</span> <span class="ss">&#39;resolved</span><span class="o">.</span><span class="p">))</span> 
+        <span class="p">)))</span>
 </pre></div>
 
 	</div>
@@ -368,7 +399,55 @@
 				</li>
 			
 				<li>
+					<a class="lead" href="helper-mmplayp_f_with_offset-1.html">helper:mmplayp_f_with_offset</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
 					<a class="lead" href="helper-mplayp_play_list_v2.html">helper:mplayp_play_list_v2</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="helper-mplayp_play_list_v2-1.html">helper:mplayp_play_list_v2</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="helper-play-plist.html">helper:play-plist</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						text-success
+						
+						
+						">
+						scheme</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="helper-playchord.html">helper:playchord</a>
 					&nbsp;&nbsp;
 				
 					<small class="
@@ -392,7 +471,79 @@
 				</li>
 			
 				<li>
-					<a class="lead" href="playchord.html">playchord</a>
+					<a class="lead" href="mplay-3.html">mplay</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						text-info
+						
+						">
+						macro</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="playarp.html">playarp</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						text-info
+						
+						">
+						macro</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="playkit.html">playkit</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						text-info
+						
+						">
+						macro</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="playkitr.html">playkitr</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						text-info
+						
+						">
+						macro</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="playkitrdown.html">playkitrdown</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						text-info
+						
+						">
+						macro</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="playkitrrollup.html">playkitrrollup</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						text-info
+						
+						">
+						macro</small>
+				</li>
+			
+				<li>
+					<a class="lead" href="playp.html">playp</a>
 					&nbsp;&nbsp;
 				
 					<small class="
@@ -423,16 +574,23 @@
   	<div class="footer">
   		
 		
+
   	  <div class="container">
 		<a name="aboutsite"></a>
 		<h3>About</h3>
-		<p>The Extempore Functions Index was <a href="http://www.michelepasin.org/projects/impromptudocs/" target="_blank">made</a> to simplify learning about <a target="_blank" href="https://extemporelang.github.io/">Extempore</a> - a programming language for musical <a target="_blank" href="https://en.wikipedia.org/wiki/Live_coding">livecoding</a> and algorithmic composition.</p>
+		<p>The purpose of this website is to make it easier to navigate the functions definitions of <a target="_blank" href="https://extemporelang.github.io/">Extempore</a>, a programming language for musical <a target="_blank" href="https://en.wikipedia.org/wiki/Live_coding">livecoding</a> and algorithmic composition. <a target="_blank" href="https://www.youtube.com/results?search_query=extempore+livecoding">YouTube</a> has many videos that show Extempore in action.</p> 
 
-		<p>This site is auto-generated from the Extempore source code (available on <a  target="_blank" href="https://github.com/digego/extempore">GitHub</a>). </p>
+		<p></p>
+		
+		<p>Extempore's functions <a  target="_blank" href="https://github.com/digego/extempore">source code</a> has been parsed and indexed using a bare-bones approach i.e. by matching function keywords separated by newlines delimiters. This approach is not perfect nor exhaustive, but it works in the majority of cases. </p> 
 
-		<p>Functions definitions are extracted using a bare-bones approach i.e. by matching function keywords separated by newlines delimiters. This is not perfect nor exhaustive, but it works in the majority of cases. The application is written in Python using the Django framework for the website. The source code for the extractor and this website is also available on <a href="https://github.com/lambdamusic/xtm-docs" target="_blank">GitHub</a>.</p> 
+		<p>Additionally, my custom <a href="https://github.com/lambdamusic/extempore-extensions" target="_blank">extensions</a> to the Extempore programming environment have been indexed too.</p> 
 
-		<p><a target="_blank" href="https://www.youtube.com/results?search_query=extempore+livecoding">YouTube</a> has many videos that show Extempore in action.</p>
+		<p>The source code for the extractor and this website is written in Python and is also available on <a href="https://github.com/lambdamusic/xtm-docs" target="_blank">GitHub</a>.</p> 
+
+		<p>This <a href="http://www.michelepasin.org/projects/impromptudocs/" target="_blank">project</a> was created by <a href="https://www.michelepasin.org/" target="_blank">Michele Pasin</a>.</p> 
+
+
 
   	  </div>
 	  

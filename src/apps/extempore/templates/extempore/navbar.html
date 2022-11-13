@@ -17,8 +17,8 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li {% ifequal page "core" %}class="active"{% endifequal %}><a href="{% url 'extempore:list_core'  %}">Core release {%  ifequal page "core" %}({{XTM_VERSION}}){% endifequal %} <span class="sr-only">(current)</span></a></li>
-        <li {% ifequal page "extras" %}class="active"{% endifequal %}><a href="{% url 'extempore:list_custom'%}">Extra functions</a></li>
+        <li {% ifequal page "core" %}class="active"{% endifequal %}><a href="{% url 'extempore:list_core'  %}">Core release ({{XTM_VERSION}})<span class="sr-only">(current)</span></a></li>
+        <li {% ifequal page "extras" %}class="active"{% endifequal %}><a href="{% url 'extempore:list_custom'%}">XTM Extensions</a></li>
         <li><a href="#aboutsite">About</a></li>
 
         

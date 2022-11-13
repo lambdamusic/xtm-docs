@@ -7,14 +7,14 @@
 <html lang="en">
   <head>
 
-	<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-2000254-3"></script>
+	<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-T4B4FDV3TR"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 
-  gtag('config', 'UA-2000254-3');
+  gtag('config', 'G-T4B4FDV3TR');
 </script>
 
 
@@ -26,7 +26,7 @@
 	<link rel="icon" href="../media/static/favicon.ico">
     
 	
-	<title>:mcc : Extempore Docs</title>
+	<title>zred-gen-insta1* : Extempore Docs</title>
 
 	
 
@@ -56,16 +56,17 @@
 		}
 		body {
 		  /* Margin bottom by footer height */
-		  margin-bottom: 300px;
-		  padding-top: 70px;
+		  margin-bottom: 600px;
+		  padding-top: 100px;
 		}
 		.footer {
 		  position: absolute;
-		  padding-top: 10px;
+		  padding-top: 60px;
 		  bottom: 0;
 		  width: 100%;
+		  font-size: 18px;
 		  /* Set the fixed height of the footer here */
-		  height: 220px;
+		  height: 500px;
 		  background-color: #f5f5f5;
 		}
 		
@@ -207,9 +208,9 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li ><a href="../index.html">Core release  <span class="sr-only">(current)</span></a></li>
-        <li class="active"><a href="../index/extras.html">Extra functions</a></li>
-        <li><a href="-mcc.html#aboutsite">About</a></li>
+        <li ><a href="../index.html">Core release (v0.8.9)<span class="sr-only">(current)</span></a></li>
+        <li class="active"><a href="../index/extras.html">XTM Extensions</a></li>
+        <li><a href="zred-gen-insta1*.html#aboutsite">About</a></li>
 
         
         
@@ -244,20 +245,20 @@
 	  	
 
 	
-	<h1>:mcc
+	<h1>zred-gen-insta1*
 		&nbsp;&nbsp;<small style="font-size: 30%;" class="
+			label label-success
 			
-			label label-info
 			
-			">macro</small>
+			">scheme</small>
 	
 	</h1>
 	<hr>
 	<div class="lead">
 		Defined in:&nbsp;
-		<a href="https://github.com/lambdamusic/xtm-hacking/blob/master/init-extempore/init_midi.xtm" target="_blank">
+		<a href="https://github.com/lambdamusic/extempore-extensions/blob/main/init/init_bento.xtm" target="_blank">
 			
-			https://github.com/lambdamusic/xtm-hacking/blob/master/init-extempore/init_midi.xtm		
+			https://github.com/lambdamusic/extempore-extensions/blob/main/init/init_bento.xtm		
 		</a>
 		
 	</div>
@@ -266,43 +267,7 @@
 	<h5>Implementation</h5>
 	<hr>
 	<div class="">
-		<div class="highlight"><pre><span></span><span class="c1">;</span>
-<span class="c1">;; :mcc MIDI CONTROL CHANGE SHORTCUT</span>
-<span class="c1">;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;</span>
-<span class="c1">;; ++ Uses default *mididevice* symbol </span>
-<span class="c1">;; Values are set in real-time using now() // [not beat]</span>
-<span class="c1">;;</span>
-<span class="c1">;; Args:</span>
-<span class="c1">; - control change </span>
-<span class="c1">; - value</span>
-<span class="c1">; - ch midi [optional - default is *mcc-default-channel*]</span>
-<span class="c1">;</span>
-<span class="c1">;; Example:</span>
-<span class="c1">; (mcc 49 127) </span>
-<span class="c1">; </span>
-<span class="c1">;</span>
-<span class="c1">;; In order to set up mappings in Live:</span>
- <span class="c1">; 1 - turn on midi learn in Live, select a control </span>
- <span class="c1">; 2 - send :mcc signal to store mapping</span>
-<span class="c1">;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;</span>
-<span class="p">(</span><span class="nf">impc:aot:do-or-emit</span>
-    <span class="p">(</span><span class="nf">define-macro</span> <span class="p">(</span><span class="nf">:mcc</span> <span class="o">.</span> <span class="nv">args</span><span class="p">)</span>
-                <span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nf">length-equal?</span> <span class="nv">args</span> <span class="mi">2</span><span class="p">)</span> 
-                    <span class="c1">; 2 args = no channel default=0  ==&gt; good for Ableton LIVE</span>
-                    <span class="o">`</span><span class="p">(</span><span class="nf">send-midi-cc</span> <span class="p">(</span><span class="nf">now</span><span class="p">)</span> <span class="c1">;;(*metro* beat) </span>
-                        <span class="nv">*mididevice*</span>
-                        <span class="p">(</span><span class="nf">real-&gt;integer</span> <span class="o">,</span><span class="p">(</span><span class="nb">car </span><span class="nv">args</span><span class="p">))</span>    <span class="c1">;; control change</span>
-                        <span class="p">(</span><span class="nf">real-&gt;integer</span> <span class="o">,</span><span class="p">(</span><span class="nb">cadr </span><span class="nv">args</span><span class="p">))</span>   <span class="c1">;; value</span>
-                        <span class="nv">*mcc-default-channel*</span> <span class="c1">;; channel</span>
-                        <span class="p">)</span>
-                    <span class="c1">; 3 args = then we have a channel number 0-based</span>
-                    <span class="o">`</span><span class="p">(</span><span class="nf">send-midi-cc</span> <span class="p">(</span><span class="nf">now</span><span class="p">)</span> <span class="c1">;;(*metro* beat)  </span>
-                        <span class="nv">*mididevice*</span>
-                        <span class="p">(</span><span class="nf">real-&gt;integer</span> <span class="o">,</span><span class="p">(</span><span class="nb">car </span><span class="nv">args</span><span class="p">))</span>            <span class="c1">;; control change</span>
-                        <span class="p">(</span><span class="nf">real-&gt;integer</span> <span class="o">,</span><span class="p">(</span><span class="nb">cadr </span><span class="nv">args</span><span class="p">))</span>           <span class="c1">;; value</span>
-                        <span class="p">(</span><span class="nf">real-&gt;integer</span> <span class="o">,</span><span class="p">(</span><span class="nb">caddr </span><span class="nv">args</span><span class="p">))</span>     <span class="c1">;; channel </span>
-                        <span class="p">)))</span>
-    <span class="p">)</span>
+		<div class="highlight"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="nv">zred-gen-insta1*</span> <span class="mi">91</span><span class="p">)</span>
 </pre></div>
 
 	</div>
@@ -336,16 +301,23 @@
   	<div class="footer">
   		
 		
+
   	  <div class="container">
 		<a name="aboutsite"></a>
 		<h3>About</h3>
-		<p>The Extempore Functions Index was <a href="http://www.michelepasin.org/projects/impromptudocs/" target="_blank">made</a> to simplify learning about <a target="_blank" href="https://extemporelang.github.io/">Extempore</a> - a programming language for musical <a target="_blank" href="https://en.wikipedia.org/wiki/Live_coding">livecoding</a> and algorithmic composition.</p>
+		<p>The purpose of this website is to make it easier to navigate the functions definitions of <a target="_blank" href="https://extemporelang.github.io/">Extempore</a>, a programming language for musical <a target="_blank" href="https://en.wikipedia.org/wiki/Live_coding">livecoding</a> and algorithmic composition. <a target="_blank" href="https://www.youtube.com/results?search_query=extempore+livecoding">YouTube</a> has many videos that show Extempore in action.</p> 
 
-		<p>This site is auto-generated from the Extempore source code (available on <a  target="_blank" href="https://github.com/digego/extempore">GitHub</a>). </p>
+		<p></p>
+		
+		<p>Extempore's functions <a  target="_blank" href="https://github.com/digego/extempore">source code</a> has been parsed and indexed using a bare-bones approach i.e. by matching function keywords separated by newlines delimiters. This approach is not perfect nor exhaustive, but it works in the majority of cases. </p> 
 
-		<p>Functions definitions are extracted using a bare-bones approach i.e. by matching function keywords separated by newlines delimiters. This is not perfect nor exhaustive, but it works in the majority of cases. The application is written in Python using the Django framework for the website. The source code for the extractor and this website is also available on <a href="https://github.com/lambdamusic/xtm-docs" target="_blank">GitHub</a>.</p> 
+		<p>Additionally, my custom <a href="https://github.com/lambdamusic/extempore-extensions" target="_blank">extensions</a> to the Extempore programming environment have been indexed too.</p> 
 
-		<p><a target="_blank" href="https://www.youtube.com/results?search_query=extempore+livecoding">YouTube</a> has many videos that show Extempore in action.</p>
+		<p>The source code for the extractor and this website is written in Python and is also available on <a href="https://github.com/lambdamusic/xtm-docs" target="_blank">GitHub</a>.</p> 
+
+		<p>This <a href="http://www.michelepasin.org/projects/impromptudocs/" target="_blank">project</a> was created by <a href="https://www.michelepasin.org/" target="_blank">Michele Pasin</a>.</p> 
+
+
 
   	  </div>
 	  
