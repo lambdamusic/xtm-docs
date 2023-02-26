@@ -157,6 +157,9 @@
 						{% ifequal f.funtype "xtlang"  %}text-warning{% endifequal %}
 						">
 						{{f.funtype}}</small>
+					&nbsp;&nbsp;
+					<a class='src_link' href='{{f.url}}' target='_blank' >{{f.url|cut:'https://github.com'}}</a></li>
+
 				</li>
 			{% endfor %}
 		</div>

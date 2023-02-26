@@ -34,6 +34,7 @@
 						"name": "{{p.name}}",
 						"funtype": "{{p.funtype}}",
 						"url": "{{p.get_absolute_url}}",
+						"url_source": "{{p.url}}",
 						"permalink": "{{p.permalink}}"
 					} {% if not forloop.last %}, {% endif %}
 						
@@ -77,12 +78,14 @@
 		this.ref("id");
 		this.field("name");
 		this.field("funtype");
+		this.field("url_source");
 		this.field("permalink");
 		for (var key in window.pages) {
 			this.add({
 				"id": key,
 				"name": pages[key].name,
 				"funtype": pages[key].funtype,
+				"url_source": pages[key].url_source,
 				"permalink": pages[key].permalink
 			});
 		}
@@ -138,7 +141,7 @@
 				break;
 			}
 
-		resultsString += "</li>"
+		resultsString += "&nbsp;&nbsp;<a class='src_link' href='" + r.url_source + "' target='_blank' >" + r.url_source.substring(18) + "</a></li>"
 	});
 	document.querySelector("#search-results").innerHTML = resultsString;
 

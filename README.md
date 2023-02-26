@@ -65,6 +65,13 @@ Just an idea, but feel free to get in touch if you're willing to improve/extend 
 
 ## Changelog
 
+
+### February 26, 2023
+
+* show GitHub source url in search pages
+* improve about section
+
+
 ### March 7, 2022
 
 * improved search
