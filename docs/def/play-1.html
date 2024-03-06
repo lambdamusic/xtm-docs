@@ -335,8 +335,8 @@
                   <span class="c1">;; single-note: send midi message          </span>
                   <span class="p">(</span><span class="nf">play-midi-note</span> <span class="p">(</span><span class="nf">*metro*</span> <span class="nv">beat</span><span class="p">)</span> 
                                 <span class="nv">*mididevice*</span>
-                                <span class="p">(</span><span class="nf">real-&gt;integer</span> <span class="p">(</span><span class="nb">eval </span><span class="o">,</span><span class="p">(</span><span class="nb">cadr </span><span class="nv">args</span><span class="p">)))</span> <span class="c1">;; pitch</span>
-                                <span class="p">(</span><span class="nf">real-&gt;integer</span> <span class="p">(</span><span class="nb">eval </span><span class="o">,</span><span class="p">(</span><span class="nb">caddr </span><span class="nv">args</span><span class="p">)))</span> <span class="c1">;; vol</span>
+                                <span class="p">(</span><span class="nf">helper:midi-val</span> <span class="p">(</span><span class="nb">eval </span><span class="o">,</span><span class="p">(</span><span class="nb">cadr </span><span class="nv">args</span><span class="p">)))</span> <span class="c1">;; pitch</span>
+                                <span class="p">(</span><span class="nf">helper:midi-val</span> <span class="p">(</span><span class="nb">eval </span><span class="o">,</span><span class="p">(</span><span class="nb">caddr </span><span class="nv">args</span><span class="p">)))</span> <span class="c1">;; vol</span>
                                 <span class="p">(</span><span class="nf">*metro*</span> <span class="ss">&#39;dur</span> 
                                   <span class="p">(</span><span class="nb">* </span><span class="nv">*play-midi-default-dur-factor*</span> <span class="o">,</span><span class="p">(</span><span class="nb">cadddr </span><span class="nv">args</span><span class="p">))</span> 
                                 <span class="p">)</span> <span class="c1">;; dur</span>
@@ -359,8 +359,8 @@
                   <span class="c1">;; single-note: send midi message</span>
                   <span class="p">(</span><span class="nf">play-midi-note</span> <span class="p">(</span><span class="nf">*metro*</span> <span class="p">(</span><span class="nb">+ </span><span class="nv">beat</span> <span class="o">,</span><span class="p">(</span><span class="nb">car </span><span class="nv">args</span><span class="p">)))</span>         
                                   <span class="nv">*mididevice*</span>
-                                  <span class="p">(</span><span class="nf">real-&gt;integer</span> <span class="p">(</span><span class="nb">eval </span><span class="o">,</span><span class="p">(</span><span class="nb">caddr </span><span class="nv">args</span><span class="p">)))</span>
-                                  <span class="p">(</span><span class="nf">real-&gt;integer</span>  <span class="p">(</span><span class="nb">eval </span><span class="o">,</span><span class="p">(</span><span class="nb">cadddr </span><span class="nv">args</span><span class="p">)))</span>
+                                  <span class="p">(</span><span class="nf">helper:midi-val</span><span class="p">(</span><span class="nb">eval </span><span class="o">,</span><span class="p">(</span><span class="nb">caddr </span><span class="nv">args</span><span class="p">)))</span>
+                                  <span class="p">(</span><span class="nf">helper:midi-val</span>  <span class="p">(</span><span class="nb">eval </span><span class="o">,</span><span class="p">(</span><span class="nb">cadddr </span><span class="nv">args</span><span class="p">)))</span>
                                   <span class="p">(</span><span class="nf">*metro*</span> <span class="ss">&#39;dur</span> 
                                     <span class="p">(</span><span class="nb">* </span><span class="nv">*play-midi-default-dur-factor*</span> 
                                       <span class="o">,</span><span class="p">(</span><span class="nb">cadr </span><span class="p">(</span><span class="nb">cdddr </span><span class="nv">args</span><span class="p">))))</span>   
@@ -484,7 +484,7 @@
 				</li>
 			
 				<li>
-					<a class="lead" href="playkit.html">playkit</a>
+					<a class="lead" href="playk.html">playk</a>
 					&nbsp;&nbsp;
 				
 					<small class="
@@ -499,7 +499,22 @@
 				</li>
 			
 				<li>
-					<a class="lead" href="playkitr.html">playkitr</a>
+					<a class="lead" href="playkp.html">playkp</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						text-info
+						
+						">
+						macro</small>
+					&nbsp;&nbsp;
+					<a class='src_link' href='https://github.com/lambdamusic/extempore-extensions/blob/main/init/init_playp.xtm' target='_blank' >/lambdamusic/extempore-extensions/blob/main/init/init_playp.xtm</a></li>
+
+				</li>
+			
+				<li>
+					<a class="lead" href="playkr.html">playkr</a>
 					&nbsp;&nbsp;
 				
 					<small class="
@@ -514,7 +529,7 @@
 				</li>
 			
 				<li>
-					<a class="lead" href="playkitrdown.html">playkitrdown</a>
+					<a class="lead" href="playkrdown.html">playkrdown</a>
 					&nbsp;&nbsp;
 				
 					<small class="
@@ -529,7 +544,7 @@
 				</li>
 			
 				<li>
-					<a class="lead" href="playkitrrollup.html">playkitrrollup</a>
+					<a class="lead" href="playkrrollup.html">playkrrollup</a>
 					&nbsp;&nbsp;
 				
 					<small class="

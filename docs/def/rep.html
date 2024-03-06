@@ -275,13 +275,13 @@
 	<hr>
 	<div class="">
 		<div class="highlight"><pre><span></span><span class="c1">;+</span>
-<span class="c1">; repeat</span>
+<span class="c1">; repeat [can use R too]</span>
 <span class="c1">; eg (rep 2 4) =&gt; (2 2 2 2)</span>
 <span class="p">(</span><span class="k">define </span><span class="p">(</span><span class="nf">rep</span> <span class="nv">x</span> <span class="nv">y</span><span class="p">)</span>
   <span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nb">zero? </span><span class="nv">y</span><span class="p">)</span>
       <span class="o">&#39;</span><span class="p">()</span>
       <span class="p">(</span><span class="nb">cons </span><span class="nv">x</span>
-            <span class="p">(</span><span class="nf">R</span> <span class="nv">x</span> <span class="p">(</span><span class="nb">- </span><span class="nv">y</span> <span class="mi">1</span><span class="p">)))))</span>
+            <span class="p">(</span><span class="nf">rep</span> <span class="nv">x</span> <span class="p">(</span><span class="nb">- </span><span class="nv">y</span> <span class="mi">1</span><span class="p">)))))</span>
 </pre></div>
 
 	</div>

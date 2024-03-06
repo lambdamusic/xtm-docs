@@ -278,10 +278,9 @@
 <span class="c1">; helper for :mkint    </span>
 <span class="c1">; calculate the interval using pc classes</span>
 <span class="c1">; if results is not within the max/min range, then return the range boundaries (quantized for the requested scale!)</span>
-<span class="c1">;</span>
+<span class="c1">; ; https://en.wikipedia.org/wiki/Interval_(music)#Interval_number_and_quality</span>
 <span class="p">(</span><span class="k">define </span><span class="nv">helper:mkint-inner</span>
   <span class="p">(</span><span class="k">lambda </span><span class="p">(</span><span class="nf">root</span> <span class="nv">degree</span> <span class="nv">scale_or_quality</span><span class="p">)</span>
-    <span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nb">member </span><span class="nv">scale_or_quality</span> <span class="nv">*interval-quality*</span><span class="p">)</span>
 </pre></div>
 
 	</div>

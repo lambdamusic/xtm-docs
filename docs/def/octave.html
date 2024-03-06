@@ -279,7 +279,7 @@
 <span class="c1">; Move a pitch to a different octave range, within with min/max boundaries.</span>
 <span class="c1">;</span>
 <span class="c1">;; arg1: pitch or pitch-list</span>
-<span class="c1">;; arg2: min boundary </span>
+<span class="c1">;; arg2: min boundary (if not provided, 1)</span>
 <span class="c1">;; arg3: max boundary (if not provided, min +1)</span>
 <span class="c1">;</span>
 <span class="c1">;;  Octave 1 = c0 = 12  // 1st octave starts</span>
@@ -290,6 +290,7 @@
 <span class="c1">;;  Octave 6 = c5 = 72</span>
 <span class="c1">;;  Octave 7 = c6 = 84  // 7th octave starts</span>
 <span class="c1">;;  Octave 8 = c7 = 96</span>
+<span class="c1">;;  Octave 9 = c8 = 108</span>
 <span class="c1">;</span>
 <span class="c1">;; Examples</span>
 <span class="c1">; (octave 10) ; +&gt; 22 / simply add 12 semitones</span>
@@ -301,10 +302,11 @@
 <span class="p">(</span><span class="k">define </span><span class="nv">octave</span>
   <span class="p">(</span><span class="k">lambda </span><span class="p">(</span><span class="nf">plist</span> <span class="o">.</span> <span class="nv">args</span><span class="p">)</span>
   <span class="c1">; (println args)</span>
-   <span class="p">(</span><span class="k">cond </span><span class="p">((</span><span class="nb">null? </span><span class="nv">args</span><span class="p">)</span> <span class="c1">;; default - intervallo di ottava</span>
+   <span class="p">(</span><span class="k">cond </span><span class="p">((</span><span class="nb">null? </span><span class="nv">args</span><span class="p">)</span> 
+          <span class="c1">;; 1 arg  - plist =&gt; intervallo di ottava</span>
           <span class="p">(</span><span class="nf">add</span> <span class="mi">12</span> <span class="nv">plist</span><span class="p">))</span>   
           <span class="p">((</span><span class="nf">length-equal?</span> <span class="nv">args</span> <span class="mi">1</span><span class="p">)</span> 
-           <span class="c1">;; 1 arg = min boundary only / max boundary inferred </span>
+           <span class="c1">;; 2 arg = plist and min boundary =&gt; max boundary inferred as min+1</span>
            <span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nb">list? </span><span class="nv">plist</span><span class="p">)</span> 
                   <span class="p">(</span><span class="nb">map </span><span class="p">(</span><span class="k">lambda </span><span class="p">(</span><span class="nf">x</span><span class="p">)</span>
                       <span class="p">(</span><span class="nf">to-octave</span> <span class="nv">x</span> <span class="p">(</span><span class="nb">car </span><span class="nv">args</span><span class="p">)</span> <span class="p">(</span><span class="nb">+ </span><span class="p">(</span><span class="nb">car </span><span class="nv">args</span><span class="p">)</span> <span class="mi">1</span><span class="p">)))</span>  

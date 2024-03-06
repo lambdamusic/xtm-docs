@@ -281,14 +281,15 @@
 <span class="c1">; Args:</span>
 <span class="c1">; -----</span>
 <span class="c1">; Takes variable num of args, but for 4:  </span>
-<span class="c1">; ch: the CC channel (1-10 for volumes)</span>
+<span class="c1">; track: the Ableton Track number (1-8, 10 for master)</span>
 <span class="c1">; action: +/- for increment/decrement </span>
 <span class="c1">; value: [INTEGER or FLOAT 0-127] the fader value number</span>
 <span class="c1">; boundary: the min or max value where to stop</span>
 <span class="c1">;</span>
 <span class="c1">; Notes:</span>
 <span class="c1">; ------</span>
-<span class="c1">; CHANNEL 10 =&gt; the MASTER vol in ABLETON</span>
+<span class="c1">; TRACK 1-8 only allowed </span>
+<span class="c1">; TRACK 10 =&gt; the MASTER vol in ABLETON</span>
 <span class="c1">; Values are set in real-time using now() // [not beat]</span>
 <span class="c1">; IMPORTANT: communication is one-way only XTM=&gt;DAW (not back-synced from DAW)</span>
 <span class="c1">;</span>

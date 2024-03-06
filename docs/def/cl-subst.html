@@ -274,12 +274,16 @@
 	<h5>Implementation</h5>
 	<hr>
 	<div class="">
-		<div class="highlight"><pre><span></span><span class="c1">;</span>
-<span class="c1">;; (subst 9 7 &#39;(5 (5 6 7 (6 7))))    =&gt;  (5 (5 6 9 (6 9)))  </span>
+		<div class="highlight"><pre><span></span><span class="c1">;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;</span>
+<span class="c1">;; DEPRECATED / missing dependencies</span>
+<span class="c1">;; subst amd sublis have gone missing? </span>
+<span class="c1">;; https://extempore.michelepasin.org/def/subst.html</span>
+<span class="c1">;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;</span>
+<span class="c1">;; (cl:subst 9 7 &#39;(5 (5 6 7 (6 7))))    =&gt;  (5 (5 6 9 (6 9)))  </span>
 <span class="p">(</span><span class="k">define </span><span class="p">(</span><span class="nf">cl:subst</span> <span class="nv">new</span> <span class="nv">old</span> <span class="nv">tree</span><span class="p">)</span>
   <span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nb">pair? </span><span class="nv">tree</span><span class="p">)</span>
-      <span class="p">(</span><span class="k">let </span><span class="p">((</span><span class="nf">left</span> <span class="p">(</span><span class="nf">subst</span> <span class="nv">new</span> <span class="nv">old</span> <span class="p">(</span><span class="nb">car </span><span class="nv">tree</span><span class="p">)))</span>
-            <span class="p">(</span><span class="nf">right</span> <span class="p">(</span><span class="nf">subst</span> <span class="nv">new</span> <span class="nv">old</span> <span class="p">(</span><span class="nb">cdr </span><span class="nv">tree</span><span class="p">))))</span>
+      <span class="p">(</span><span class="k">let </span><span class="p">((</span><span class="nf">left</span> <span class="p">(</span><span class="nf">subst</span>  <span class="nv">new</span> <span class="nv">old</span> <span class="p">(</span><span class="nb">car </span><span class="nv">tree</span><span class="p">)))</span>
+            <span class="p">(</span><span class="nf">right</span> <span class="p">(</span><span class="nf">subst</span>  <span class="nv">new</span> <span class="nv">old</span> <span class="p">(</span><span class="nb">cdr </span><span class="nv">tree</span><span class="p">))))</span>
         <span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="k">and </span><span class="p">(</span><span class="nb">eq? </span><span class="nv">left</span> <span class="p">(</span><span class="nb">car </span><span class="nv">tree</span><span class="p">))</span>
                  <span class="p">(</span><span class="nb">eq? </span><span class="nv">right</span> <span class="p">(</span><span class="nb">cdr </span><span class="nv">tree</span><span class="p">)))</span>
             <span class="nv">tree</span>

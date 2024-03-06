@@ -276,11 +276,19 @@
 	<div class="">
 		<div class="highlight"><pre><span></span><span class="c1">;</span>
 <span class="c1">;</span>
-<span class="c1">; mkrel // DEPRECATED? 2022-01-30</span>
+<span class="c1">; mkrel // 2022-01-30: DEPRECATED, it&#39;s the same as mkint</span>
 <span class="c1">;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;</span>
 <span class="c1">;</span>
 <span class="c1">; Shortcut for pc:relative / returns a single note</span>
 <span class="c1">;</span>
+<span class="c1">; NOTE `mkint` and `mkrel`  have a different implementaion but they produce the same result. Test:</span>
+<span class="c1">;</span>
+<span class="c1">; ```</span>
+<span class="c1">; (let* ((beat (*metro* &#39;get-beat))  (x (cosr 3 2 1/4)))</span>
+<span class="c1">;     (monitor (mkint A3 x &#39;m ))</span>
+<span class="c1">;     (monitor (mkrel A3 x &#39;m ))</span>
+<span class="c1">;         )</span>
+<span class="c1">; ```</span>
 <span class="c1">; Args:</span>
 <span class="c1">; root    [eg: 60]</span>
 <span class="c1">; reldegree    [eg: int, positive or negative]</span>
@@ -292,7 +300,7 @@
 <span class="c1">;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;</span>
 <span class="p">(</span><span class="k">define </span><span class="nv">:mkrel</span>
   <span class="p">(</span><span class="k">lambda </span><span class="p">(</span><span class="nf">root</span> <span class="nv">degree</span> <span class="nv">mode</span><span class="p">)</span>
-        <span class="p">(</span><span class="nb">car </span><span class="p">(</span><span class="nf">mkrelscale</span> <span class="nv">root</span> <span class="nv">degree</span> <span class="nv">mode</span> <span class="mi">1</span><span class="p">))))</span>
+        <span class="p">(</span><span class="nb">car </span><span class="p">(</span><span class="nf">mkscalestep</span> <span class="nv">root</span> <span class="nv">degree</span> <span class="nv">mode</span><span class="p">))))</span>
 </pre></div>
 
 	</div>
@@ -308,32 +316,6 @@
 		  
 	<a class="btn btn-default btn-xs" href="../index/extras.html">Back to Index
 	</a>
-	
-	
-	
-	<div style="margin-top: 50px;">
-		<br />
-		<h5>Similar Entries</h5>
-		<hr>
-		<div class="-lead">
-			
-				<li>
-					<a class="lead" href="-mkrelscale.html">:mkrelscale</a>
-					&nbsp;&nbsp;
-				
-					<small class="
-						text-success
-						
-						
-						">
-						scheme</small>
-					&nbsp;&nbsp;
-					<a class='src_link' href='https://github.com/lambdamusic/extempore-extensions/blob/main/init/init_makers.xtm' target='_blank' >/lambdamusic/extempore-extensions/blob/main/init/init_makers.xtm</a></li>
-
-				</li>
-			
-		</div>
-	</div>	
 	
 	
 	

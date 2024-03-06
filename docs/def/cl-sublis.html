@@ -274,8 +274,12 @@
 	<h5>Implementation</h5>
 	<hr>
 	<div class="">
-		<div class="highlight"><pre><span></span><span class="c1">;</span>
-<span class="c1">;; (sublis &#39;((6 . 9) (7 . 10)) &#39;(5 (5 6 7 (6 7)))))  =&gt; (5 (5 9 10 (9 10)))</span>
+		<div class="highlight"><pre><span></span><span class="c1">;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;</span>
+<span class="c1">;; DEPRECATED / missing dependencies</span>
+<span class="c1">;; subst amd sublis have gone missing? </span>
+<span class="c1">;; https://extempore.michelepasin.org/def/subst.html</span>
+<span class="c1">;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;</span>
+<span class="c1">;; (cl:sublis &#39;((6 . 9) (7 . 10)) &#39;(5 (5 6 7 (6 7)))))  =&gt; (5 (5 9 10 (9 10)))</span>
 <span class="p">(</span><span class="k">define </span><span class="p">(</span><span class="nf">cl:sublis</span> <span class="nv">alist</span> <span class="nv">tree</span><span class="p">)</span>
   <span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nb">pair? </span><span class="nv">tree</span><span class="p">)</span>
       <span class="p">(</span><span class="k">let </span><span class="p">((</span><span class="nf">left</span> <span class="p">(</span><span class="nf">sublis</span> <span class="nv">alist</span> <span class="p">(</span><span class="nb">car </span><span class="nv">tree</span><span class="p">)))</span>

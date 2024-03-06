@@ -276,19 +276,20 @@
 	<div class="">
 		<div class="highlight"><pre><span></span><span class="c1">;</span>
 <span class="c1">;</span>
-<span class="c1">;; EVERY N loops, do X, ELSE Y</span>
+<span class="c1">;; EVERY N loops, do X (X is a sequence of procedures)</span>
 <span class="c1">;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;</span>
-<span class="c1">; Requires `LC` symbol to be in scope and incremented at each iteration</span>
+<span class="c1">; Requires `lc` symbol to be in scope and incremented at each iteration</span>
 <span class="c1">;</span>
-<span class="c1">; (let ((LC 4))</span>
-<span class="c1">;   (every 2 (list 4 5) &#39;no)</span>
+<span class="c1">; (let ((lc 4))</span>
+<span class="c1">;   (every 2 (println &#39;hi) (println &#39;there))</span>
 <span class="c1">;   )</span>
 <span class="c1">;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;</span>
-<span class="p">(</span><span class="nf">define-macro</span> <span class="p">(</span><span class="nf">every</span> <span class="o">.</span> <span class="nv">args</span><span class="p">)</span>
-  <span class="c1">;;(println args)</span>
-   <span class="o">`</span><span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nb">= </span><span class="p">(</span><span class="nb">modulo </span><span class="nv">LC</span> <span class="o">,</span><span class="p">(</span><span class="nb">car </span><span class="nv">args</span><span class="p">))</span> <span class="mi">0</span><span class="p">)</span>
-        <span class="o">,</span><span class="p">(</span><span class="nb">cadr </span><span class="nv">args</span><span class="p">)</span>
-        <span class="o">,</span><span class="p">(</span><span class="nb">caddr </span><span class="nv">args</span><span class="p">)))</span>
+<span class="p">(</span><span class="nf">impc:aot:do-or-emit</span>
+    <span class="p">(</span><span class="nf">define-macro</span> <span class="p">(</span><span class="nf">every</span> <span class="nv">n</span> <span class="o">.</span> <span class="nv">args</span><span class="p">)</span>
+    <span class="c1">;    (println &#39;args n args)</span>
+    <span class="o">`</span><span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nb">= </span><span class="p">(</span><span class="nb">modulo </span><span class="nv">lc</span> <span class="o">,</span><span class="nv">n</span><span class="p">)</span> <span class="mi">0</span><span class="p">)</span>
+            <span class="p">(</span><span class="k">begin </span><span class="o">,@</span><span class="nv">args</span><span class="p">)))</span>
+<span class="p">)</span>
 </pre></div>
 
 	</div>
@@ -304,6 +305,32 @@
 		  
 	<a class="btn btn-default btn-xs" href="../index/extras.html">Back to Index
 	</a>
+	
+	
+	
+	<div style="margin-top: 50px;">
+		<br />
+		<h5>Similar Entries</h5>
+		<hr>
+		<div class="-lead">
+			
+				<li>
+					<a class="lead" href="everyelse.html">everyelse</a>
+					&nbsp;&nbsp;
+				
+					<small class="
+						
+						text-info
+						
+						">
+						macro</small>
+					&nbsp;&nbsp;
+					<a class='src_link' href='https://github.com/lambdamusic/extempore-extensions/blob/main/init/init_beats.xtm' target='_blank' >/lambdamusic/extempore-extensions/blob/main/init/init_beats.xtm</a></li>
+
+				</li>
+			
+		</div>
+	</div>	
 	
 	
 	

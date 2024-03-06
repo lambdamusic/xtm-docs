@@ -292,6 +292,8 @@
                 <span class="p">(</span><span class="k">if </span><span class="nv">*debug*</span>
                     <span class="p">(</span><span class="nf">log-info</span> <span class="ss">&#39;received:</span> <span class="nv">ch</span> <span class="nv">increment</span> <span class="nv">min-limit</span> <span class="nv">max-limit</span> <span class="nv">oldval</span><span class="p">)</span>
                     <span class="p">)</span>
+                <span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nb">&gt; </span><span class="nv">ch</span> <span class="mi">8</span><span class="p">)</span>
+                    <span class="p">(</span><span class="nf">log-warn</span> <span class="ss">&#39;WARNING</span> <span class="ss">&#39;ch:</span> <span class="nv">ch</span> <span class="ss">&#39;invalid</span><span class="p">))</span>
                 <span class="c1">;</span>
                 <span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nb">not </span><span class="p">(</span><span class="nb">integer? </span><span class="nv">min-limit</span><span class="p">))</span> 
                     <span class="p">(</span><span class="k">begin </span>
